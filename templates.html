@@ -1,0 +1,80 @@
+<!-- -------------------------------------------------- -->
+
+	<?php
+		$funcList_path = "http://Trees/content/JsOT/archive/GIT/JsOT/";
+	?>
+	<link rel="stylesheet" type="text/css"       href="<?= $funcList_path ?>JsOT.css">
+	<script                type="text/javascript" src="<?= $funcList_path ?>JsOT.js" ></script>
+
+<!-- -------------------------------------------------- -->
+
+	<script>
+
+		var jsot = require("D:/OpenServer/domains/Trees/www/content/JsOT/archive/GIT/JsOT/JsOT.js");
+
+		new jsot.NodeJsServerAgent({ob : domain, name : "domain"});
+
+		new jsot.NodeJsServerAgent({ob : d, name : "d", portHost : [3334]});
+
+	</script>
+
+<!-- -------------------------------------------------- -->
+
+	<script type="text/javascript">
+		!function() {
+			document.querySelectorAll(".jsot.render-group-1").forEach((v,i,a) => jsot.renderTextContent(v));
+		}();
+	</script>
+
+<!-- 
+	<pre class="jsot render-group-1">
+		
+	</pre>
+-->
+
+<!-- -------------------------------------------------- -->
+	<!-- explorer of client object -->
+
+	<pre class="jsot"></pre>
+	<script type="text/javascript">
+		!function() {
+			var prew = document.all[document.all.length - 2];
+			new jsot.Explorer(prew, {ob : {}, name : "object"});
+		}();
+	</script>
+
+<!-- -------------------------------------------------- -->
+	<!-- explorer of client object -->
+
+	<pre class="jsot">
+		<script type="text/javascript">
+			!function() {
+				var parent = document.all[document.all.length - 1].parentElement;
+				new jsot.Explorer(parent, {ob : {}, name : "object"});
+			}();
+		</script>
+	</pre>
+
+<!-- -------------------------------------------------- -->
+	<!-- explorer of client object -->
+
+	<pre class="jsot">
+		<script type="text/javascript">
+			!function() {
+				var parent = document.all[document.all.length - 1].parentElement;
+				new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
+			}();
+		</script>
+	</pre>
+
+<!-- -------------------------------------------------- -->
+<!-- -------------------------------------------------- -->
+<!-- -------------------------------------------------- -->
+<!-- -------------------------------------------------- -->
+
+
+	<pre id="" class="jsot render-group-1"></pre>
+
+
+
+	<pre id="" class="jsot render-group-1"></pre>
