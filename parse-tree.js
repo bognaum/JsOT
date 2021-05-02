@@ -1,3 +1,5 @@
+import util       from "./util.js";
+
 var pArr = [];
 
 export default function parseTree(ob, name, oT={}, deep=0) {
