@@ -16,6 +16,48 @@
 <body>
 	<div class="container">
 		<h1>JsOT</h1>
+		<h2>testOb</h2>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!function() {
+					var parent = document.all[document.all.length - 1].parentElement;
+					const testOb = {
+						1 : 1,
+						2 : 2,
+						[Symbol("mySymbol")] : "The 'Symbol(mySymbol)'.",
+						bool : true,
+						num : 1,
+						str : "The string.",
+						sym : Symbol("mySymbol"),
+						und : undefined,
+						nul : null,
+						nan : NaN,
+						inf : Infinity,
+						obj : {},
+						arr : [],
+						set : new Set([1,2,3]),
+						wset : new WeakSet([{},{},{}]),
+						map : new Map([[1,1],[2,2],[3,3]]),
+						wmap : new WeakMap([[{},{}],[{},{}],[{},{}]]),
+						fun : function() {},
+						arf : () => {},
+						fug : function * () {yield},
+						asf : async function () {},
+					};
+					
+					new jsot.Explorer(parent, {ob : testOb, name : "testOb", t : {ch : []}});
+				}();
+			</script>
+		</pre>
+		<h2>jsot</h2>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!function() {
+					var parent = document.all[document.all.length - 1].parentElement;
+					new jsot.Explorer(parent, {ob : jsot, name : "jsot", t : {ch : []}});
+				}();
+			</script>
+		</pre>
 		<h2>Array</h2>
 		<pre class="jsot">
 			<script type="text/javascript">
