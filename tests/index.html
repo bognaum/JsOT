@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./../JsOT.css">
+	<script type="text/javascript" src="./../JsOT.js"></script>
+	<style>
+		body .container {
+			margin: 10px 100px 500px 100px;
+			font-family: verdana, sans-serif;
+		}
+	</style>
+	<title>JsOT-tests</title>
+</head>
+<body>
+	<div class="container">
+		<h1>JsOT</h1>
+		<h2>Array</h2>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!function() {
+					var parent = document.all[document.all.length - 1].parentElement;
+					new jsot.Explorer(
+						parent, {
+							ob : Array, 
+							name : "Array", 
+							t : {
+								ch : [
+									{
+										nip: "__proto__",
+										ch: [
+											{
+												nip: "__proto__",
+												ch: []
+											}
+										]
+									}
+								]
+							}
+						}
+					);
+				}();
+			</script>
+		</pre>
+	</div>
+</body>
+</html>
