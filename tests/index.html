@@ -27,6 +27,17 @@
 		<pre id="pre_03" class="jsot"></pre>
 		<pre id="pre_04" class="jsot"></pre>
 		<pre id="pre_05" class="jsot"></pre>
+
+		<h2>Script in pre</h2>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!async function() {
+					const parent = document.all[document.all.length - 1].parentElement;
+					const jsot = (await import("./../JsOT.js")).default;
+					new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
+				}();
+			</script>
+		</pre>
 		<script type="module">
 			import jsot from "./../JsOT.js";
 

@@ -68,6 +68,16 @@
 	</pre>
 
 <!-- -------------------------------------------------- -->
+	<!-- module -->
+	<pre class="jsot">
+		<script type="text/javascript">
+			!async function() {
+				const parent = document.all[document.all.length - 1].parentElement;
+				const jsot = (await import("./../JsOT.js")).default;
+				new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
+			}();
+		</script>
+	</pre>
 <!-- -------------------------------------------------- -->
 <!-- -------------------------------------------------- -->
 <!-- -------------------------------------------------- -->
