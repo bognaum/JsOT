@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="./../JsOT.css">
-	<script type="text/javascript" src="./../JsOT.js"></script>
+	<!-- <script type="text/javascript" src="./../JsOT.js"></script> -->
 	<style>
 		body .container {
 			margin: 10px 100px 500px 100px;
@@ -16,75 +16,66 @@
 <body>
 	<div class="container">
 		<h1>JsOT</h1>
+
 		<h2>testOb</h2>
-		<pre class="jsot">
-			<script type="text/javascript">
-				!function() {
-					var parent = document.all[document.all.length - 1].parentElement;
-					const testOb = {
-						1 : 1,
-						2 : 2,
-						[Symbol("mySymbol")] : "The 'Symbol(mySymbol)'.",
-						bool : true,
-						num : 1,
-						str : "The string.",
-						sym : Symbol("mySymbol"),
-						und : undefined,
-						nul : null,
-						nan : NaN,
-						inf : Infinity,
-						obj : {},
-						arr : [],
-						set : new Set([1,2,3]),
-						wset : new WeakSet([{},{},{}]),
-						map : new Map([[1,1],[2,2],[3,3]]),
-						wmap : new WeakMap([[{},{}],[{},{}],[{},{}]]),
-						fun : function() {},
-						arf : () => {},
-						fug : function * () {yield},
-						asf : async function () {},
-					};
-					
-					new jsot.Explorer(parent, {ob : testOb, name : "testOb", t : {ch : []}});
-				}();
-			</script>
-		</pre>
+		<pre id="pre_01" class="jsot"></pre>
+
 		<h2>jsot</h2>
-		<pre class="jsot">
-			<script type="text/javascript">
-				!function() {
-					var parent = document.all[document.all.length - 1].parentElement;
-					new jsot.Explorer(parent, {ob : jsot, name : "jsot", t : {ch : []}});
-				}();
-			</script>
-		</pre>
+		<pre id="pre_02" class="jsot"></pre>
+
 		<h2>Array</h2>
-		<pre class="jsot">
-			<script type="text/javascript">
-				!function() {
-					var parent = document.all[document.all.length - 1].parentElement;
-					new jsot.Explorer(
-						parent, {
-							ob : Array, 
-							name : "Array", 
-							t : {
-								ch : [
+		<pre id="pre_03" class="jsot"></pre>
+		<pre id="pre_04" class="jsot"></pre>
+		<pre id="pre_05" class="jsot"></pre>
+		<script type="module">
+			import jsot from "./../JsOT.js";
+
+			const testOb = {
+				1 : 1,
+				2 : 2,
+				[Symbol("mySymbol")] : "The 'Symbol(mySymbol)'.",
+				bool : true,
+				num : 1,
+				str : "The string.",
+				sym : Symbol("mySymbol"),
+				und : undefined,
+				nul : null,
+				nan : NaN,
+				inf : Infinity,
+				obj : {},
+				arr : [],
+				set : new Set([1,2,3]),
+				wset : new WeakSet([{},{},{}]),
+				map : new Map([[1,1],[2,2],[3,3]]),
+				wmap : new WeakMap([[{},{}],[{},{}],[{},{}]]),
+				fun : function() {},
+				arf : () => {},
+				fug : function * () {yield},
+				asf : async function () {},
+			};
+			
+			new jsot.Explorer(pre_01, {ob : testOb, name : "testOb", t : {ch : []}});
+			new jsot.Explorer(pre_02, {ob : jsot, name : "jsot", t : {ch : []}});
+			new jsot.Explorer(
+				pre_03, {
+					ob : Array, 
+					name : "Array", 
+					t : {
+						ch : [
+							{
+								nip: "__proto__",
+								ch: [
 									{
 										nip: "__proto__",
-										ch: [
-											{
-												nip: "__proto__",
-												ch: []
-											}
-										]
+										ch: []
 									}
 								]
 							}
-						}
-					);
-				}();
-			</script>
-		</pre>
+						]
+					}
+				}
+			);
+		</script>
 	</div>
 </body>
 </html>
