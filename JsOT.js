@@ -32,7 +32,7 @@ const
 	NodeJsServerAgent = m__NodeJsServerAgent(parseTree);
 
 
-const API = {
+export default {
 	version,
 	Explorer,                       // (inputEl, options)
 	NodeJsServerAgent,              // (options)
@@ -50,12 +50,6 @@ const API = {
 		"symbolStatProps": util["symbolStatProps"],
 	}
 }
-
-const jsot = API;
-
-export default jsot;
-
-
 
 // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 // Explorer
