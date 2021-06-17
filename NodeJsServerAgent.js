@@ -29,14 +29,43 @@ export default class ServerAgent {
 				req.on("error", (err) => console.error(err));
 				res.on("error", (err) => console.error(err));
 
-				console.log(`req.url`, req.url);
+				const 
+					[reqPath, reqQuery] = req.url.split("?"),
+					mimeType = getMIME(reqPath);
 
 				
 				res.setHeader('Access-Control-Allow-Origin', '*');
 
 				var gFUrl;
 
-				if (req.url == "/") {
+				if (req.url == "/parse") {
+					res.setHeader('Content-Type', 'text/plain; Charset="UTF-8"');
+					res.setHeader('Cash-Control', 'no-store');
+
+					var reqBody = ""
+					req.on("data", (dataBuf) => reqBody += dataBuf.toString());
+
+					req.on("end", (e) => {
+						// console.log(`reqBody.length`, reqBody.length);
+						var dataArr = reqBody.split("&");
+						var dataDict = dataArr.reduce((acc,v) => {
+								if (!v)
+									return acc;
+
+								var k_v = v.split("=");
+								acc[k_v[0]] = decodeURIComponent(k_v[1]);
+
+								return acc;
+							}, {});
+						var inJson = dataDict.template;
+						// console.log(`inJson.length`, inJson.length);
+						var t = inJson ? util.getFromJson(inJson) : {};
+						var getted = parseTree(_.ob, _.name, t);
+						res.end(util.getJson(getted));
+
+						// console.log("↓ OK\n\n");
+					});
+				} else if (req.url == "/") {
 					res.setHeader('Content-Type', 'text/html; Charset=UTF-8');
 					res.setHeader('Cash-Control', 'no-store');
 					var theUrl = `http://${_.portHost[1]}:${_.portHost[0]}`;
@@ -91,63 +120,12 @@ export default class ServerAgent {
 					`);
 
 					// console.log("↓ OK\n\n");
-				} else if (["/jsot.js"].includes(req.url.toLowerCase())) {
-					res.setHeader('Content-Type', 'application/javascript; Charset="UTF-8"');
+				} else if (fs.existsSync(__dirname+req.url)) {
+					res.setHeader('Content-Type', `${mimeType}; Charset="UTF-8"`);
 					res.setHeader('Cash-Control', 'no-store');
-					res.end(fs.readFileSync(__dirname+req.url));
-
+					res.end(fs.readFileSync(__dirname+reqPath));
 					// console.log("Download", req.url);
 					// console.log("↓ OK\n\n");
-				} else if ([
-					"/jsot.css",
-					"/jsot.css.map",
-					"/jsot.scss",
-				].includes(req.url.toLowerCase())) {
-					res.setHeader('Content-Type', 'text/css; Charset="UTF-8"');
-					res.setHeader('Cash-Control', 'no-store');
-					res.end(fs.readFileSync(__dirname+req.url));
-					// console.log("Download", req.url);
-					// console.log("↓ OK\n\n");
-				} else if ([
-					"/util.js",
-					"/parse-tree.js",
-					"/render-tree.js",
-					"/Explorer.js",
-					"/NodeJsServerAgent.js",
-					"/HeaderCode.js",
-				].includes(req.url/*.toLowerCase()*/)) {
-					res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-					res.setHeader('Cash-Control', 'no-store');
-					res.end(fs.readFileSync(__dirname+req.url));
-					// console.log("Download", req.url);
-					// console.log("↓ OK\n\n");
-				} else if (req.url == "/parse") {
-					res.setHeader('Content-Type', 'text/plain; Charset="UTF-8"');
-					res.setHeader('Cash-Control', 'no-store');
-
-					var reqBody = ""
-					req.on("data", (dataBuf) => reqBody += dataBuf.toString());
-
-					req.on("end", (e) => {
-						// console.log(`reqBody.length`, reqBody.length);
-						var dataArr = reqBody.split("&");
-						var dataDict = dataArr.reduce((acc,v) => {
-								if (!v)
-									return acc;
-
-								var k_v = v.split("=");
-								acc[k_v[0]] = decodeURIComponent(k_v[1]);
-
-								return acc;
-							}, {});
-						var inJson = dataDict.template;
-						// console.log(`inJson.length`, inJson.length);
-						var t = inJson ? util.getFromJson(inJson) : {};
-						var getted = parseTree(_.ob, _.name, t);
-						res.end(util.getJson(getted));
-
-						// console.log("↓ OK\n\n");
-					});
 				} else {
 					res.end("JsOT - 404.");
 
@@ -164,4 +142,21 @@ export default class ServerAgent {
 		
 	}
 	
+}
+
+const MIME = {
+	"text/html"             : ["html"                  ],
+	"text/css"              : ["css", "scss", "css.map"],
+	"application/javascript": ["js", "ejs", "cjs"      ],
+}
+
+function getMIME(fileName) {
+	const parts = fileName.split(".");
+	let ext = parts.pop();
+	if (ext == "map")
+		ext = parts.pop() + "." + ext;
+	for (let i in MIME) 
+		if (MIME[i].includes(ext))
+			return i;
+	return "text/plain";
 }
