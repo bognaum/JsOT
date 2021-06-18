@@ -167,7 +167,7 @@ const
 	};
 
 export default class JsHlter extends SyntaxHlFk.Highlighter {
-	constructor (clPref="json-err-hl") {
+	constructor (clPref="jsot-js-hl") {
 		super(r.main, clPref);
 		setStyle(clPref);
 	}

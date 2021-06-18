@@ -1,84 +1,56 @@
 export default function setStyle(clPref) {
 
 	const cssCode = `
-	.json-err-hl.calm-theme {
-	  background-color: #222; }
-	  .json-err-hl.calm-theme .json-err-hl__line-text {
-	    color: #eee; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .string {
-	      color: #ddc; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .string_v {
-	      color: #ddc; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .string_n {
-	      color: #78a; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .slashed {
-	      color: #f90; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .number {
-	      color: #f90; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .bool {
-	      color: #f90; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text ._null {
-	      color: #98f; }
+		.jsot-js-hl.calm-clarified-theme .jsot-js-hl__line .jsot-js-hl__line-number {
+		  background-color: #444; }
 
-	.json-err-hl.calm-clarified-theme .json-err-hl__line .json-err-hl__line-number {
-	  background-color: #444; }
+		.jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text {
+		  color: #eee; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_v {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_n {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text ._null {
+		    color: #98f; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .error {
+		    color: #fff;
+		    background-color: #e48;
+		    box-shadow: inset 0 0 2px #fff; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .f_name {
+		    color: #eee;
+		    font-weight: bold; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .comment {
+		    color: #777; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string {
+		    color: #b98; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .re {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .slashed {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .number {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .bool {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .sp_const {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .keyword {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .operator {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .punctuation {
+		    color: #eee; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .paren {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .curly {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .bracket {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .word {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_tag {
+		    color: #ddc; }
 
-	.json-err-hl.calm-clarified-theme .json-err-hl__line-text {
-	  color: #eee; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string {
-	    color: #ddc; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string_v {
-	    color: #ddc; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string_n {
-	    color: #78a; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .bool {
-	    color: #fb6; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .number {
-	    color: #fb6; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .slashed {
-	    color: #fb6; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text ._null {
-	    color: #98f; }
-
-	.json-err-hl.monokai-theme {
-	  background-color: #333; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .string_n {
-	    color: #3bd; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .string {
-	    color: #da5; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .string_v {
-	    color: #da5; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .slashed {
-	    color: #98f; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .number {
-	    color: #98f; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .bool {
-	    color: #98f; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text ._null {
-	    color: #e48; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string_n {
-	  color: #3bd; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string {
-	  color: #da5; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string_v {
-	  color: #da5; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .slashed {
-	  color: #98f; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .number {
-	  color: #98f; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .bool {
-	  color: #98f; }
-
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text ._null {
-	  color: #e48; }
-
-	 `.replaceAll(/json-err-hl/g, clPref);
+	`.replaceAll(/jsot-js-hl/g, clPref);
 
 	const styleClassName = `${clPref}__theme-style`;
 

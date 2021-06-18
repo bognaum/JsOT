@@ -314,7 +314,7 @@ export default class Explorer {
 				</div>
 				<div class="float-cleaner"></div>
 				<div class="c-w-content-wr">
-					<pre class="js-hl-c-w-content jsot-syntax-hl"></pre>
+					<pre class="js-hl-c-w-content jsot-syntax-hl jsot-js-hl calm-clarified-theme"></pre>
 				</div>
 				<div class="c-w-footer">
 					<div class="btn-el scroll-btn"title="scroll">&nbsp;&nbsp;⭿&nbsp;&nbsp;</div>
