@@ -1,7 +1,7 @@
 import util       from "./util.js";
 import parseTree  from "./parse-tree.js";
 import renderTree from "./render-tree.js";
-import JsHter     from "./JsHter.js";
+import JsHter     from "./JsHter/JsHter.js";
 
 export default class Explorer {
 	// **********************
