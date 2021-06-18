@@ -1,6 +1,7 @@
 import util       from "./util.js";
 import parseTree  from "./parse-tree.js";
 import renderTree from "./render-tree.js";
+import JsHter     from "./JsHter.js";
 
 export default class Explorer {
 	// **********************
@@ -339,7 +340,7 @@ export default class Explorer {
 		})
 		var contentEl = cWindow.querySelector(".js-hl-c-w-content");
 		if (highlight)
-			JsHl.highlight(contentEl, value);
+			(new JsHter()).highlight(contentEl, value);
 			// contentEl.innerHTML = jsot.getHighlightedCode(value);
 		else 
 			contentEl.textContent = value;

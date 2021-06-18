@@ -38,6 +38,136 @@
 				}();
 			</script>
 		</pre>
+		<pre class="jsot hl-tc">
+			{
+				"nip": "JSON",
+				"detectWay": [
+					"getOwnPropertyDescriptors"
+				],
+				"detValWay": [
+					"getOwnPropertyDescriptor.value"
+				],
+				"descriptor": {
+					"v": true,
+					"w": true,
+					"e": false,
+					"c": true
+				},
+				"settings": {},
+				"esf": {
+					"e": true,
+					"s": false,
+					"f": false
+				},
+				"tof": "object",
+				"hasIter": false,
+				"v": "Object",
+				"seqN": 78,
+				"nameType": "nip",
+				"cBarIsMounted": true,
+				"jsot-JSON-format-ver": "3.2.0",
+				"ch": [
+					{
+						"nip": "parse",
+						"detectWay": [
+							"getOwnPropertyDescriptors"
+						],
+						"detValWay": [
+							"getOwnPropertyDescriptor.value"
+						],
+						"descriptor": {
+							"v": true,
+							"w": true,
+							"e": false,
+							"c": true
+						},
+						"settings": {},
+						"esf": {
+							"e": true,
+							"s": false,
+							"f": false
+						},
+						"tof": "function",
+						"v": "parse",
+						"seqN": 0,
+						"nameType": "nip"
+					},
+					{
+						"nip": "stringify",
+						"detectWay": [
+							"getOwnPropertyDescriptors"
+						],
+						"detValWay": [
+							"getOwnPropertyDescriptor.value"
+						],
+						"descriptor": {
+							"v": true,
+							"w": true,
+							"e": false,
+							"c": true
+						},
+						"settings": {},
+						"esf": {
+							"e": true,
+							"s": false,
+							"f": false
+						},
+						"tof": "function",
+						"v": "stringify",
+						"seqN": 1,
+						"nameType": "nip"
+					},
+					{
+						"detectWay": [
+							"getOwnPropertyDescriptors"
+						],
+						"detValWay": [
+							"getOwnPropertyDescriptor.value"
+						],
+						"descriptor": {
+							"v": true,
+							"w": false,
+							"e": false,
+							"c": true
+						},
+						"settings": {},
+						"esf": {
+							"e": false,
+							"s": true,
+							"f": true
+						},
+						"tof": "string",
+						"v": "JSON",
+						"n_sym": {
+							"descr": "Symbol.toStringTag",
+							"statProp": "toStringTag",
+							"@@-number": 0
+						},
+						"seqN": 2,
+						"nameType": "symbol"
+					},
+					{
+						"nip": "__proto__",g
+						"detectWay": [
+							"individ"
+						],
+						"individualDetectedProto": true,
+						"settings": {},
+						"esf": {
+							"e": true,
+							"s": false,
+							"f": false
+						},
+						"tof": "object",
+						"hasIter": false,
+						"v": "Object",
+						"detectValueWay": "ob.constructor.name",
+						"seqN": 3,
+						"nameType": "nip"
+					}
+				]
+			}
+		</pre>
 		<script type="module">
 			import jsot from "./../JsOT.js";
 
@@ -88,6 +218,10 @@
 					}
 				}
 			);
+
+			document.querySelectorAll(".jsot.hl-tc").forEach((v) => {
+				jsot.renderTextContent(v);
+			});
 		</script>
 	</div>
 </body>
