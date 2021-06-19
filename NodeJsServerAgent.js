@@ -74,7 +74,7 @@ export default class ServerAgent {
 						<html lang="en">
 						<head>
 							<meta charset="UTF-8">
-							<link rel="stylesheet" type="text/css"       href="/JsOT.css">
+							<link rel="stylesheet" type="text/css"       href="/CSS/JsOT.css">
 							<!-- <script                type="text/javascript" src="/JsOT.js" ></script> -->
 							<title>${_.name} - JsOT</title>
 							<style>
