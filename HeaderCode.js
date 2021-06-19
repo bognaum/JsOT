@@ -102,7 +102,7 @@ export default class HeaderCode {
 
 			if ("c" in d)
 				_.cevwStr += `<span 
-					class="descr-property configurable ${(!!d.c).toString()}" 
+					class="descr-property configurable ${(!!d.c).toString()}"
 					title="configurable"
 					>c</span>`;
 				else 
@@ -110,24 +110,24 @@ export default class HeaderCode {
 
 			if ("e" in d)
 				_.cevwStr += `<span 
-					class="descr-property enumerable ${(!!d.e).toString()}"   
-					title="enumerable"  
+					class="descr-property enumerable ${(!!d.e).toString()}"
+					title="enumerable"
 					>e</span>`;
 				else 
 					_.cevwStr += "-";
 
 			if ("v" in d)
 				_.cevwStr += `<span 
-					class="descr-property value ${(!!d.v).toString()}"        
-					title="value"       
+					class="descr-property value ${(!!d.v).toString()}"
+					title="value"
 					>v</span>`;
 				else 
 					_.cevwStr += "-";
 
 			if ("w" in d)
 				_.cevwStr += `<span 
-					class="descr-property writable ${(!!d.w).toString()}"     
-					title="writable"    
+					class="descr-property writable ${(!!d.w).toString()}"
+					title="writable"
 					>w</span>`;
 				else 
 					_.cevwStr += "-";
@@ -141,24 +141,24 @@ export default class HeaderCode {
 			_.esfStr += `<span class="esf">`
 			if ("e" in esf)
 				_.esfStr += `<span 
-					class="object-option extensible ${(!!esf.e).toString()}"     
-					title="Extensible object"    
+					class="object-option extensible ${(!!esf.e).toString()}"
+					title="Extensible object"
 					>E</span>`;
 			else 
 				_.esfStr += "-";
 
 			if ("s" in esf)
 				_.esfStr += `<span 
-					class="object-option sealed ${(!!esf.f).toString()}"     
-					title="Sealed object"    
+					class="object-option sealed ${(!!esf.f).toString()}"
+					title="Sealed object"
 					>S</span>`;
 			else 
 				_.esfStr += "-";
 
 			if ("f" in esf)
 				_.esfStr += `<span 
-					class="object-option frozen ${(!!esf.s).toString()}"     
-					title="Frozen object"    
+					class="object-option frozen ${(!!esf.s).toString()}"
+					title="Frozen object"
 					>F</span>`;
 			else 
 				_.esfStr += "-";
