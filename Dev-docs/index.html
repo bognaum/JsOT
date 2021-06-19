@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="https://bognaum.github.io/line-format-diagram/build/lfd-bundle.js"></script>
+	<style>
+		body {
+			margin: 10px 100px 500px 100px;
+			font-family: verdana, sans-serif;
+		}
+	</style>
+	<title>Dev-docs</title>
+</head>
+<body>
+	<div class="lfd" data-line-num="10">
+		[
+			{
+				"td": ".header",
+				"ch": [
+					{
+						"td": ".hower-sensitive",
+						"ch": [
+							{
+								"td": "",
+								"bd": ".fold-sign",
+								"ch": " "
+							},
+							{
+								"td": "",
+								"bd": ".sign",
+								"ch": "{…}"
+							},
+							{
+								"td": "",
+								"bd": ".c-bar-slot",
+								"ch": " "
+							},
+							{
+								"td": ".name-wr",
+								"ch": [
+									{
+										"td": "",
+										"bd": ":before",
+										"ch": "get"
+									},
+									{
+										"td": "",
+										"bd": ":before",
+										"ch": "set"
+									},
+									{
+										"td": "",
+										"bd": ":before",
+										"ch": "("
+									},
+									{
+										"td": "",
+										"bd": "",
+										"ch": [
+											{
+												"td": ".get-set",
+												"ch": [
+													{
+														"bd": ".get",
+														"ch": "G"
+													},
+													{
+														"bd": ".set",
+														"ch": "S"
+													}
+												]
+											},
+											{
+												"td":".name.nip-name",
+												"ch": "onloadstart"
+											}
+										]
+									},
+									{
+										"td": "",
+										"bd": ":after",
+										"ch": ")"
+									}
+								]
+							}
+						]
+					},
+					{
+						"td": ".n-v-delim",
+						"ch": [
+							{
+								"td": "",
+								"ch": "<"
+							},
+							{
+								"td": ".cevw",
+								"ch": [
+									{
+										"td": "",
+										"bd": ".descr-property.configurable",
+										"ch": "c"
+									},
+									{
+										"td": "",
+										"bd": ".descr-property.enumerable",
+										"ch": "e"
+									},
+									{
+										"td": "",
+										"bd": ".descr-property.value",
+										"ch": "v"
+									},
+									{
+										"td": "",
+										"bd": ".descr-property.writible",
+										"ch": "w"
+									}
+								]
+							},
+							{
+								"td": ".esf",
+								"ch": [
+									{
+										"td": "",
+										"bd": ".object-option.extendable",
+										"ch": "E"
+									},
+									{
+										"td": "",
+										"bd": ".object-option.sealed",
+										"ch": "S"
+									},
+									{
+										"td": "",
+										"bd": ".object-option.frozen",
+										"ch": "F"
+									}
+								]
+							},
+							{
+								"td": "",
+								"ch": ">"
+							}
+						]
+					},
+					{
+						"td": ".value.tof-...",
+						"ch": "TypeError"
+					},
+					{
+						"td": ".comment",
+						"ch": [
+							{
+								"bd": ":before",
+								"ch": " ← "
+							},
+							{
+								"td": "",
+								"ch": "comment text"
+							}
+						]
+					}
+				]
+			}
+		]
+	</div>
+	<script type="text/javascript">
+		const lfd = new LineFormatDiagram();
+		document.querySelectorAll(".lfd").forEach((v) => {
+			lfd.buildByTextContent(v);
+		});
+	</script>
+</body>
+</html>
