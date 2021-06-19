@@ -55,6 +55,7 @@ function renderJSON(inputEl, json) {
 	if (templ)
 		return renderTree(inputEl, templ);
 	else {
+		inputEl.innerHTML = "";
 		inputEl.prepend(codeField);
 		jsonHter.scrollToFirstError(codeField)
 		console.error(`(!) `, jsonError);
