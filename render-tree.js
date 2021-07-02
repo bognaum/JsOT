@@ -19,6 +19,18 @@ const context = {
 	maserMethods : {
 		fold,
 		unfold
+	},
+	initNodeAfter,
+}
+
+function initNodeAfter(m) {
+	if (m.ch) {
+		const 
+			nameWrs = m.ch.map(v => v.header.querySelector(".name-wr")),
+			width = Math.max(
+				... nameWrs.map(v => v.getBoundingClientRect().width)
+			);
+		nameWrs.forEach(v => v.style.minWidth = width+"px");
 	}
 }
 
