@@ -40,7 +40,7 @@ export default class HeaderCode {
 		`</span>`;
 	}
 	_code_nVDelim (m, _) {
-		return ` <span class="n-v-delim">&lt;${_.cevwStr} ${_.esfStr}&gt;</span> `;
+		return ` <span class="n-v-delim"> ${_.cevwStr} ${_.esfStr} </span> `;
 	}
 	_code_value (m, _) {
 		return `<span class="value tof-${m.tof} ${_.isNull}"
@@ -133,7 +133,9 @@ export default class HeaderCode {
 					_.cevwStr += "-";
 
 			_.cevwStr += `</span>`;
-		} 
+		} else 
+			_.cevwStr = "    ";
+			// _.cevwStr = "────";
 
 
 		if (m.esf) {
