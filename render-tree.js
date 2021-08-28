@@ -21,7 +21,16 @@ const context = {
 		unfold
 	},
 	initNodeAfter,
+};
+
+function renderTree(inputEl, templ, cBar=null) {
+	context.inputEl = inputEl;
+	inputEl.innerHTML = "";
+	context.cBar = cBar;
+	createTree(templ, context);
 }
+
+// Context begin
 
 function initNodeAfter(m) {
 	if (m.ch) {
@@ -33,15 +42,6 @@ function initNodeAfter(m) {
 		nameWrs.forEach(v => v.style.minWidth = width+"px");
 	}
 }
-
-function renderTree(inputEl, templ, cBar=null) {
-	context.inputEl = inputEl;
-	inputEl.innerHTML = "";
-	context.cBar = cBar;
-	createTree(templ, context);
-}
-
-// Context begin
 
 function initNodeBefore(m) {
 	m.comment = m.comment || m.comm || m.caption || m.capt;
