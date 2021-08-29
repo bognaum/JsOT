@@ -1,5 +1,17 @@
 import util       from "./util.js";
 import HeaderCode from "./HeaderCode.js";
+import setStyle   from "./CSS/JsOT.scss.js";
+
+try {
+	setStyle("jsot");
+	/**
+	 * 1. Стили должны грузиться только в среде браузера. 
+	 *      Использовать try-catch идеалогически не верно.
+	 * 
+	 * 2. 'render-tree.js' должен подгружать только стили рендеринга. 
+	 *      Стили каретки должен подгружать 'Explorer.js'.
+	 */
+} catch (err) {}
 
 export default renderTree;
 
