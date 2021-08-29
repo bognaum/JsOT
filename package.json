@@ -11,5 +11,8 @@
   "directories": {
     "test": "tests"
   },
-  "type": "module"
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "sass": "^1.38.2"
+  }
 }

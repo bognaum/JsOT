@@ -21,6 +21,7 @@ import Explorer          from "./Explorer.js";
 import NodeJsServerAgent from "./NodeJsServerAgent.js";
 import JsonErrHter       from "./JsonErrHter/JsonErrHter.js";
 import JsHter            from "./JsHter/JsHter.js";
+import setStyle          from "./CSS/JsOT.scss.js";
 
 const version = "2.0.0";
 
@@ -41,7 +42,9 @@ export default {
 		"@@"             : util["@@"],
 		"symbolStatProps": util["symbolStatProps"],
 	}
-}
+};
+
+setStyle("jsot");
 
 let jsonHter = null;
 
