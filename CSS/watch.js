@@ -1,6 +1,11 @@
+import path$     from "path";
+import nodemon$  from "nodemon";
+import url$  from "url";
+
+import {fileURLToPath}  from "url";
 const 
-	nodemon$ = require("nodemon"),
-  path$    = require("path");
+  __filename = fileURLToPath(import.meta.url),
+  __dirname  = path$.dirname(__filename);
 
 nodemon$({
   script: path$.resolve(__dirname, 'compile.js'),

@@ -1,7 +1,11 @@
+import sass$ from "sass";
+import fs$   from "fs";
+import path$ from "path";
+
+import {fileURLToPath}  from "url";
 const 
-	sass$ = require("sass"),
-	fs$   = require("fs"),
-	path$ = require("path");
+  __filename = fileURLToPath(import.meta.url),
+  __dirname  = path$.dirname(__filename);
 
 const 
 	scssPathName   = path$.resolve(__dirname, "JsOT.scss"),
