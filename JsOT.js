@@ -18,7 +18,7 @@ import util              from "./util.js";
 import parseTree         from "./parse-tree.js";
 import renderTree        from "./render-tree.js";
 import Explorer          from "./Explorer.js";
-import NodeJsServerAgent from "./NodeJsServerAgent.js";
+import NodeJsServerAgent from "./NodeJsServerAgent/NodeJsServerAgent.js";
 import JsonErrHter       from "./JsonErrHter/JsonErrHter.js";
 import JsHter            from "./JsHter/JsHter.js";
 
