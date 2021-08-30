@@ -4,8 +4,8 @@ import path$ from "path";
 
 import {fileURLToPath}  from "url";
 const 
-  __filename = fileURLToPath(import.meta.url),
-  __dirname  = path$.dirname(__filename);
+	__filename = fileURLToPath(import.meta.url),
+	__dirname  = path$.dirname(__filename);
 
 const 
 	scssPathName   = path$.resolve(__dirname, "JsOT.scss"),
