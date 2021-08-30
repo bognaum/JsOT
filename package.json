@@ -14,8 +14,6 @@
   "type": "module",
   "devDependencies": {
     "nodemon": "^2.0.12",
-    "sass": "^1.38.2",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0"
+    "sass": "^1.38.2"
   }
 }
