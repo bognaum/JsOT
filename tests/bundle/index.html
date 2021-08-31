@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" type="text/css" href="./../CSS/JsOT.css"> -->
+	<!-- <script type="text/javascript" src="./../JsOT.js"></script> -->
+	<style>
+		body .container {
+			margin: 10px 100px 500px 100px;
+			font-family: verdana, sans-serif;
+		}
+	</style>
+	<script src="./../../dist/main.js"></script>
+	<script>
+		const jsot = JsOT;
+	</script>
+	<title>JsOT-tests</title>
+</head>
+<body>
+	<div class="container">
+		<h1>JsOT</h1>
+
+		<h2>testOb</h2>
+		<pre id="pre_01" class="jsot"></pre>
+
+		<h2>jsot</h2>
+		<pre id="pre_02" class="jsot"></pre>
+
+		<h2>Array</h2>
+		<pre id="pre_03" class="jsot"></pre>
+		<pre id="pre_04" class="jsot"></pre>
+		<pre id="pre_05" class="jsot"></pre>
+
+		<h2>Script in pre</h2>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!async function() {
+					const parent = document.all[document.all.length - 1].parentElement;
+					// const jsot = (await import("./../JsOT.js")).default;
+					new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
+				}();
+			</script>
+		</pre>
+		<pre class="jsot hl-tc">
+			{
+				"nip": "JSON",
+				"detectWay": [
+					"getOwnPropertyDescriptors"
+				],
+				"detValWay": [
+					"getOwnPropertyDescriptor.value"
+				],
+				"descriptor": {
+					"v": true,
+					"w": true,
+					"e": false,
+					"c": true
+				},
+				"settings": {},
+				"esf": {
+					"e": true,
+					"s": false,
+					"f": false
+				},
+				"tof": "object",
+				"hasIter": false,
+				"v": "Object",
+				"seqN": 78,
+				"nameType": "nip",
+				"cBarIsMounted": true,
+				"jsot-JSON-format-ver": "3.2.0",
+				"ch": [
+					{
+						"nip": "parse",
+						"detectWay": [
+							"getOwnPropertyDescriptors"
+						],
+						"detValWay": [
+							"getOwnPropertyDescriptor.value"
+						],
+						"descriptor": {
+							"v": true,
+							"w": true,
+							"e": false,
+							"c": true
+						},
+						"settings": {},
+						"esf": {
+							"e": true,
+							"s": false,
+							"f": false
+						},
+						"tof": "function",
+						"v": "parse",
+						"seqN": 0,
+						"nameType": "nip"
+					},
+					{
+						"nip": "stringify",
+						"detectWay": [
+							"getOwnPropertyDescriptors"
+						],
+						"detValWay": [
+							"getOwnPropertyDescriptor.value"
+						],
+						"descriptor": {
+							"v": true,
+							"w": true,
+							"e": false,
+							"c": true
+						},
+						"settings": {},
+						"esf": {
+							"e": true,
+							"s": false,
+							"f": false
+						},
+						"tof": "function",
+						"v": "stringify",
+						"seqN": 1,
+						"nameType": "nip"
+					},
+					{
+						"detectWay": [
+							"getOwnPropertyDescriptors"
+						],
+						"detValWay": [
+							"getOwnPropertyDescriptor.value"
+						],
+						"descriptor": {
+							"v": true,
+							"w": false,
+							"e": false,
+							"c": true
+						},
+						"settings": {},
+						"esf": {
+							"e": false,
+							"s": true,
+							"f": true
+						},
+						"tof": "string",
+						"v": "JSON",
+						"n_sym": {
+							"descr": "Symbol.toStringTag",
+							"statProp": "toStringTag",
+							"@@-number": 0
+						},
+						"seqN": 2,
+						"nameType": "symbol"
+					},
+					{
+						"nip": "__proto__",g
+						"detectWay": [
+							"individ"
+						],
+						"individualDetectedProto": true,
+						"settings": {},
+						"esf": {
+							"e": true,
+							"s": false,
+							"f": false
+						},
+						"tof": "object",
+						"hasIter": false,
+						"v": "Object",
+						"detectValueWay": "ob.constructor.name",
+						"seqN": 3,
+						"nameType": "nip"
+					}
+				]
+			}
+		</pre>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!async function() {
+					const parent = document.all[document.all.length - 1].parentElement;
+					// const jsot = (await import("./../JsOT.js")).default;
+					new jsot.Explorer(parent, {ob : window, name : "window"});
+				}();
+			</script>
+		</pre>
+		<script type="text/javascript">
+			// import jsot from "./../JsOT.js";
+
+			// console.log(import.meta);
+
+			const testOb = {
+				1 : 1,
+				2 : 2,
+				[Symbol("mySymbol")] : "The 'Symbol(mySymbol)'.",
+				bool : true,
+				num : 1,
+				str : "The string.",
+				sym : Symbol("mySymbol"),
+				und : undefined,
+				nul : null,
+				nan : NaN,
+				inf : Infinity,
+				obj : {},
+				arr : [],
+				set : new Set([1,2,3]),
+				wset : new WeakSet([{},{},{}]),
+				map : new Map([[1,1],[2,2],[3,3]]),
+				wmap : new WeakMap([[{},{}],[{},{}],[{},{}]]),
+				fun : function() {},
+				arf : () => {},
+				fug : function * () {yield},
+				asf : async function () {},
+			};
+			
+			new jsot.Explorer(pre_01, {ob : testOb, name : "testOb", t : {ch : []}});
+			new jsot.Explorer(pre_02, {ob : jsot, name : "jsot", t : {ch : []}});
+			new jsot.Explorer(
+				pre_03, {
+					ob : Array, 
+					name : "Array", 
+					t : {
+						ch : [
+							{
+								nip: "__proto__",
+								ch: [
+									{
+										nip: "__proto__",
+										ch: []
+									}
+								]
+							}
+						]
+					}
+				}
+			);
+
+			document.querySelectorAll(".jsot.hl-tc").forEach((v) => {
+				jsot.renderTextContent(v);
+			});
+		</script>
+	</div>
+</body>
+</html>
