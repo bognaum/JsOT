@@ -56,19 +56,6 @@ module.exports = require("url");
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-/* module decorator */ module = __webpack_require__.nmd(module);
-module.txports = __webpack_require__(/*! ../JsOT.js */ "./JsOT.js");
-
-__webpack_require__(/*! ./package.json */ "./src/package.json");
-
-/***/ }),
-
 /***/ "./CSS/JsOT.scss.js":
 /*!**************************!*\
   !*** ./CSS/JsOT.scss.js ***!
@@ -1429,7 +1416,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const version = "2.0.0";
 
-const API = {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
 	version,
 	Explorer: _Explorer_js__WEBPACK_IMPORTED_MODULE_3__.default,                       // (inputEl, options)
 	NodeJsServerAgent: _NodeJsServerAgent_NodeJsServerAgent_js__WEBPACK_IMPORTED_MODULE_4__.default,              // (options)
@@ -1446,19 +1433,9 @@ const API = {
 		"@@"             : _util_js__WEBPACK_IMPORTED_MODULE_0__.default["@@"],
 		"symbolStatProps": _util_js__WEBPACK_IMPORTED_MODULE_0__.default.symbolStatProps,
 	}
-};
+});
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
-
-try {
-	window.jsot = API;
-} catch(err) {} 
-
-try {
-	module.exports = API;
-} catch(err) {} 
-
-let jsonHter = null;
+let jsonHter = null; 
 
 function renderTextContent(inputEl) {
 	const json = inputEl.textContent;
@@ -2634,6 +2611,40 @@ function createTree(treeModel, _) {
 
 /***/ }),
 
+/***/ "./src/connect-distrib/connect-distrib.js":
+/*!************************************************!*\
+  !*** ./src/connect-distrib/connect-distrib.js ***!
+  \************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _JsOT_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../JsOT.js */ "./JsOT.js");
+
+
+const attempts = [];
+
+try {
+	window.jsot = _JsOT_js__WEBPACK_IMPORTED_MODULE_0__.default;
+	attempts.push(false);
+} catch(err) {
+	attempts.push(err);
+} 
+
+try {
+	module.exports = _JsOT_js__WEBPACK_IMPORTED_MODULE_0__.default;
+	attempts.push(false);
+} catch(err) {
+	attempts.push(err);
+} 
+
+if (attempts.every((v) => !! v)) {
+	console.error(`(!) - JsOT.`, `Can't connect distributive. All ways of connection were unsuccessful and resulted in the following errors:`);
+	attempts.forEach((v) => console.error(v));
+}
+
+/***/ }),
+
 /***/ "./syntax-highlight-framework/Highlighter.js":
 /*!***************************************************!*\
   !*** ./syntax-highlight-framework/Highlighter.js ***!
@@ -3734,16 +3745,13 @@ function toOneSting(text, length=50) {
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			loaded: false,
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -3808,27 +3816,23 @@ function toOneSting(text, length=50) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/node module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nmd = (module) => {
-/******/ 			module.paths = [];
-/******/ 			if (!module.children) module.children = [];
-/******/ 			return module;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
 /******/ 		__webpack_require__.p = "";
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+__webpack_require__(/*! ./connect-distrib/connect-distrib.js */ "./src/connect-distrib/connect-distrib.js")
+__webpack_require__(/*! ./package.json */ "./src/package.json");
+
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map

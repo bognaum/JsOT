@@ -24,7 +24,7 @@ import JsHter            from "./JsHter/JsHter.js";
 
 const version = "2.0.0";
 
-const API = {
+export default {
 	version,
 	Explorer,                       // (inputEl, options)
 	NodeJsServerAgent,              // (options)
@@ -43,17 +43,7 @@ const API = {
 	}
 };
 
-export default API;
-
-try {
-	window.jsot = API;
-} catch(err) {} 
-
-try {
-	module.exports = API;
-} catch(err) {} 
-
-let jsonHter = null;
+let jsonHter = null; 
 
 function renderTextContent(inputEl) {
 	const json = inputEl.textContent;

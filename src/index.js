@@ -1,3 +1,2 @@
-module.txports = require("../JsOT.js");
-
+require("./connect-distrib/connect-distrib.js")
 require("./package.json");
