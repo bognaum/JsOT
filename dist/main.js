@@ -1,22 +1,1408 @@
-var JsOT;
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ([
-/* 0 */,
-/* 1 */
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/package.json":
+/*!**************************!*\
+  !*** ./src/package.json ***!
+  \**************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "package.json";
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/* module decorator */ module = __webpack_require__.nmd(module);
+module.txports = __webpack_require__(/*! ../JsOT.js */ "./JsOT.js");
+
+__webpack_require__(/*! ./package.json */ "./src/package.json");
+
+/***/ }),
+
+/***/ "./CSS/JsOT.scss.js":
+/*!**************************!*\
+  !*** ./CSS/JsOT.scss.js ***!
+  \**************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ setStyle)
+/* harmony export */ });
+function setStyle(clPref="jsot") {
+
+	const cssCode = `@charset "UTF-8";
+.jsot .row .header[data-highlighted=true] .name {
+  color: #333;
+  text-shadow: 0 0 1px #333;
+  font-weight: bold;
+}
+.jsot .row .header .fold-sign[data-fold-state=unfolded]:before {
+  content: "";
+}
+.jsot .row .header .fold-sign[data-fold-state=folded]:before {
+  content: " + ";
+  border: 1px solid #999;
+  margin: -1px;
+  margin-right: 5px;
+}
+.jsot .row .header .fold-sign[data-fold-state=not-folded]:before {
+  content: "";
+}
+.jsot .row .header .sign {
+  user-select: none;
+  cursor: default;
+  text-shadow: 0 0 1px #999;
+}
+.jsot .row .header .sign b {
+  text-shadow: none;
+}
+.jsot .row .header .name-wr {
+  display: inline-block;
+  font-style: italic;
+}
+.jsot .row .header .name-wr .get-set {
+  font-style: italic;
+  user-select: none;
+}
+.jsot .row .header .name-wr .get-set:before {
+  content: "(";
+}
+.jsot .row .header .name-wr .get-set:after {
+  content: ")";
+}
+.jsot .row .header .name-wr .get-set .get,
+.jsot .row .header .name-wr .get-set .set {
+  cursor: default;
+}
+.jsot .row .header .name-wr .name {
+  font-weight: bold;
+  font-style: italic;
+  color: #789;
+}
+.jsot .row .header .name-wr .name.iter-name {
+  font-style: normal;
+  /* &:before {
+  	content: "i";
+  	color: $bright_color;
+  } */
+}
+.jsot .row .header .name-wr .name.iter-name:before {
+  content: "[";
+}
+.jsot .row .header .name-wr .name.iter-name:after {
+  content: "]";
+}
+.jsot .row .header .name-wr .name.iter-name:before, .jsot .row .header .name-wr .name.iter-name:after {
+  font-style: normal;
+  color: #333;
+}
+.jsot .row .header .name-wr .name.nip-name:before, .jsot .row .header .name-wr .name.nip-name:after {
+  content: "'";
+  color: transparent;
+}
+.jsot .row .header .name-wr .name.symbol-name:before, .jsot .row .header .name-wr .name.symbol-name:after {
+  font-style: normal;
+  color: #333;
+}
+.jsot .row .header .name-wr[data-g-s-call=true]:before {
+  content: "(";
+}
+.jsot .row .header .name-wr[data-g-s-call=true]:after {
+  content: ")";
+}
+.jsot .row .header .name-wr[data-g-s-call=true]:before, .jsot .row .header .name-wr[data-g-s-call=true]:after {
+  color: #333;
+  font-weight: bold;
+}
+.jsot .row .header .name-wr[data-g-s-call=true] .get-set {
+  font-weight: bold;
+  color: #333;
+  user-select: none;
+}
+.jsot .row .header .name-wr[data-g-s-call=true] .get-set:before {
+  content: "";
+}
+.jsot .row .header .name-wr[data-g-s-call=true] .get-set:after {
+  content: "";
+}
+.jsot .row .header .c-bar {
+  color: #333;
+  white-space: normal;
+  margin-top: 19px;
+  margin-top: 1.2em;
+  position: absolute;
+  border: 1px solid #777;
+  box-shadow: 0 5px 10px #333;
+  padding: 2px 5px;
+  background-color: #eee;
+  vertical-align: bottom;
+  display: inline-block;
+  cursor: default;
+}
+.jsot .row .header .c-bar button {
+  cursor: pointer;
+  height: 25px;
+}
+.jsot .row .header .c-bar .loadbar-wrapper {
+  display: inline-block;
+  text-align: center;
+  min-width: 2em;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar {
+  display: none;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=loading], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-l], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-loading] {
+  border: 2px solid #333;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50px;
+  position: relative;
+  bottom: -3px;
+  margin: -3px 0;
+  background-color: #ccc;
+  box-shadow: inset 0 0 5px #fff, 0 0 5px #333;
+  display: inline-block;
+  animation: rotate-loadbar 1s infinite linear;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=loading] .inner, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-l] .inner, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-loading] .inner {
+  border: 6px solid #333;
+  margin: 2px;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-radius: 50px;
+  animation: rotate-loadbar reverse 0.5s infinite linear;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=ok], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-ok] {
+  display: inline-block;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=ok]:before, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-ok]:before {
+  content: "OK";
+  font-weight: bold;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=err], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-err] {
+  display: inline-block;
+}
+.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=err]:before, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-err]:before {
+  content: "ERR";
+  color: #f00;
+  font-weight: bold;
+}
+.jsot .row .header .c-bar .sort-by {
+  margin: 3px 0;
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher {
+  display: inline-block;
+  min-width: 100px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 0 5px;
+  font-size: 0.9em;
+  font-family: arial;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_name][data-state="-1"]:after {
+  content: "Inherit";
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_name][data-state="0"]:after {
+  content: "No";
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_name][data-state="1"]:after {
+  content: "Yes";
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_type][data-state="-1"]:after {
+  content: "Inherit";
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_type][data-state="0"]:after {
+  content: "No";
+}
+.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_type][data-state="1"]:after {
+  content: "Yes";
+}
+.jsot .row .header .n-v-delim .cevw .descr-property {
+  cursor: default;
+}
+.jsot .row .header .n-v-delim .cevw .descr-property.false {
+  font-weight: bold;
+}
+.jsot .row .header .n-v-delim .cevw .descr-property.false:before {
+  content: "̷";
+}
+.jsot .row .header .n-v-delim .esf {
+  cursor: default;
+}
+.jsot .row .header .n-v-delim .esf .object-option.false:before {
+  content: "̸";
+}
+.jsot .row .header .n-v-delim .esf .object-option.extensible.false, .jsot .row .header .n-v-delim .esf .object-option.frozen.true, .jsot .row .header .n-v-delim .esf .object-option.sealed.true {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.jsot .row .header > .value {
+  font-style: italic;
+}
+.jsot .row .header > .value.tof-undefined {
+  font-weight: bold;
+  font-style: italic;
+  color: #777;
+}
+.jsot .row .header > .value.tof-boolean {
+  font-weight: bold;
+  color: #449;
+}
+.jsot .row .header > .value.tof-number {
+  font-style: normal;
+  color: #963;
+}
+.jsot .row .header > .value.tof-string {
+  font-style: italic;
+  color: #3a3;
+  white-space: nowrap;
+}
+.jsot .row .header > .value.tof-string:before, .jsot .row .header > .value.tof-string:after {
+  content: '"';
+  color: #3a3;
+}
+.jsot .row .header > .value.tof-object.is-null {
+  font-weight: bold;
+  color: #777;
+}
+.jsot .row .header .name .local-reg-num:before,
+.jsot .row .header .value .local-reg-num:before {
+  content: "-@@-";
+}
+.jsot .row .header .name .local-reg-num:after,
+.jsot .row .header .value .local-reg-num:after {
+  content: "-";
+}
+.jsot .row .header .name .local-reg-num:before, .jsot .row .header .name .local-reg-num:after,
+.jsot .row .header .value .local-reg-num:before,
+.jsot .row .header .value .local-reg-num:after {
+  color: #333;
+}
+.jsot .row .header .name .symbol-description:before,
+.jsot .row .header .value .symbol-description:before {
+  content: '"';
+}
+.jsot .row .header .name .symbol-description:after,
+.jsot .row .header .value .symbol-description:after {
+  content: '"';
+}
+.jsot .row .header .name .symbol-description:before, .jsot .row .header .name .symbol-description:after,
+.jsot .row .header .value .symbol-description:before,
+.jsot .row .header .value .symbol-description:after {
+  color: #333;
+}
+.jsot .row .header .comment {
+  font-weight: bold;
+  font-style: italic;
+  color: #faa;
+}
+.jsot .row .header .comment:before {
+  content: "← ";
+  font-style: normal;
+}
+
+.jsot {
+  font-size: 16px;
+  font-family: consolas;
+  color: #999;
+}
+.jsot .row {
+  display: block;
+  padding-right: 30px;
+}
+.jsot .row .branch {
+  cursor: pointer;
+  text-shadow: 0 0 1px #999;
+}
+.jsot .row .header-ext {
+  min-width: 50px;
+}
+.jsot .row:hover {
+  background-color: #eff;
+}
+.jsot .row:hover .name.nip-name:before, .jsot .row:hover .name.nip-name:after {
+  color: #333;
+}
+.jsot .c-window {
+  white-space: normal;
+  border: 1px solid #777;
+  box-shadow: 0 5px 20px #333;
+  margin: 5px;
+  padding: 5px;
+  background-color: #eee;
+}
+.jsot .c-window > .c-w-header,
+.jsot .c-window > .c-w-footer {
+  text-align: right;
+}
+.jsot .c-window > .c-w-header > .btn-el,
+.jsot .c-window > .c-w-footer > .btn-el {
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+}
+.jsot .c-window > .c-w-header > .btn-el:hover,
+.jsot .c-window > .c-w-footer > .btn-el:hover {
+  text-shadow: 0 0 1px #888, 0 0 1px #888, 0 0 1px #888;
+}
+.jsot .c-window > .c-w-header > .btn-el:active,
+.jsot .c-window > .c-w-footer > .btn-el:active {
+  text-shadow: 0 0 10px #888, 0 0 10px #888, 0 0 10px #888, 0 0 1px #888, 0 0 1px #888, 0 0 1px #888;
+}
+.jsot .c-window > .c-w-content-wr {
+  margin: 5px 0;
+  border: 1px solid #777;
+  font-weight: normal;
+}
+.jsot .c-window > .c-w-content-wr pre.js-hl-c-w-content.jsot-syntax-hl {
+  margin: 0;
+  display: block;
+  padding: 10px 20px;
+  max-height: none;
+}
+.jsot .c-window > .c-w-content-wr pre.js-hl-c-w-content.jsot-syntax-hl[data-max-heigth=true] {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.jsot .c-window .float-cleaner {
+  clear: both;
+}
+.jsot .c-window.dark-skin {
+  border: none;
+  background-color: #444;
+}
+.jsot .c-window.dark-skin > .c-w-content-wr {
+  border: none;
+}
+
+@keyframes rotate-loadbar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0Q6L0dpdEh1Yi1teS9Kc09UL0NTUy9faGVhZGVyLnNjc3MiLCJmaWxlOi8vL0Q6L0dpdEh1Yi1teS9Kc09UL0NTUy9Kc09ULnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUtJO0VBRUMsT0NOaUI7RURPakI7RUFDQTs7QUFNQTtFQUNDOztBQUlEO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7O0FBSUQ7RUFDQzs7QUFLSDtFQUNDO0VBQ0E7RUFDQTs7QUFDQTtFQUNDOztBQUlGO0VBQ0M7RUFDQTs7QUFDQTtFQUNDO0VBRUE7O0FBRUE7RUFDQzs7QUFFRDtFQUNDOztBQUVEO0FBQUE7RUFFQzs7QUFJRjtFQUNDO0VBQ0E7RUFFQSxPQy9EaUI7O0FEZ0VqQjtFQUNDO0FBQ0E7QUFBQTtBQUFBO0FBQUE7O0FBSUE7RUFDQzs7QUFFRDtFQUNDOztBQUVEO0VBRUM7RUFDQSxPQ2xGZTs7QUR1RmhCO0VBRUM7RUFDQTs7QUFXRDtFQUVDO0VBQ0EsT0N4R2U7O0FEZ0hsQjtFQUNDOztBQUVEO0VBQ0M7O0FBRUQ7RUFFQyxPQ3hIaUI7RUR5SGpCOztBQUVEO0VBQ0M7RUFDQSxPQzdIaUI7RUQ4SGpCOztBQUNBO0VBQ0M7O0FBRUQ7RUFDQzs7QUFLSDtFQUNDO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBRUE7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNDO0VBQ0E7O0FBRUQ7RUFDQztFQUNBO0VBQ0E7O0FBRUE7RUFFQzs7QUFFQTtFQUdDO0VBRUE7RUFFQTtFQUdBO0VBRUE7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQWNBO0VBQ0E7O0FBYkE7RUFDQztFQUNBO0VBR0E7RUFFQTtFQUVBO0VBQ0E7O0FBTUY7RUFFQzs7QUFDQTtFQUNDO0VBQ0E7O0FBSUY7RUFFQzs7QUFDQTtFQUNDO0VBQ0E7RUFDQTs7QUFLSjtFQUNDOztBQUNBO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBR0M7RUFBMEI7O0FBQzFCO0VBQTBCOztBQUMxQjtFQUEwQjs7QUFHMUI7RUFBMEI7O0FBQzFCO0VBQTBCOztBQUMxQjtFQUEwQjs7QUF3QjVCO0VBQ0M7O0FBQ0E7RUFDQzs7QUFDQTtFQUNDOztBQVFKO0VBQ0M7O0FBSUU7RUFDQzs7QUFNRjtFQUdDO0VBQ0E7O0FBT0o7RUFDQzs7QUFDQTtFQUNDO0VBQ0E7RUFDQSxPQ3ZTaUI7O0FEeVNsQjtFQUNDO0VBQ0EsT0N6U2lCOztBRDJTbEI7RUFFQztFQUNBLE9DalRpQjs7QURtVGxCO0VBQ0M7RUFDQSxPQ3ZUaUI7RUR3VGpCOztBQUNBO0VBRUM7RUFDQSxPQzVUZ0I7O0FEa1VqQjtFQUNDO0VBQ0EsT0NoVWdCOztBRHVVbEI7QUFBQTtFQUNDOztBQUVEO0FBQUE7RUFDQzs7QUFFRDtBQUFBO0FBQUE7RUFFQyxPQzFWaUI7O0FEaVdsQjtBQUFBO0VBQ0M7O0FBRUQ7QUFBQTtFQUNDOztBQUdEO0FBQUE7QUFBQTtFQUVDLE9DMVdpQjs7QUQ4V25CO0VBQ0M7RUFDQTtFQUNBLE9DNVdrQjs7QUQ4V2xCO0VBQ0M7RUFDQTs7O0FDbldMO0VBQ0M7RUFDQTtFQUNBLE9BcEJxQjs7QUFzQnJCO0VBQ0M7RUFDQTs7QUFHQTtFQUVDO0VBQ0E7O0FBRUQ7RUFDQzs7QUFHRjtFQUNDLGtCQXpCb0I7O0FBNEJuQjtFQUVDLE9BM0NrQjs7QUFnRHJCO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUNBO0FBQUE7RUFHQzs7QUFDQTtBQUFBO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFFQTs7QUFDQTtBQUFBO0VBQ0MsYUFDQzs7QUFJRjtBQUFBO0VBQ0MsYUFDQzs7QUFTSjtFQUdDO0VBQ0E7RUFDQTs7QUFHQTtFQUNDO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0M7RUFDQTs7QUFJSDtFQUNDOztBQUlGO0VBQ0M7RUFDQTs7QUFDQTtFQUNDOzs7QUFNSDtFQUNDO0lBQ0M7O0VBRUQ7SUFDQyIsImZpbGUiOiJKc09ULnNjc3MuanMifQ== */`.replaceAll(/\bjsot/g, clPref);
+
+	const styleClassName = `${clPref}__theme-style`;
+
+	const styleAlreadyExists = [].some.call(
+		document.querySelectorAll(`style.${styleClassName}`), 
+		(v) => v.textContent === cssCode
+	);
+
+	if (! styleAlreadyExists) {
+		const style = eHTML(`<style class="${styleClassName}"></style>`);
+		style.textContent = cssCode;
+		document.head.appendChild(style);
+	}
+}
+
+
+function eHTML(code, shell=null) {
+	const _shell = 
+		! shell                  ? document.createElement("div") :
+		typeof shell == "string" ? document.createElement(shell) :
+		typeof shell == "object" ? shell :
+			null;
+	_shell.innerHTML = code;
+	return _shell.children[0];
+}
+
+/***/ }),
+
+/***/ "./Explorer.js":
+/*!*********************!*\
+  !*** ./Explorer.js ***!
+  \*********************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Explorer)
+/* harmony export */ });
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.js */ "./util.js");
+/* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse-tree.js */ "./parse-tree.js");
+/* harmony import */ var _render_tree_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./render-tree.js */ "./render-tree.js");
+/* harmony import */ var _JsHter_JsHter_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./JsHter/JsHter.js */ "./JsHter/JsHter.js");
+
+
+
+
+
+class Explorer {
+	// **********************
+	// _ = {
+	//     ob               :
+	//     t                :
+	//     name             :
+	//     ajaxReqUrl       :
+	//     transact         :
+	// }
+	// **********************
+	constructor (inputEl, _={}) {
+		// _.ob = _.ob || window;
+		
+		this._ = _;
+		if (!_.ob) {
+			try {
+				_.ob = global;
+			} catch(err) {} 
+			try {
+				_.ob = window;
+			} catch(err) {} 
+		}
+		_.t = _.t || {};
+		_.name = _.name || "rootNode";
+
+		if (_.ajaxReqUrl) {
+			_.transact = _.transact || this._defaultAjaxTransact;
+		} else {
+			_.transact = _.transact || this._defaultTransact;
+		}
+
+		this._createCBar(inputEl, _);
+		this._display(inputEl);
+
+	}
+
+	_createCBar (inputEl, _) {
+		const cBar = this.cBar = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.eval(`
+			<div class="c-bar">
+				<button class="expand-node"  >&nbsp;&nbsp; + &nbsp;&nbsp;</button>
+				<button class="collapse-node">&nbsp;&nbsp; - &nbsp;&nbsp;</button>
+				<button class="recur-expand"  > ↳ + </button>
+				<button class="recur-collapse"> ↳ - </button>
+				<button class="update"> ↻ </button>
+				<button class="get-json">
+					<svg 
+						version="1.1" 
+						xmlns="http://www.w3.org/2000/svg" 
+						xmlns:xlink="http://www.w3.org/1999/xlink" 
+						x="0px" 
+						y="0px"
+						width="15px" 
+						height="15px"
+						viewBox="0 0 532.745 532.745" 
+						style="
+							vertical-align: bottom;
+							enable-background:new 0 0 532.745 532.745;
+						" 
+						xml:space="preserve"
+						>
+						<g>
+							<g>
+								<circle cx="266.373" cy="284.534" r="72.647"/>
+								<path d="M121.078,127.132V90.809H36.324v36.324H0v314.804h532.745V127.132H121.078z M266.373,417.721
+									c-73.567,0-133.186-59.643-133.186-133.186s59.619-133.186,133.186-133.186s133.186,59.643,133.186,133.186
+									S339.94,417.721,266.373,417.721z M472.206,211.887c-13.367,0-24.216-10.824-24.216-24.216s10.849-24.216,24.216-24.216
+									c13.367,0,24.216,10.824,24.216,24.216C496.422,201.063,485.573,211.887,472.206,211.887z"/>
+							</g>
+						</g>
+					</svg>
+				</button>
+				<button class="show-value"> .toString() </button> 
+				<button class="get-pathname"> p/n </button> 
+				<div class="loadbar-wrapper">
+					<div class="loadbar"><div class="inner"></div></div>
+				</div>
+				<div class="sort-by">
+					Sort By: 
+					<span 
+						class="setting-switcher" 
+						data-setting-name="by_name"
+						data-state="-1" 
+						data-states='[-1,1,0]'>Name - </span>
+					<span 
+						class="setting-switcher" 
+						data-setting-name="by_type"
+						data-state="-1" 
+						data-states='[-1,1,0]'>Type - </span>
+				</div>
+			</div>
+		`).children[0];
+
+		cBar.querySelectorAll("select").forEach((v) => {
+			v.onwheel = (e) => {
+				e.preventDefault();
+				var 
+					i = v.selectedIndex + Math.sign(e.deltaY),
+					max = v.options.length - 1;
+				i = (max < i)? 0 : (i < 0)? max : i;
+				v.selectedIndex = i;
+				this._settingsToNode();
+			}
+		});
+		
+		cBar.querySelector(".expand-node").onclick = (e) => {
+			cBar.m.ch = [];
+			this._display(inputEl);
+		}
+		
+		cBar.querySelector(".collapse-node").onclick = (e) => {
+			cBar.m.ch = null;
+			this._display(inputEl);
+		}
+
+		cBar.querySelectorAll(".setting-switcher").forEach((el) => {
+			el.onclick = (e) => {
+				var 
+					states = JSON.parse(el.dataset.states),
+					state = Number(el.dataset.state),
+					i = states.indexOf(state);
+				i ++;
+				if (states.length <= i)
+					i = 0;
+				el.dataset.state = states[i];
+				this._settingsToNode();
+			}
+		});
+
+		cBar.querySelector(".recur-expand").onclick = (e) => {
+			recursive(cBar.m, (m) => {
+				// !m.ch && m.tof == "object" && m.nip != "__proto__" && (m.ch = []);
+				if (!m.ch)
+					if (m.tof == "object")
+						if (!m.individualDetectedProto)
+							m.ch = [];
+			});
+			this._display(inputEl);
+		}
+
+		cBar.querySelector(".recur-collapse").onclick = (e) => {
+			recursive(cBar.m, (m) => {
+				if (m.ch && m.ch.length)
+					if (m.ch.every((v) => !v.ch))
+						m.ch = null;
+			});
+			this._display(inputEl);
+		}
+
+		cBar.querySelector(".update").onclick = (e) => {
+			this._display(inputEl);
+		}
+
+		cBar.querySelector(".get-json").onclick = (e) => {
+			var json = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(cBar.m);
+
+			this.copyToClipboard(json);
+
+			console.groupCollapsed(cBar.m.pathname);
+			console.log(cBar.m);
+			console.log(json);
+			console.groupEnd();
+			
+		}
+
+		cBar.querySelector(".get-pathname").onclick = (e) => {
+			this.copyToClipboard(cBar.m.pathname);
+			console.log(`cBar.m.pathname`, cBar.m.pathname);
+		}
+
+		cBar.querySelector(".show-value").onclick = async (e) => {
+			var m = cBar.m;
+			m.valueToString = true;
+			var param = await this._getParam();
+			delete m.valueToString;
+			if (m.tof == "function")
+				this._showValue(param, m, true);
+			else
+				this._showValue(param, m);
+			// console.log(m.pathname, "\n"+param);
+		}
+
+
+		function recursive(m, callb) {
+			callb(m);
+			if (m.ch && m.ch.length)
+				for (var ch of m.ch) 
+					recursive(ch, callb);
+		}
+
+		function show(selector) {
+			cBar.querySelector(selector).style.display = "";
+		}
+
+		function hide(selector) {
+			cBar.querySelector(selector).style.display = "none";
+		}
+
+		cBar.init = (m) => {
+			this._settingsFromNode(m);
+			if (m.ch) {
+				hide(".expand-node");
+				show(".collapse-node");
+			} else {
+				show(".expand-node");
+				hide(".collapse-node");
+			}
+		}
+	}
+
+	async _defaultTransact (_) {
+		return (0,_parse_tree_js__WEBPACK_IMPORTED_MODULE_1__.default)(_.ob, _.name, _.t);
+	}
+
+	async _defaultAjaxTransact (_) {
+		var 
+			opts = {
+				method : "POST",
+				headers : {
+					'Content-Type' : 'application/x-www-form-urlencoded'
+				},
+				mode : "cors",
+				cache : "no-store",
+				body : "template="+encodeURIComponent(_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(_.t)),
+			},
+			resp, text, t;
+
+		try {
+			resp = await fetch(_.ajaxReqUrl, opts);
+			text = await resp.text();
+			t    = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getFromJson(text);
+		} catch(e) {
+			console.error(e);
+			throw e;
+		}
+
+		return t;
+	}
+
+
+	async _indicate (pr) {
+		var res;
+		this.cBar.querySelector(".loadbar").dataset.status = "loading";
+		this.cBar.querySelector(".loadbar").title = "Status: Loading ... ";
+		await new Promise((ok) => setTimeout(ok));
+
+		try {
+			res = await pr;
+		} catch(e) {
+			this.cBar.querySelector(".loadbar").dataset.status = "err";
+			this.cBar.querySelector(".loadbar").title = "Status: "+e.toString();
+			console.error(e);
+			return e;
+		}
+
+		this.cBar.querySelector(".loadbar").dataset.status = "ok";
+		this.cBar.querySelector(".loadbar").title = "Status: OK";
+		return res;
+	}
+
+	async _display (inputEl) {
+		var _ = this._;
+		_.t = await this._indicate(_.transact(_));
+		(0,_render_tree_js__WEBPACK_IMPORTED_MODULE_2__.default)(inputEl, _.t, this.cBar);
+	}
+
+	async _getParam () {
+		var _ = this._;
+		return await this._indicate(_.transact(_));
+	}
+
+	_settingsToNode () {
+		var 
+			m    = this.cBar.m,
+			coll = this.cBar.querySelectorAll(".setting-switcher");
+
+		coll.forEach((el) => {
+			let k = el.dataset.settingName, v = Number(el.dataset.state);
+			if (v < 0) {
+				if (m.settings && k in m.settings)
+					delete m.settings[k];
+			} else {
+				m.settings = m.settings || {};
+				m.settings[k] = v;
+			}
+		});
+	}
+
+	_settingsFromNode () {
+		var 
+			m    = this.cBar.m,
+			coll = this.cBar.querySelectorAll(".setting-switcher");
+
+		coll.forEach((el) => {
+			let 
+				k = el.dataset.settingName, 
+				v = (m.settings && k in m.settings)? m.settings[k] : "-1";
+			el.dataset.state = v;
+		});
+	}
+
+	_showValue(value, m, highlight=false) {
+		var row = m.header.parentElement;
+		var cWindow = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.eval(`
+			<div class="c-window dark-skin">
+				<div class="c-w-header">
+					<div class="btn-el scroll-btn"title="scroll">&nbsp;&nbsp;⭿&nbsp;&nbsp;</div>
+					<div class="btn-el copy-btn"  title="copy"  >&nbsp;&nbsp;⧉&nbsp;&nbsp;</div>
+					<div class="btn-el close-btn" title="close" >&nbsp;&nbsp;✖&nbsp;&nbsp;</div>
+				</div>
+				<div class="float-cleaner"></div>
+				<div class="c-w-content-wr">
+					<pre class="js-hl-c-w-content jsot-syntax-hl jsot-js-hl calm-clarified-theme"></pre>
+				</div>
+				<div class="c-w-footer">
+					<div class="btn-el scroll-btn"title="scroll">&nbsp;&nbsp;⭿&nbsp;&nbsp;</div>
+					<div class="btn-el copy-btn"  title="copy"  >&nbsp;&nbsp;⧉&nbsp;&nbsp;</div>
+					<div class="btn-el close-btn" title="close" >&nbsp;&nbsp;✖&nbsp;&nbsp;</div>
+				</div>
+				<div class="float-cleaner"></div>
+			</div>
+		`).children[0];
+
+		row.after(cWindow);
+		cWindow.querySelectorAll(".close-btn").forEach((v) => {
+			v.onclick = (e) => cWindow.parentElement.removeChild(cWindow);
+		})
+		cWindow.querySelectorAll(".scroll-btn").forEach((v) => {
+			v.onclick = (e) => {
+				const el = cWindow.querySelector(".js-hl-c-w-content");
+				el.dataset.maxHeigth = !el.dataset.maxHeigth || ""
+			};
+		})
+		cWindow.querySelectorAll(".copy-btn").forEach((v) => {
+			v.onclick = (e) => this.copyToClipboard(value);
+		})
+		var contentEl = cWindow.querySelector(".js-hl-c-w-content");
+		if (highlight)
+			(new _JsHter_JsHter_js__WEBPACK_IMPORTED_MODULE_3__.default()).highlight(contentEl, value);
+			// contentEl.innerHTML = jsot.getHighlightedCode(value);
+		else 
+			contentEl.textContent = value;
+	}
+
+	copyToClipboard(str) {
+		const tA = document.createElement("textarea");
+		tA.value = str;
+		document.body.appendChild(tA);
+		tA.select();
+		document.execCommand("copy");
+		document.body.removeChild(tA);
+	}
+	
+}
+
+
+/***/ }),
+
+/***/ "./HeaderCode.js":
+/*!***********************!*\
+  !*** ./HeaderCode.js ***!
+  \***********************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ HeaderCode)
+/* harmony export */ });
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.js */ "./util.js");
+
+
+class HeaderCode {
+	constructor (m) {
+		var _ = this._getContext(m)
+		this.code = 
+			`<span class="header" `+
+				`data-detect-way="${m.dtectWay && m.dtectWay.join(",")}"`+
+			`>`+
+				`<span class="hover-sensitive">`+
+					this._code_foldSign(m, _)+
+					this._code_sign    (m, _)+
+					`<span class="c-bar-slot"></span>`+
+					this._code_nameWr  (m, _)+
+				`</span>`+
+				this._code_nVDelim (m, _)+
+				this._code_value   (m, _)+
+				" "+
+				this._code_comment (m, _)+
+			`</span>`;
+	}
+
+	_code_foldSign (m, _) {
+		return `<span class="fold-sign " 
+					data-fold-state="${m.dtectWay && m.dtectWay.join(",")}"></span>`;
+	}
+
+	_code_sign (m, _) {
+		return `<span class="sign" 
+					title="${_.signTitle}">${this._getSign(m)}</span>`;
+	}
+	_code_nameWr (m, _) {
+		return `<span class="name-wr" 
+			data-g-s-call="${m.isGSCall}">`+
+			_.getSet+
+			`<span 
+				class="name ${m.nameType}-name ${_.individualDetectedProto_str}">`+
+				_.nameStr+
+			`</span>`+
+		`</span>`;
+	}
+	_code_nVDelim (m, _) {
+		return ` <span class="n-v-delim"> ${_.cevwStr} ${_.esfStr} </span> `;
+	}
+	_code_value (m, _) {
+		return `<span class="value tof-${m.tof} ${_.isNull}"
+					title="${m.tof}">${_.valueStr}</span>`;
+	}
+
+	_code_comment (m, _) {
+		return ((m.comment)? `<span class="comment">${m.comment}</span>` : "");
+	}
+
+	_getContext (m) {
+		var _ = {
+			individualDetectedProto_str : (m.individualDetectedProto)?
+				"individualDetectedProto" : "",
+			getSet    : "",
+			cevwStr   : "", 
+			esfStr    : "", 
+			isNull    : (m.v === null)? "is-null" : "",
+			foldState : (m.ch && m.ch.length)? "unfolded" : "not-folded",
+			signTitle : m.pathname+"\n\ntypeof : "+m.tof,
+			nameStr   : (typeof m.name == "symbol")? 
+				""+_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getSymbolToHtmlStr(m.name)+"" : m.name,
+			valueStr  : 
+				(m.sp_v)                 ? m.sp_v : 
+				(typeof m.v == "symbol") ? ""+_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getSymbolToHtmlStr(m.v)+"" : 
+				(typeof m.v == "string") ? ""+_util_js__WEBPACK_IMPORTED_MODULE_0__.default.toOneSting(m.v)+"" : 
+					                       m.v,
+		}
+
+		if (m.detectWay)
+			_.signTitle += "\ndetectWay : "+m.detectWay.toString();
+		if (m.detectValueWay)
+			_.signTitle += "\ndetectValueWay : "+m.detectValueWay;
+		if (m.ch)
+			if (m.ch.length || m.ch.length === 0)
+				_.signTitle += "\nchildren : "+m.ch.length;
+		if (m.errors)
+			if (m.errors.length) 
+				_.signTitle += "\nerrors : "+m.errors.map((v) => v.name).join(", ");
+
+
+		if (m.descriptor) {
+			let d = m.descriptor;
+			if (d.g || d.s) {
+				if (m.isGetter) {
+					_.getSet += " get";
+				} else if (m.isSetter) {
+					_.getSet += " set";
+				} else {
+					let arr = [];
+					if (d.g)
+						arr.push(`<span class="get" title="get">G</span>`);
+					if (d.s)
+						arr.push(`<span class="set">S</span>`);
+					_.getSet += `<span class="get-set" title="set">${arr.join("")}</span>`;
+				}
+			}
+			_.cevwStr += `<span class="cevw">`;
+
+			if ("c" in d)
+				_.cevwStr += `<span 
+					class="descr-property configurable ${(!!d.c).toString()}"
+					title="configurable"
+					>c</span>`;
+				else 
+					_.cevwStr += "-";
+
+			if ("e" in d)
+				_.cevwStr += `<span 
+					class="descr-property enumerable ${(!!d.e).toString()}"
+					title="enumerable"
+					>e</span>`;
+				else 
+					_.cevwStr += "-";
+
+			if ("v" in d)
+				_.cevwStr += `<span 
+					class="descr-property value ${(!!d.v).toString()}"
+					title="value"
+					>v</span>`;
+				else 
+					_.cevwStr += "-";
+
+			if ("w" in d)
+				_.cevwStr += `<span 
+					class="descr-property writable ${(!!d.w).toString()}"
+					title="writable"
+					>w</span>`;
+				else 
+					_.cevwStr += "-";
+
+			_.cevwStr += `</span>`;
+		} else 
+			_.cevwStr = "    ";
+			// _.cevwStr = "────";
+
+
+		if (m.esf) {
+			let esf = m.esf;
+			_.esfStr += `<span class="esf">`
+			if ("e" in esf)
+				_.esfStr += `<span 
+					class="object-option extensible ${(!!esf.e).toString()}"
+					title="Extensible object"
+					>E</span>`;
+			else 
+				_.esfStr += "-";
+
+			if ("s" in esf)
+				_.esfStr += `<span 
+					class="object-option sealed ${(!!esf.f).toString()}"
+					title="Sealed object"
+					>S</span>`;
+			else 
+				_.esfStr += "-";
+
+			if ("f" in esf)
+				_.esfStr += `<span 
+					class="object-option frozen ${(!!esf.s).toString()}"
+					title="Frozen object"
+					>F</span>`;
+			else 
+				_.esfStr += "-";
+
+			_.esfStr += "</span>"
+		}
+
+		return _;
+	}
+
+	_getSign (m) {
+
+		var d = {
+			sim :         "───"         ,
+			sip :         "─┬─"         ,
+			und :         "───"         ,
+			sym : "<b>" + "@@-" + "</b>",
+			fg  : "<b>" + "g()" + "</b>",
+			af  : "<b>" + "a()" + "</b>",
+			f   : "<b>" + "ƒ()" + "</b>",
+			iob : "<b>" + "[i]" + "</b>",
+			nob : "<b>" + "{×}" + "</b>",
+			ob  : "<b>" + "{…}" + "</b>",
+			err : "<b>" + "ERR" + "</b>",
+			_p_ :         "─┐ ",
+			cpr : "<b>(</b>+<b>)</b>",
+		};
+
+		if (m.individualDetectedProto) {
+			if (m.ch) 
+				return d["_p_"];
+			else 
+				return d["cpr"];
+		} else if ( ["boolean", "number", "string"].includes(m.tof) ) {
+			if (m.ch && m.ch.length)
+				return d["sip"];
+			else
+				return d["sim"];
+		} else if (m.tof == "undefined") {
+			return d["und"];
+		} else if (m.tof == "symbol") {
+			return d["sym"];
+		} else if (m.tof == "function") {
+			if        (m.isGF) {
+				return d["fg"];
+			} else if (m.isAF) {
+				return d["af"]
+			} else {
+				return d["f"];
+			}
+		} else if (m.tof == "object") {
+			if (m.v === null) {
+				return d["nob"];
+			} else {
+				if      (m.hasIter === true) {
+					return d["iob"];
+				} else if (m.hasIter == "err") {
+					return d["err"];
+				} else {
+					return d["ob"];
+				}
+			} 
+		}
+	}
+
+}
+
+
+/***/ }),
+
+/***/ "./JsHter/JsHter.js":
+/*!**************************!*\
+  !*** ./JsHter/JsHter.js ***!
+  \**************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ JsHlter)
+/* harmony export */ });
+/* harmony import */ var _set_style_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./set-style.js */ "./JsHter/set-style.js");
+/* harmony import */ var _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../syntax-highlight-framework/syntax-hl-fk.js */ "./syntax-highlight-framework/syntax-hl-fk.js");
+
+
+
+const version = "1.1.3";
+
+const {
+	token,
+	nToken,
+	spToken,
+	rule,
+	domain,
+	seq,
+	alter,
+	q,
+	not,
+	spWrap,
+	error,
+	deb,
+} = _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.describeAPI;
+
+const
+	d = {
+		comment : domain("comment", function(pc) {
+			return alter(r.comment_line, r.comment_snippet)(pc);
+		}),
+		string  : domain("string" , function(pc) {
+			return r.string_single(pc) || r.string_dowble(pc) || r.string_slash(pc);
+		}),
+		re      : domain("re"     , function(pc) {
+			return token(/\/(\\\/|[^\/\n])+\/[migy]{0,4}/y)(pc);
+		}),
+		slashed : domain("slashed", function(pc) {
+			return token(/\\[\\ntbu'"`]/y)(pc);
+		}),
+		keyword : domain("keyword", function(pc) {
+			return token(/\bvar\b|\blet\b|\bconst\b|\bclass\b|\bextends\b|\btypeof\b|\binstanceof\b|\bnew\b|\breturn\b|\bif\b|\belse\b|\bfor\b|\bin\b|\bof\b|\bwhile\b|\bbreak\b|\bdo\b|\bcontinue\b|\bswitch\b|\bcase\b|\bthrow\b|\byield\b|\bimport\b|\bexport\b|\bdefault\b|\bfrom\b|\bas\b/y)(pc);
+		}),
+		string_tag      : domain("string_tag", function(pc) {
+			return seq(
+				token("${"),
+				r.main_inner.q("*"),
+				token("}"),
+			)(pc);
+		}),
+		word          : domain("word", function(pc) {
+			return token(/\b[a-zA-Z_$][0-9a-zA-Z_$]*\b/y)(pc);
+		}),
+		operator        : domain("operator", function(pc) {
+			return token(/\?\.|\?|=>|!|%|&&|&|\*|-|\+|=|\|\||\||<|>/y)(pc);
+		}),
+		punctuation     : domain("punctuation", function(pc) {
+			return token(/\.|,|:|;/y)(pc);
+		}),
+		number          : domain("number", function(pc) {
+			return token(/\b\d+\.|\.\d+\b|\b\d+\.?\d*\b/y)(pc);
+		}),
+		bool            : domain("bool", function(pc) {
+			return token(/\btrue\b|\bfalse\b/y)(pc);
+		}),
+		sp_const        : domain("sp_const", function(pc) {
+			return token(/\bundefined\b|\bnull\b|\bInfinity\b/y)(pc);
+		}),
+		paren           : domain("paren", function(pc) {
+			return seq(
+				token("("),
+				r.main_inner.q("*"),
+				token(")"),
+			)(pc);
+		}),
+		curly           : domain("curly", function(pc) {
+			return seq(
+				token("{"),
+				r.main_inner.q("*"),
+				token("}"),
+			)(pc);
+		}),
+		bracket         : domain("bracket", function(pc) {
+			return seq(
+				token("["),
+				r.main_inner.q("*"),
+				token("]"),
+			)(pc);
+		}),
+		f_sign          : domain("f_sign", function(pc) {
+			return seq(
+				spWrap(d.word.as("f_name")),
+				spWrap(d.paren),
+			)(pc);
+		}),
+		f_decl          : domain("f_decl", function(pc) {
+			return seq(
+				spWrap(token(/\basync\b/y).in("keyword").q("*")),
+				spWrap(token(/\bfunction\b/y).in("keyword")),
+				spWrap(token("*").in("keyword").q("*")),
+				spWrap(d.word.as("f_name")),
+				spWrap(d.paren),
+				spWrap(d.curly),
+			)(pc);
+		}),
+	},
+	r = {
+		main            : rule(function(pc) {
+			return q( 
+				alter(r.main_inner, r.simple), 
+			"*" )(pc);
+		}),
+		main_inner       : rule(function(pc) {
+			return alter(
+				r.space,
+				d.keyword,
+				d.operator,
+				d.f_decl,
+				d.f_sign,
+				d.bool,
+				d.sp_const,
+				d.word,
+				d.paren,
+				d.curly,
+				d.bracket,
+				d.number,
+				d.punctuation,
+				d.comment,
+				d.string,
+				d.re,
+			)(pc);
+		}),
+		space           : rule(function(pc) {
+			return token(/\s+/y)(pc);
+		}),
+		simple          : rule(function(pc) {
+			return token(/./y)(pc);
+		}),
+		comment_line    : rule(function(pc) {
+			return seq(
+				token("//"),
+				nToken("\n").q("*"),
+			)(pc);
+		}),
+		comment_snippet : rule(function(pc) {
+			return seq(
+				token("/*"),
+				nToken("*/").q("*"),
+				token("*/"),
+			)(pc);
+		}),
+		string_single   : rule(function(pc) {
+			return seq(
+				token("'"),
+				alter(d.slashed, nToken("'")).q("*"),
+				token("'"),
+			)(pc);
+		}),
+		string_dowble   : rule(function(pc) {
+			return seq(
+				token('"'),
+				alter(d.slashed, nToken('"')).q("*"),
+				token('"'),
+			)(pc);
+		}),
+		string_slash    : rule(function(pc) {
+			return seq(
+				token("`"),
+				alter(d.slashed, d.string_tag, nToken("`")).q("*"),
+				token("`"),
+			)(pc);
+		}),
+	};
+
+class JsHlter extends _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.Highlighter {
+	constructor (clPref="jsot-js-hl") {
+		super(r.main, clPref);
+		(0,_set_style_js__WEBPACK_IMPORTED_MODULE_0__.default)(clPref);
+	}
+
+	get version () { return version; }
+
+	getHighlighted (
+		templ, firstLineNum=1, cssClasses="calm-clarified-theme") {
+		return super.getHighlighted(templ, firstLineNum, cssClasses);
+	}
+}
+
+
+/***/ }),
+
+/***/ "./JsHter/set-style.js":
+/*!*****************************!*\
+  !*** ./JsHter/set-style.js ***!
+  \*****************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ setStyle)
+/* harmony export */ });
+function setStyle(clPref) {
+
+	const cssCode = `
+		.jsot-js-hl.calm-clarified-theme .jsot-js-hl__line .jsot-js-hl__line-number {
+		  background-color: #444; }
+
+		.jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text {
+		  color: #eee; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_v {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_n {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text ._null {
+		    color: #98f; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .error {
+		    color: #fff;
+		    background-color: #e48;
+		    box-shadow: inset 0 0 2px #fff; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .f_name {
+		    color: #eee;
+		    font-weight: bold; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .comment {
+		    color: #777; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string {
+		    color: #b98; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .re {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .slashed {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .number {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .bool {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .sp_const {
+		    color: #fb6; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .keyword {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .operator {
+		    color: #78a; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .punctuation {
+		    color: #eee; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .paren {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .curly {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .bracket {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .word {
+		    color: #ddc; }
+		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_tag {
+		    color: #ddc; }
+
+	`.replaceAll(/jsot-js-hl/g, clPref);
+
+	const styleClassName = `${clPref}__theme-style`;
+
+	const styleAlreadyExists = [].some.call(
+		document.querySelectorAll(`style.${styleClassName}`), 
+		(v) => v.textContent === cssCode
+	);
+
+	if (! styleAlreadyExists) {
+		const style = eHTML(`<style class="${styleClassName}"></style>`);
+		style.textContent = cssCode;
+		document.head.appendChild(style);
+	}
+}
+
+
+function eHTML(code, shell=null) {
+	const _shell = 
+		! shell                  ? document.createElement("div") :
+		typeof shell == "string" ? document.createElement(shell) :
+		typeof shell == "object" ? shell :
+			null;
+	_shell.innerHTML = code;
+	return _shell.children[0];
+}
+
+/***/ }),
+
+/***/ "./JsOT.js":
+/*!*****************!*\
+  !*** ./JsOT.js ***!
+  \*****************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _render_tree_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony import */ var _Explorer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
-/* harmony import */ var _NodeJsServerAgent_NodeJsServerAgent_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(15);
-/* harmony import */ var _JsonErrHter_JsonErrHter_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
-/* harmony import */ var _JsHter_JsHter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8);
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.js */ "./util.js");
+/* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parse-tree.js */ "./parse-tree.js");
+/* harmony import */ var _render_tree_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./render-tree.js */ "./render-tree.js");
+/* harmony import */ var _Explorer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Explorer.js */ "./Explorer.js");
+/* harmony import */ var _NodeJsServerAgent_NodeJsServerAgent_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NodeJsServerAgent/NodeJsServerAgent.js */ "./NodeJsServerAgent/NodeJsServerAgent.js");
+/* harmony import */ var _JsonErrHter_JsonErrHter_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./JsonErrHter/JsonErrHter.js */ "./JsonErrHter/JsonErrHter.js");
+/* harmony import */ var _JsHter_JsHter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./JsHter/JsHter.js */ "./JsHter/JsHter.js");
 /*
 *
 * 
@@ -43,7 +1429,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const version = "2.0.0";
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+const API = {
 	version,
 	Explorer: _Explorer_js__WEBPACK_IMPORTED_MODULE_3__.default,                       // (inputEl, options)
 	NodeJsServerAgent: _NodeJsServerAgent_NodeJsServerAgent_js__WEBPACK_IMPORTED_MODULE_4__.default,              // (options)
@@ -60,7 +1446,17 @@ const version = "2.0.0";
 		"@@"             : _util_js__WEBPACK_IMPORTED_MODULE_0__.default["@@"],
 		"symbolStatProps": _util_js__WEBPACK_IMPORTED_MODULE_0__.default.symbolStatProps,
 	}
-});
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
+
+try {
+	window.jsot = API;
+} catch(err) {} 
+
+try {
+	module.exports = API;
+} catch(err) {} 
 
 let jsonHter = null;
 
@@ -98,263 +1494,411 @@ function _evalJson(json) {
 }
 
 /***/ }),
-/* 2 */
+
+/***/ "./JsonErrHter/JsonErrHter.js":
+/*!************************************!*\
+  !*** ./JsonErrHter/JsonErrHter.js ***!
+  \************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ JsonErrHlter)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-	getSymId,
-	getSymById,
-	getSymbolToStr,
-	getSymbolToHtmlStr,
-	eval: evalHTML,
-	recurTravel,
-	flatTempl,
-	getJson,
-	getFromJson,
-	getToString,
-	toOneSting,
-	"@@" : [],
-	"symbolStatProps" : [
-		"asyncIterator",
-		"hasInstance",
-		"isConcatSpreadable",
-		"iterator",
-		"match",
-		"matchAll",
-		"replace",
-		"search",
-		"species",
-		"split",
-		"toPrimitive",
-		"toStringTag",
-		"unscopables",
-	],
-});
+/* harmony import */ var _set_style_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./set-style.js */ "./JsonErrHter/set-style.js");
+/* harmony import */ var _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../syntax-highlight-framework/syntax-hl-fk.js */ "./syntax-highlight-framework/syntax-hl-fk.js");
 
 
 
-function getSymId(sym) {
-	var id = {sym}, x;
-	
-	if (x = sym.description)
-		id.descr = x;
-	
-	if (x = Symbol.keyFor(sym))
-		id.globRegKey = x;
+const version = "1.1.3";
 
-	if (x = this["symbolStatProps"].find((v) => Symbol[v] && Symbol[v] == sym))
-		id.statProp = x;
+const {
+	token,
+	nToken,
+	spToken,
+	rule,
+	domain,
+	seq,
+	alter,
+	q,
+	not,
+	spWrap,
+	error,
+	deb,
+} = _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.describeAPI;
 
-	if ((x = this["@@"].indexOf(sym)) == -1) 
-		x = this["@@"].push(sym) - 1;
-	id["@@-number"] = x;
-
-	return id;
-}
-
-function getSymById(id) {
-	if (id.sym) {
-		return id.sym;
-	} else if (id.statProp) {
-		return Symbol[id.statProp];
-	} else if (id["@@-number"]) {
-		return this["@@"][id["@@-number"]] || 
-			Symbol("-pseudo@@-"+id["@@-number"]+"-"+id.descr);
-	} else {
-		return Symbol("-pseudo@@-"+id.descr);
-	}
-}
-
-function getSymbolToStr(subj) {
-	var id, str = "";
-	if (typeof subj == "symbol")
-		id = this.getSymId(subj);
-	else if (typeof subj == "object")
-		id = subj;
-	else 
-		console.error("(!)-USER'S ", 
-			"'subj' is not 'symbol' and not 'object'", 
-			"\nsubj:", subj);
-	str += `-@@-${id["@@-number"]}-`;
-	if (id.descr)
-		str += id.descr;
-
-	return str;
-}
-
-function getSymbolToHtmlStr(subj) {
-	var id, str = "";
-	if (typeof subj == "symbol")
-		id = this.getSymId(subj);
-	else if (typeof subj == "object")
-		id = subj;
-	else 
-		console.error("(!)-USER'S ", 
-			"'subj' is not 'symbol' and not 'object'", 
-			"\nsubj:", subj);
-	str += `<span class="local-reg-num">${id["@@-number"]}</span>`;
-	if (id.descr)
-		str += `<span class="symbol-description">${id.descr}</span>`;
-
-	return str;
-}
-
-function evalHTML(code, wrElName="div") {
-	var wr = document.createElement(wrElName);
-	wr.innerHTML = code;
-	return wr;
-}
-
-function recurTravel(t, callb) {
-	function recursive(m, callb) {
-		callb(m);
-		if (m.ch && m.ch.length)
-			for (var ch of m.ch) 
-				recursive(ch, callb);
-	}
-	recursive(t, callb);
-}
-
-function flatTempl(t) {
-	var flat = [];
-	this.recurTravel(t, (m) => flat.push(m));
-	return flat;
-}
-
-function getJson(ob) {
-	if (!ob || typeof ob == "string") {
-		return JSON.stringify(ob);
-	} else {
-		ob["jsot-JSON-format-ver"] = "3.2.0";
-		this.flatTempl(ob).forEach((v) => {
-			// delete v.parent;
-			if (typeof v.nip == "symbol")
-				v.n_sym = this.getSymId(v.nip);
-				// v.sym_nip = this.getSymbolValueStr(v.nip)
+const
+	__main_ = rule(function(pc) {
+		return seq(
+			spWrap(r.subject.catch("Main. Expected subject.")),
+			error("Main. Unexpected symbol after end of code.").q("*")
+		)(pc);
+	}),
+	list = rule(function(pc) {
+		return token("[").in("list__open")
+			.break(
+				seq(
+					spWrap(r.subject.q("*/", spWrap(token(",").in("list__coma")))),
+					token("]").in("list__close")
+						.catch("List. Expected closing bracket ' ] '."),
+				)
+			).msg("List.")(pc);
 			
-			if (typeof v.v == "symbol")
-				v.v_sym = this.getSymId(v.v);
+	}),
+	dict = rule(function(pc) {
+		return spToken("{")
+			.break(
+				alter(
+					spToken("}"),
+					seq(
+						seq(
+							d.string_n.catch("Dict. Expected string name of field."),
+							spToken(":").catch("Dict. Expected colon ' : '."),
+							r.subject.catch("Dict. Expected subject - (null | boll | number | string | list | dict).")
+						).q("*/", spToken(",")),
+						spToken("}").catch("Dict. Expected closing curly ' } ' or coma ' , '."),
+					),
+				)
+			).msg("Dict.")(pc);
+	}),
+	d = {
+		string_v : domain("string_v" , function(pc) {
+			return r.string(pc);
+		}),
+		string_n : domain("string_n" , function(pc) {
+			return r.string(pc);
+		}),
+		slashed : domain("slashed", function(pc) {
+			return token(/\\[\\ntbu'"`]/y)(pc);
+		}),
+		number          : domain("number", function(pc) {
+			return token(/\b\d+\.|\.\d+\b|\b\d+\.?\d*\b/y)(pc);
+		}),
+		bool            : domain("bool", function(pc) {
+			return token(/\btrue\b|\bfalse\b/y)(pc);
+		}),
+		_null           : domain("_null", function(pc) {
+			return token(/\bnull\b/y)(pc);
+		}),
+	},
+	r = {
+		subject         : rule(function(pc) {
+			return alter(
+				d._null,
+				d.bool,
+				d.number,
+				d.string_v,
+				list,
+				dict
+			)(pc);
+		}),
+		string        : rule(function(pc) {
+			return seq(
+				token('"'),
+				q(alter(d.slashed, nToken('"')), "*"),
+				token('"'),
+			)(pc);
+		}),
+		space           : rule(function(pc) {
+			return token(/\s+/y)(pc);
+		}),
+	};
 
-			if (v.v === undefined) {
-				v.sp_v = "undefined";
-				// delete v.v;
-			}
-			if (v.v === NaN) {
-				v.sp_v = "NaN";
-				// delete v.v;
-			}
-			if (v.v === Infinity) {
-				v.sp_v = "Infinity";
-				// delete v.v;
-			}
-
-
-			if (v.ch) { 
-				// Чтобы атрибут 'ch' был последним в списке атрибутов. 
-				// Это делает JSON-строку более человеко-понятной.
-				var ch = v.ch;
-				delete v.ch;
-				v.ch = ch;
-			}
-		});
-		var res = JSON.stringify(ob, (k,v) => {
-			if ([
-				"parent", 
-				"header",
-				"cBar",
-			].includes(k))
-				return undefined;
-
-			if ([
-				"rows",
-				"name",
-				"path",
-				"pathname",
-				"isBranchNode",
-			].includes(k))
-				return undefined;
-
-			return v;
-		}, "\t");
-
-		delete ob["jsot-JSON-format-ver"];
-
-		return res;
+class JsonErrHlter extends _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.Highlighter {
+	constructor (clPref="json-err-hl") {
+		super(__main_, clPref);
+		(0,_set_style_js__WEBPACK_IMPORTED_MODULE_0__.default)(clPref);
 	}
-}
 
-function getFromJson(json) {
-	if (json) {
-		var ob = JSON.parse(json);
-		this.flatTempl(ob).forEach((v) => {
-			/*if (v.sym_nip)
-				v.nip = Symbol[v.sym_nip];*/ // Обратная совместимость.
+	get version () { return version; }
 
-			if (v.n_sym)
-				v.nip = this.getSymById(v.n_sym);
-
-			if (v.v_sym)
-				v.v = this.getSymById(v.v_sym);
-
-			if (v.sp_v == "undefined") {
-				v.v = undefined;
-				// delete sp_v;
-			}
-			if (v.sp_v == "NaN") {
-				v.v = NaN;
-				// delete sp_v;
-			}
-			if (v.sp_v == "Infinity") {
-				v.v = Infinity;
-				// delete sp_v;
-			}
-		});
-		return ob;
-	} else {
-		return "";
+	getHighlighted (
+		templ, firstLineNum=1, cssClasses="calm-clarified-theme") {
+		return super.getHighlighted(templ, firstLineNum, cssClasses);
 	}
-}
-
-function getToString(v) {
-	if (v) {
-		if (v.toString) {
-			return v.toString();
-		} else {
-			return v+"";
-		}
-	} else {
-		return v+"";
-	}
-}
-
-function toOneSting(text, length=50) {
-	var 
-		ellipsis = " ... ",
-		slice;
-	if (length < text.length ) {
-		slice = text.slice(0, length - ellipsis.length)+ellipsis;
-	} else if (length < text.length - ellipsis.length && text.length <= length) {
-		slice = text.slice(0, length - ellipsis.length);
-	} else {
-		slice = text;
-	}
-	return slice.replace(/\n/g, "┓").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 
 /***/ }),
-/* 3 */
+
+/***/ "./JsonErrHter/set-style.js":
+/*!**********************************!*\
+  !*** ./JsonErrHter/set-style.js ***!
+  \**********************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ setStyle)
+/* harmony export */ });
+function setStyle(clPref) {
+
+	const cssCode = `
+	.json-err-hl.calm-theme {
+	  background-color: #222; }
+	  .json-err-hl.calm-theme .json-err-hl__line-text {
+	    color: #eee; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text .string {
+	      color: #ddc; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text .string_v {
+	      color: #ddc; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text .string_n {
+	      color: #78a; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text .slashed {
+	      color: #f90; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text .number {
+	      color: #f90; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text .bool {
+	      color: #f90; }
+	    .json-err-hl.calm-theme .json-err-hl__line-text ._null {
+	      color: #98f; }
+
+	.json-err-hl.calm-clarified-theme .json-err-hl__line .json-err-hl__line-number {
+	  background-color: #444; }
+
+	.json-err-hl.calm-clarified-theme .json-err-hl__line-text {
+	  color: #eee; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string {
+	    color: #ddc; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string_v {
+	    color: #ddc; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string_n {
+	    color: #78a; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .bool {
+	    color: #fb6; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .number {
+	    color: #fb6; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .slashed {
+	    color: #fb6; }
+	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text ._null {
+	    color: #98f; }
+
+	.json-err-hl.monokai-theme {
+	  background-color: #333; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text .string_n {
+	    color: #3bd; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text .string {
+	    color: #da5; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text .string_v {
+	    color: #da5; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text .slashed {
+	    color: #98f; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text .number {
+	    color: #98f; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text .bool {
+	    color: #98f; }
+	  .json-err-hl.monokai-theme .json-err-hl__line-text ._null {
+	    color: #e48; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string_n {
+	  color: #3bd; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string {
+	  color: #da5; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string_v {
+	  color: #da5; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .slashed {
+	  color: #98f; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .number {
+	  color: #98f; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .bool {
+	  color: #98f; }
+
+	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text ._null {
+	  color: #e48; }
+
+	 `.replaceAll(/json-err-hl/g, clPref);
+
+	const styleClassName = `${clPref}__theme-style`;
+
+	const styleAlreadyExists = [].some.call(
+		document.querySelectorAll(`style.${styleClassName}`), 
+		(v) => v.textContent === cssCode
+	);
+
+	if (! styleAlreadyExists) {
+		const style = eHTML(`<style class="${styleClassName}"></style>`);
+		style.textContent = cssCode;
+		document.head.appendChild(style);
+	}
+}
+
+
+function eHTML(code, shell=null) {
+	const _shell = 
+		! shell                  ? document.createElement("div") :
+		typeof shell == "string" ? document.createElement(shell) :
+		typeof shell == "object" ? shell :
+			null;
+	_shell.innerHTML = code;
+	return _shell.children[0];
+}
+
+/***/ }),
+
+/***/ "./NodeJsServerAgent/NodeJsServerAgent.js":
+/*!************************************************!*\
+  !*** ./NodeJsServerAgent/NodeJsServerAgent.js ***!
+  \************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ServerAgent)
+/* harmony export */ });
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../util.js */ "./util.js");
+/* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../parse-tree.js */ "./parse-tree.js");
+
+
+
+class ServerAgent {
+	constructor(_ = {}) {
+		_.name = _.name || "rootNode";
+		_.ob = _.ob || global;
+		_.t = _.t || {};
+		_.portHost = _.portHost || [];
+		_.portHost[0] = _.portHost[0] || 3333;
+		// _.portHost[1] = _.portHost[1] || "127.0.0.1";
+		_.portHost[1] = _.portHost[1] || "localhost";
+
+		Promise.all([
+			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! http */ "http", 19)),
+			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! fs */ "fs", 19)),
+			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! path */ "path", 19)),
+			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! url */ "url", 19)),
+		]).then(([http$, fs$, path$, url$]) => {
+			const __filename = url$.fileURLToPath("file:///D:/GitHub-my/JsOT/NodeJsServerAgent/NodeJsServerAgent.js"),
+				__dirname = path$.dirname(__filename),
+				serverRoot = path$.resolve(__dirname, "../");
+
+			console.log(`__dirname`, __dirname);
+			var server = new http$.Server(function (req, res) {
+				// console.log("\n↑ GO");
+
+				req.on("error", (err) => console.error(err));
+				res.on("error", (err) => console.error(err));
+
+				const [reqPath, reqQuery] = req.url.split("?"),
+					mimeType = getMIME(reqPath);
+
+				res.setHeader("Access-Control-Allow-Origin", "*");
+
+				if (req.url == "/parse") {
+					res.setHeader("Content-Type", 'text/plain; Charset="UTF-8"');
+					res.setHeader("Cash-Control", "no-store");
+
+					var reqBody = "";
+					req.on("data", (dataBuf) => (reqBody += dataBuf.toString()));
+
+					req.on("end", (e) => {
+						// console.log(`reqBody.length`, reqBody.length);
+						var dataArr = reqBody.split("&");
+						var dataDict = dataArr.reduce((acc, v) => {
+							if (!v) return acc;
+
+							var k_v = v.split("=");
+							acc[k_v[0]] = decodeURIComponent(k_v[1]);
+
+							return acc;
+						}, {});
+						var inJson = dataDict.template;
+						// console.log(`inJson.length`, inJson.length);
+						var t = inJson ? _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getFromJson(inJson) : {};
+						var getted = (0,_parse_tree_js__WEBPACK_IMPORTED_MODULE_1__.default)(_.ob, _.name, t);
+						res.end(_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(getted));
+
+						// console.log("↓ OK\n\n");
+					});
+				} else if (req.url == "/") {
+					res.setHeader("Content-Type", "text/html; Charset=UTF-8");
+					res.setHeader("Cash-Control", "no-store");
+					var theUrl = `http://${_.portHost[1]}:${_.portHost[0]}`;
+					res.end(
+						getTemplateFile(
+							path$.resolve(__dirname, "./agent-page.html"),
+							{
+								name: _.name,
+								theUrl,
+							},
+							fs$
+						)
+					);
+
+					// console.log("↓ OK\n\n");
+				} else {
+					const filePN = serverRoot + req.url;
+					// const filePN = path$.resolve(serverRoot, req.url);
+					// console.log(`filePN >>`, filePN);
+					if (fs$.existsSync(filePN)) {
+						res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
+						res.setHeader("Cash-Control", "no-store");
+						res.end(fs$.readFileSync(filePN));
+						// console.log("Download", req.url);
+						// console.log("↓ OK\n\n");
+					} else {
+						res.end("JsOT - 404.");
+
+						// console.log("↓ OK\n\n");
+					}
+				}
+			});
+			server.listen(..._.portHost);
+			// server.listen(3000, "127.0.0.1");
+			console.log(
+				"JsOT",
+				_.name,
+				":",
+				"http://" + _.portHost[1] + ":" + _.portHost[0],
+				"\n",
+				_.ob
+			);
+		});
+
+		// setInterval(() => {}, 60000);
+	}
+}
+
+function getTemplateFile(pathname, substituts, fs$) {
+	let text = fs$.readFileSync(pathname).toString();
+	return text.replace(/{{\s*([\w\d]+)\s*}}/g, (m, name) => substituts[name]);
+}
+
+const MIME = {
+	"text/html": ["html"],
+	"text/css": ["css", "scss", "css.map"],
+	"application/javascript": ["js", "ejs", "cjs"],
+};
+
+function getMIME(fileName) {
+	const parts = fileName.split(".");
+	let ext = parts.pop();
+	if (ext == "map") ext = parts.pop() + "." + ext;
+	for (let i in MIME) if (MIME[i].includes(ext)) return i;
+	return "text/plain";
+}
+
+
+/***/ }),
+
+/***/ "./parse-tree.js":
+/*!***********************!*\
+  !*** ./parse-tree.js ***!
+  \***********************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ parseTree)
 /* harmony export */ });
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.js */ "./util.js");
 
 
 var pArr = [];
@@ -763,16 +2307,21 @@ function isNoneValue(v) {
 
 
 /***/ }),
-/* 4 */
+
+/***/ "./render-tree.js":
+/*!************************!*\
+  !*** ./render-tree.js ***!
+  \************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _HeaderCode_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
-/* harmony import */ var _CSS_JsOT_scss_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
+/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util.js */ "./util.js");
+/* harmony import */ var _HeaderCode_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderCode.js */ "./HeaderCode.js");
+/* harmony import */ var _CSS_JsOT_scss_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CSS/JsOT.scss.js */ "./CSS/JsOT.scss.js");
 
 
 
@@ -1084,1623 +2633,19 @@ function createTree(treeModel, _) {
 
 
 /***/ }),
-/* 5 */
+
+/***/ "./syntax-highlight-framework/Highlighter.js":
+/*!***************************************************!*\
+  !*** ./syntax-highlight-framework/Highlighter.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ HeaderCode)
-/* harmony export */ });
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-
-
-class HeaderCode {
-	constructor (m) {
-		var _ = this._getContext(m)
-		this.code = 
-			`<span class="header" `+
-				`data-detect-way="${m.dtectWay && m.dtectWay.join(",")}"`+
-			`>`+
-				`<span class="hover-sensitive">`+
-					this._code_foldSign(m, _)+
-					this._code_sign    (m, _)+
-					`<span class="c-bar-slot"></span>`+
-					this._code_nameWr  (m, _)+
-				`</span>`+
-				this._code_nVDelim (m, _)+
-				this._code_value   (m, _)+
-				" "+
-				this._code_comment (m, _)+
-			`</span>`;
-	}
-
-	_code_foldSign (m, _) {
-		return `<span class="fold-sign " 
-					data-fold-state="${m.dtectWay && m.dtectWay.join(",")}"></span>`;
-	}
-
-	_code_sign (m, _) {
-		return `<span class="sign" 
-					title="${_.signTitle}">${this._getSign(m)}</span>`;
-	}
-	_code_nameWr (m, _) {
-		return `<span class="name-wr" 
-			data-g-s-call="${m.isGSCall}">`+
-			_.getSet+
-			`<span 
-				class="name ${m.nameType}-name ${_.individualDetectedProto_str}">`+
-				_.nameStr+
-			`</span>`+
-		`</span>`;
-	}
-	_code_nVDelim (m, _) {
-		return ` <span class="n-v-delim"> ${_.cevwStr} ${_.esfStr} </span> `;
-	}
-	_code_value (m, _) {
-		return `<span class="value tof-${m.tof} ${_.isNull}"
-					title="${m.tof}">${_.valueStr}</span>`;
-	}
-
-	_code_comment (m, _) {
-		return ((m.comment)? `<span class="comment">${m.comment}</span>` : "");
-	}
-
-	_getContext (m) {
-		var _ = {
-			individualDetectedProto_str : (m.individualDetectedProto)?
-				"individualDetectedProto" : "",
-			getSet    : "",
-			cevwStr   : "", 
-			esfStr    : "", 
-			isNull    : (m.v === null)? "is-null" : "",
-			foldState : (m.ch && m.ch.length)? "unfolded" : "not-folded",
-			signTitle : m.pathname+"\n\ntypeof : "+m.tof,
-			nameStr   : (typeof m.name == "symbol")? 
-				""+_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getSymbolToHtmlStr(m.name)+"" : m.name,
-			valueStr  : 
-				(m.sp_v)                 ? m.sp_v : 
-				(typeof m.v == "symbol") ? ""+_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getSymbolToHtmlStr(m.v)+"" : 
-				(typeof m.v == "string") ? ""+_util_js__WEBPACK_IMPORTED_MODULE_0__.default.toOneSting(m.v)+"" : 
-					                       m.v,
-		}
-
-		if (m.detectWay)
-			_.signTitle += "\ndetectWay : "+m.detectWay.toString();
-		if (m.detectValueWay)
-			_.signTitle += "\ndetectValueWay : "+m.detectValueWay;
-		if (m.ch)
-			if (m.ch.length || m.ch.length === 0)
-				_.signTitle += "\nchildren : "+m.ch.length;
-		if (m.errors)
-			if (m.errors.length) 
-				_.signTitle += "\nerrors : "+m.errors.map((v) => v.name).join(", ");
-
-
-		if (m.descriptor) {
-			let d = m.descriptor;
-			if (d.g || d.s) {
-				if (m.isGetter) {
-					_.getSet += " get";
-				} else if (m.isSetter) {
-					_.getSet += " set";
-				} else {
-					let arr = [];
-					if (d.g)
-						arr.push(`<span class="get" title="get">G</span>`);
-					if (d.s)
-						arr.push(`<span class="set">S</span>`);
-					_.getSet += `<span class="get-set" title="set">${arr.join("")}</span>`;
-				}
-			}
-			_.cevwStr += `<span class="cevw">`;
-
-			if ("c" in d)
-				_.cevwStr += `<span 
-					class="descr-property configurable ${(!!d.c).toString()}"
-					title="configurable"
-					>c</span>`;
-				else 
-					_.cevwStr += "-";
-
-			if ("e" in d)
-				_.cevwStr += `<span 
-					class="descr-property enumerable ${(!!d.e).toString()}"
-					title="enumerable"
-					>e</span>`;
-				else 
-					_.cevwStr += "-";
-
-			if ("v" in d)
-				_.cevwStr += `<span 
-					class="descr-property value ${(!!d.v).toString()}"
-					title="value"
-					>v</span>`;
-				else 
-					_.cevwStr += "-";
-
-			if ("w" in d)
-				_.cevwStr += `<span 
-					class="descr-property writable ${(!!d.w).toString()}"
-					title="writable"
-					>w</span>`;
-				else 
-					_.cevwStr += "-";
-
-			_.cevwStr += `</span>`;
-		} else 
-			_.cevwStr = "    ";
-			// _.cevwStr = "────";
-
-
-		if (m.esf) {
-			let esf = m.esf;
-			_.esfStr += `<span class="esf">`
-			if ("e" in esf)
-				_.esfStr += `<span 
-					class="object-option extensible ${(!!esf.e).toString()}"
-					title="Extensible object"
-					>E</span>`;
-			else 
-				_.esfStr += "-";
-
-			if ("s" in esf)
-				_.esfStr += `<span 
-					class="object-option sealed ${(!!esf.f).toString()}"
-					title="Sealed object"
-					>S</span>`;
-			else 
-				_.esfStr += "-";
-
-			if ("f" in esf)
-				_.esfStr += `<span 
-					class="object-option frozen ${(!!esf.s).toString()}"
-					title="Frozen object"
-					>F</span>`;
-			else 
-				_.esfStr += "-";
-
-			_.esfStr += "</span>"
-		}
-
-		return _;
-	}
-
-	_getSign (m) {
-
-		var d = {
-			sim :         "───"         ,
-			sip :         "─┬─"         ,
-			und :         "───"         ,
-			sym : "<b>" + "@@-" + "</b>",
-			fg  : "<b>" + "g()" + "</b>",
-			af  : "<b>" + "a()" + "</b>",
-			f   : "<b>" + "ƒ()" + "</b>",
-			iob : "<b>" + "[i]" + "</b>",
-			nob : "<b>" + "{×}" + "</b>",
-			ob  : "<b>" + "{…}" + "</b>",
-			err : "<b>" + "ERR" + "</b>",
-			_p_ :         "─┐ ",
-			cpr : "<b>(</b>+<b>)</b>",
-		};
-
-		if (m.individualDetectedProto) {
-			if (m.ch) 
-				return d["_p_"];
-			else 
-				return d["cpr"];
-		} else if ( ["boolean", "number", "string"].includes(m.tof) ) {
-			if (m.ch && m.ch.length)
-				return d["sip"];
-			else
-				return d["sim"];
-		} else if (m.tof == "undefined") {
-			return d["und"];
-		} else if (m.tof == "symbol") {
-			return d["sym"];
-		} else if (m.tof == "function") {
-			if        (m.isGF) {
-				return d["fg"];
-			} else if (m.isAF) {
-				return d["af"]
-			} else {
-				return d["f"];
-			}
-		} else if (m.tof == "object") {
-			if (m.v === null) {
-				return d["nob"];
-			} else {
-				if      (m.hasIter === true) {
-					return d["iob"];
-				} else if (m.hasIter == "err") {
-					return d["err"];
-				} else {
-					return d["ob"];
-				}
-			} 
-		}
-	}
-
-}
-
-
-/***/ }),
-/* 6 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setStyle)
-/* harmony export */ });
-function setStyle(clPref="jsot") {
-
-	const cssCode = `@charset "UTF-8";
-.jsot .row .header[data-highlighted=true] .name {
-  color: #333;
-  text-shadow: 0 0 1px #333;
-  font-weight: bold;
-}
-.jsot .row .header .fold-sign[data-fold-state=unfolded]:before {
-  content: "";
-}
-.jsot .row .header .fold-sign[data-fold-state=folded]:before {
-  content: " + ";
-  border: 1px solid #999;
-  margin: -1px;
-  margin-right: 5px;
-}
-.jsot .row .header .fold-sign[data-fold-state=not-folded]:before {
-  content: "";
-}
-.jsot .row .header .sign {
-  user-select: none;
-  cursor: default;
-  text-shadow: 0 0 1px #999;
-}
-.jsot .row .header .sign b {
-  text-shadow: none;
-}
-.jsot .row .header .name-wr {
-  display: inline-block;
-  font-style: italic;
-}
-.jsot .row .header .name-wr .get-set {
-  font-style: italic;
-  user-select: none;
-}
-.jsot .row .header .name-wr .get-set:before {
-  content: "(";
-}
-.jsot .row .header .name-wr .get-set:after {
-  content: ")";
-}
-.jsot .row .header .name-wr .get-set .get,
-.jsot .row .header .name-wr .get-set .set {
-  cursor: default;
-}
-.jsot .row .header .name-wr .name {
-  font-weight: bold;
-  font-style: italic;
-  color: #789;
-}
-.jsot .row .header .name-wr .name.iter-name {
-  font-style: normal;
-  /* &:before {
-  	content: "i";
-  	color: $bright_color;
-  } */
-}
-.jsot .row .header .name-wr .name.iter-name:before {
-  content: "[";
-}
-.jsot .row .header .name-wr .name.iter-name:after {
-  content: "]";
-}
-.jsot .row .header .name-wr .name.iter-name:before, .jsot .row .header .name-wr .name.iter-name:after {
-  font-style: normal;
-  color: #333;
-}
-.jsot .row .header .name-wr .name.nip-name:before, .jsot .row .header .name-wr .name.nip-name:after {
-  content: "'";
-  color: transparent;
-}
-.jsot .row .header .name-wr .name.symbol-name:before, .jsot .row .header .name-wr .name.symbol-name:after {
-  font-style: normal;
-  color: #333;
-}
-.jsot .row .header .name-wr[data-g-s-call=true]:before {
-  content: "(";
-}
-.jsot .row .header .name-wr[data-g-s-call=true]:after {
-  content: ")";
-}
-.jsot .row .header .name-wr[data-g-s-call=true]:before, .jsot .row .header .name-wr[data-g-s-call=true]:after {
-  color: #333;
-  font-weight: bold;
-}
-.jsot .row .header .name-wr[data-g-s-call=true] .get-set {
-  font-weight: bold;
-  color: #333;
-  user-select: none;
-}
-.jsot .row .header .name-wr[data-g-s-call=true] .get-set:before {
-  content: "";
-}
-.jsot .row .header .name-wr[data-g-s-call=true] .get-set:after {
-  content: "";
-}
-.jsot .row .header .c-bar {
-  color: #333;
-  white-space: normal;
-  margin-top: 19px;
-  margin-top: 1.2em;
-  position: absolute;
-  border: 1px solid #777;
-  box-shadow: 0 5px 10px #333;
-  padding: 2px 5px;
-  background-color: #eee;
-  vertical-align: bottom;
-  display: inline-block;
-  cursor: default;
-}
-.jsot .row .header .c-bar button {
-  cursor: pointer;
-  height: 25px;
-}
-.jsot .row .header .c-bar .loadbar-wrapper {
-  display: inline-block;
-  text-align: center;
-  min-width: 2em;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar {
-  display: none;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=loading], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-l], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-loading] {
-  border: 2px solid #333;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  border-radius: 50px;
-  position: relative;
-  bottom: -3px;
-  margin: -3px 0;
-  background-color: #ccc;
-  box-shadow: inset 0 0 5px #fff, 0 0 5px #333;
-  display: inline-block;
-  animation: rotate-loadbar 1s infinite linear;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=loading] .inner, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-l] .inner, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-loading] .inner {
-  border: 6px solid #333;
-  margin: 2px;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-radius: 50px;
-  animation: rotate-loadbar reverse 0.5s infinite linear;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=ok], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-ok] {
-  display: inline-block;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=ok]:before, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-ok]:before {
-  content: "OK";
-  font-weight: bold;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=err], .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-err] {
-  display: inline-block;
-}
-.jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=err]:before, .jsot .row .header .c-bar .loadbar-wrapper .loadbar[data-status=test-err]:before {
-  content: "ERR";
-  color: #f00;
-  font-weight: bold;
-}
-.jsot .row .header .c-bar .sort-by {
-  margin: 3px 0;
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher {
-  display: inline-block;
-  min-width: 100px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 0 5px;
-  font-size: 0.9em;
-  font-family: arial;
-  cursor: pointer;
-  user-select: none;
-  text-align: center;
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_name][data-state="-1"]:after {
-  content: "Inherit";
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_name][data-state="0"]:after {
-  content: "No";
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_name][data-state="1"]:after {
-  content: "Yes";
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_type][data-state="-1"]:after {
-  content: "Inherit";
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_type][data-state="0"]:after {
-  content: "No";
-}
-.jsot .row .header .c-bar .sort-by > .setting-switcher[data-setting-name=by_type][data-state="1"]:after {
-  content: "Yes";
-}
-.jsot .row .header .n-v-delim .cevw .descr-property {
-  cursor: default;
-}
-.jsot .row .header .n-v-delim .cevw .descr-property.false {
-  font-weight: bold;
-}
-.jsot .row .header .n-v-delim .cevw .descr-property.false:before {
-  content: "̷";
-}
-.jsot .row .header .n-v-delim .esf {
-  cursor: default;
-}
-.jsot .row .header .n-v-delim .esf .object-option.false:before {
-  content: "̸";
-}
-.jsot .row .header .n-v-delim .esf .object-option.extensible.false, .jsot .row .header .n-v-delim .esf .object-option.frozen.true, .jsot .row .header .n-v-delim .esf .object-option.sealed.true {
-  font-weight: bold;
-  text-decoration: underline;
-}
-.jsot .row .header > .value {
-  font-style: italic;
-}
-.jsot .row .header > .value.tof-undefined {
-  font-weight: bold;
-  font-style: italic;
-  color: #777;
-}
-.jsot .row .header > .value.tof-boolean {
-  font-weight: bold;
-  color: #449;
-}
-.jsot .row .header > .value.tof-number {
-  font-style: normal;
-  color: #963;
-}
-.jsot .row .header > .value.tof-string {
-  font-style: italic;
-  color: #3a3;
-  white-space: nowrap;
-}
-.jsot .row .header > .value.tof-string:before, .jsot .row .header > .value.tof-string:after {
-  content: '"';
-  color: #3a3;
-}
-.jsot .row .header > .value.tof-object.is-null {
-  font-weight: bold;
-  color: #777;
-}
-.jsot .row .header .name .local-reg-num:before,
-.jsot .row .header .value .local-reg-num:before {
-  content: "-@@-";
-}
-.jsot .row .header .name .local-reg-num:after,
-.jsot .row .header .value .local-reg-num:after {
-  content: "-";
-}
-.jsot .row .header .name .local-reg-num:before, .jsot .row .header .name .local-reg-num:after,
-.jsot .row .header .value .local-reg-num:before,
-.jsot .row .header .value .local-reg-num:after {
-  color: #333;
-}
-.jsot .row .header .name .symbol-description:before,
-.jsot .row .header .value .symbol-description:before {
-  content: '"';
-}
-.jsot .row .header .name .symbol-description:after,
-.jsot .row .header .value .symbol-description:after {
-  content: '"';
-}
-.jsot .row .header .name .symbol-description:before, .jsot .row .header .name .symbol-description:after,
-.jsot .row .header .value .symbol-description:before,
-.jsot .row .header .value .symbol-description:after {
-  color: #333;
-}
-.jsot .row .header .comment {
-  font-weight: bold;
-  font-style: italic;
-  color: #faa;
-}
-.jsot .row .header .comment:before {
-  content: "← ";
-  font-style: normal;
-}
-
-.jsot {
-  font-size: 16px;
-  font-family: consolas;
-  color: #999;
-}
-.jsot .row {
-  display: block;
-  padding-right: 30px;
-}
-.jsot .row .branch {
-  cursor: pointer;
-  text-shadow: 0 0 1px #999;
-}
-.jsot .row .header-ext {
-  min-width: 50px;
-}
-.jsot .row:hover {
-  background-color: #eff;
-}
-.jsot .row:hover .name.nip-name:before, .jsot .row:hover .name.nip-name:after {
-  color: #333;
-}
-.jsot .c-window {
-  white-space: normal;
-  border: 1px solid #777;
-  box-shadow: 0 5px 20px #333;
-  margin: 5px;
-  padding: 5px;
-  background-color: #eee;
-}
-.jsot .c-window > .c-w-header,
-.jsot .c-window > .c-w-footer {
-  text-align: right;
-}
-.jsot .c-window > .c-w-header > .btn-el,
-.jsot .c-window > .c-w-footer > .btn-el {
-  height: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-  cursor: pointer;
-  user-select: none;
-  vertical-align: middle;
-}
-.jsot .c-window > .c-w-header > .btn-el:hover,
-.jsot .c-window > .c-w-footer > .btn-el:hover {
-  text-shadow: 0 0 1px #888, 0 0 1px #888, 0 0 1px #888;
-}
-.jsot .c-window > .c-w-header > .btn-el:active,
-.jsot .c-window > .c-w-footer > .btn-el:active {
-  text-shadow: 0 0 10px #888, 0 0 10px #888, 0 0 10px #888, 0 0 1px #888, 0 0 1px #888, 0 0 1px #888;
-}
-.jsot .c-window > .c-w-content-wr {
-  margin: 5px 0;
-  border: 1px solid #777;
-  font-weight: normal;
-}
-.jsot .c-window > .c-w-content-wr pre.js-hl-c-w-content.jsot-syntax-hl {
-  margin: 0;
-  display: block;
-  padding: 10px 20px;
-  max-height: none;
-}
-.jsot .c-window > .c-w-content-wr pre.js-hl-c-w-content.jsot-syntax-hl[data-max-heigth=true] {
-  max-height: 500px;
-  overflow-y: scroll;
-}
-.jsot .c-window .float-cleaner {
-  clear: both;
-}
-.jsot .c-window.dark-skin {
-  border: none;
-  background-color: #444;
-}
-.jsot .c-window.dark-skin > .c-w-content-wr {
-  border: none;
-}
-
-@keyframes rotate-loadbar {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0Q6L0dpdEh1Yi1teS9Kc09UL0NTUy9faGVhZGVyLnNjc3MiLCJmaWxlOi8vL0Q6L0dpdEh1Yi1teS9Kc09UL0NTUy9Kc09ULnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUtJO0VBRUMsT0NOaUI7RURPakI7RUFDQTs7QUFNQTtFQUNDOztBQUlEO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7O0FBSUQ7RUFDQzs7QUFLSDtFQUNDO0VBQ0E7RUFDQTs7QUFDQTtFQUNDOztBQUlGO0VBQ0M7RUFDQTs7QUFDQTtFQUNDO0VBRUE7O0FBRUE7RUFDQzs7QUFFRDtFQUNDOztBQUVEO0FBQUE7RUFFQzs7QUFJRjtFQUNDO0VBQ0E7RUFFQSxPQy9EaUI7O0FEZ0VqQjtFQUNDO0FBQ0E7QUFBQTtBQUFBO0FBQUE7O0FBSUE7RUFDQzs7QUFFRDtFQUNDOztBQUVEO0VBRUM7RUFDQSxPQ2xGZTs7QUR1RmhCO0VBRUM7RUFDQTs7QUFXRDtFQUVDO0VBQ0EsT0N4R2U7O0FEZ0hsQjtFQUNDOztBQUVEO0VBQ0M7O0FBRUQ7RUFFQyxPQ3hIaUI7RUR5SGpCOztBQUVEO0VBQ0M7RUFDQSxPQzdIaUI7RUQ4SGpCOztBQUNBO0VBQ0M7O0FBRUQ7RUFDQzs7QUFLSDtFQUNDO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBRUE7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNDO0VBQ0E7O0FBRUQ7RUFDQztFQUNBO0VBQ0E7O0FBRUE7RUFFQzs7QUFFQTtFQUdDO0VBRUE7RUFFQTtFQUdBO0VBRUE7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQWNBO0VBQ0E7O0FBYkE7RUFDQztFQUNBO0VBR0E7RUFFQTtFQUVBO0VBQ0E7O0FBTUY7RUFFQzs7QUFDQTtFQUNDO0VBQ0E7O0FBSUY7RUFFQzs7QUFDQTtFQUNDO0VBQ0E7RUFDQTs7QUFLSjtFQUNDOztBQUNBO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBR0M7RUFBMEI7O0FBQzFCO0VBQTBCOztBQUMxQjtFQUEwQjs7QUFHMUI7RUFBMEI7O0FBQzFCO0VBQTBCOztBQUMxQjtFQUEwQjs7QUF3QjVCO0VBQ0M7O0FBQ0E7RUFDQzs7QUFDQTtFQUNDOztBQVFKO0VBQ0M7O0FBSUU7RUFDQzs7QUFNRjtFQUdDO0VBQ0E7O0FBT0o7RUFDQzs7QUFDQTtFQUNDO0VBQ0E7RUFDQSxPQ3ZTaUI7O0FEeVNsQjtFQUNDO0VBQ0EsT0N6U2lCOztBRDJTbEI7RUFFQztFQUNBLE9DalRpQjs7QURtVGxCO0VBQ0M7RUFDQSxPQ3ZUaUI7RUR3VGpCOztBQUNBO0VBRUM7RUFDQSxPQzVUZ0I7O0FEa1VqQjtFQUNDO0VBQ0EsT0NoVWdCOztBRHVVbEI7QUFBQTtFQUNDOztBQUVEO0FBQUE7RUFDQzs7QUFFRDtBQUFBO0FBQUE7RUFFQyxPQzFWaUI7O0FEaVdsQjtBQUFBO0VBQ0M7O0FBRUQ7QUFBQTtFQUNDOztBQUdEO0FBQUE7QUFBQTtFQUVDLE9DMVdpQjs7QUQ4V25CO0VBQ0M7RUFDQTtFQUNBLE9DNVdrQjs7QUQ4V2xCO0VBQ0M7RUFDQTs7O0FDbldMO0VBQ0M7RUFDQTtFQUNBLE9BcEJxQjs7QUFzQnJCO0VBQ0M7RUFDQTs7QUFHQTtFQUVDO0VBQ0E7O0FBRUQ7RUFDQzs7QUFHRjtFQUNDLGtCQXpCb0I7O0FBNEJuQjtFQUVDLE9BM0NrQjs7QUFnRHJCO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUNBO0FBQUE7RUFHQzs7QUFDQTtBQUFBO0VBQ0M7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFFQTs7QUFDQTtBQUFBO0VBQ0MsYUFDQzs7QUFJRjtBQUFBO0VBQ0MsYUFDQzs7QUFTSjtFQUdDO0VBQ0E7RUFDQTs7QUFHQTtFQUNDO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0M7RUFDQTs7QUFJSDtFQUNDOztBQUlGO0VBQ0M7RUFDQTs7QUFDQTtFQUNDOzs7QUFNSDtFQUNDO0lBQ0M7O0VBRUQ7SUFDQyIsImZpbGUiOiJKc09ULnNjc3MuanMifQ== */`.replaceAll(/\bjsot/g, clPref);
-
-	const styleClassName = `${clPref}__theme-style`;
-
-	const styleAlreadyExists = [].some.call(
-		document.querySelectorAll(`style.${styleClassName}`), 
-		(v) => v.textContent === cssCode
-	);
-
-	if (! styleAlreadyExists) {
-		const style = eHTML(`<style class="${styleClassName}"></style>`);
-		style.textContent = cssCode;
-		document.head.appendChild(style);
-	}
-}
-
-
-function eHTML(code, shell=null) {
-	const _shell = 
-		! shell                  ? document.createElement("div") :
-		typeof shell == "string" ? document.createElement(shell) :
-		typeof shell == "object" ? shell :
-			null;
-	_shell.innerHTML = code;
-	return _shell.children[0];
-}
-
-/***/ }),
-/* 7 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Explorer)
-/* harmony export */ });
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _render_tree_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony import */ var _JsHter_JsHter_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
-
-
-
-
-
-class Explorer {
-	// **********************
-	// _ = {
-	//     ob               :
-	//     t                :
-	//     name             :
-	//     ajaxReqUrl       :
-	//     transact         :
-	// }
-	// **********************
-	constructor (inputEl, _={}) {
-		// _.ob = _.ob || window;
-		
-		this._ = _;
-		if (!_.ob) {
-			try {
-				_.ob = global;
-			} catch(err) {} 
-			try {
-				_.ob = window;
-			} catch(err) {} 
-		}
-		_.t = _.t || {};
-		_.name = _.name || "rootNode";
-
-		if (_.ajaxReqUrl) {
-			_.transact = _.transact || this._defaultAjaxTransact;
-		} else {
-			_.transact = _.transact || this._defaultTransact;
-		}
-
-		this._createCBar(inputEl, _);
-		this._display(inputEl);
-
-	}
-
-	_createCBar (inputEl, _) {
-		const cBar = this.cBar = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.eval(`
-			<div class="c-bar">
-				<button class="expand-node"  >&nbsp;&nbsp; + &nbsp;&nbsp;</button>
-				<button class="collapse-node">&nbsp;&nbsp; - &nbsp;&nbsp;</button>
-				<button class="recur-expand"  > ↳ + </button>
-				<button class="recur-collapse"> ↳ - </button>
-				<button class="update"> ↻ </button>
-				<button class="get-json">
-					<svg 
-						version="1.1" 
-						xmlns="http://www.w3.org/2000/svg" 
-						xmlns:xlink="http://www.w3.org/1999/xlink" 
-						x="0px" 
-						y="0px"
-						width="15px" 
-						height="15px"
-						viewBox="0 0 532.745 532.745" 
-						style="
-							vertical-align: bottom;
-							enable-background:new 0 0 532.745 532.745;
-						" 
-						xml:space="preserve"
-						>
-						<g>
-							<g>
-								<circle cx="266.373" cy="284.534" r="72.647"/>
-								<path d="M121.078,127.132V90.809H36.324v36.324H0v314.804h532.745V127.132H121.078z M266.373,417.721
-									c-73.567,0-133.186-59.643-133.186-133.186s59.619-133.186,133.186-133.186s133.186,59.643,133.186,133.186
-									S339.94,417.721,266.373,417.721z M472.206,211.887c-13.367,0-24.216-10.824-24.216-24.216s10.849-24.216,24.216-24.216
-									c13.367,0,24.216,10.824,24.216,24.216C496.422,201.063,485.573,211.887,472.206,211.887z"/>
-							</g>
-						</g>
-					</svg>
-				</button>
-				<button class="show-value"> .toString() </button> 
-				<button class="get-pathname"> p/n </button> 
-				<div class="loadbar-wrapper">
-					<div class="loadbar"><div class="inner"></div></div>
-				</div>
-				<div class="sort-by">
-					Sort By: 
-					<span 
-						class="setting-switcher" 
-						data-setting-name="by_name"
-						data-state="-1" 
-						data-states='[-1,1,0]'>Name - </span>
-					<span 
-						class="setting-switcher" 
-						data-setting-name="by_type"
-						data-state="-1" 
-						data-states='[-1,1,0]'>Type - </span>
-				</div>
-			</div>
-		`).children[0];
-
-		cBar.querySelectorAll("select").forEach((v) => {
-			v.onwheel = (e) => {
-				e.preventDefault();
-				var 
-					i = v.selectedIndex + Math.sign(e.deltaY),
-					max = v.options.length - 1;
-				i = (max < i)? 0 : (i < 0)? max : i;
-				v.selectedIndex = i;
-				this._settingsToNode();
-			}
-		});
-		
-		cBar.querySelector(".expand-node").onclick = (e) => {
-			cBar.m.ch = [];
-			this._display(inputEl);
-		}
-		
-		cBar.querySelector(".collapse-node").onclick = (e) => {
-			cBar.m.ch = null;
-			this._display(inputEl);
-		}
-
-		cBar.querySelectorAll(".setting-switcher").forEach((el) => {
-			el.onclick = (e) => {
-				var 
-					states = JSON.parse(el.dataset.states),
-					state = Number(el.dataset.state),
-					i = states.indexOf(state);
-				i ++;
-				if (states.length <= i)
-					i = 0;
-				el.dataset.state = states[i];
-				this._settingsToNode();
-			}
-		});
-
-		cBar.querySelector(".recur-expand").onclick = (e) => {
-			recursive(cBar.m, (m) => {
-				// !m.ch && m.tof == "object" && m.nip != "__proto__" && (m.ch = []);
-				if (!m.ch)
-					if (m.tof == "object")
-						if (!m.individualDetectedProto)
-							m.ch = [];
-			});
-			this._display(inputEl);
-		}
-
-		cBar.querySelector(".recur-collapse").onclick = (e) => {
-			recursive(cBar.m, (m) => {
-				if (m.ch && m.ch.length)
-					if (m.ch.every((v) => !v.ch))
-						m.ch = null;
-			});
-			this._display(inputEl);
-		}
-
-		cBar.querySelector(".update").onclick = (e) => {
-			this._display(inputEl);
-		}
-
-		cBar.querySelector(".get-json").onclick = (e) => {
-			var json = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(cBar.m);
-
-			this.copyToClipboard(json);
-
-			console.groupCollapsed(cBar.m.pathname);
-			console.log(cBar.m);
-			console.log(json);
-			console.groupEnd();
-			
-		}
-
-		cBar.querySelector(".get-pathname").onclick = (e) => {
-			this.copyToClipboard(cBar.m.pathname);
-			console.log(`cBar.m.pathname`, cBar.m.pathname);
-		}
-
-		cBar.querySelector(".show-value").onclick = async (e) => {
-			var m = cBar.m;
-			m.valueToString = true;
-			var param = await this._getParam();
-			delete m.valueToString;
-			if (m.tof == "function")
-				this._showValue(param, m, true);
-			else
-				this._showValue(param, m);
-			// console.log(m.pathname, "\n"+param);
-		}
-
-
-		function recursive(m, callb) {
-			callb(m);
-			if (m.ch && m.ch.length)
-				for (var ch of m.ch) 
-					recursive(ch, callb);
-		}
-
-		function show(selector) {
-			cBar.querySelector(selector).style.display = "";
-		}
-
-		function hide(selector) {
-			cBar.querySelector(selector).style.display = "none";
-		}
-
-		cBar.init = (m) => {
-			this._settingsFromNode(m);
-			if (m.ch) {
-				hide(".expand-node");
-				show(".collapse-node");
-			} else {
-				show(".expand-node");
-				hide(".collapse-node");
-			}
-		}
-	}
-
-	async _defaultTransact (_) {
-		return (0,_parse_tree_js__WEBPACK_IMPORTED_MODULE_1__.default)(_.ob, _.name, _.t);
-	}
-
-	async _defaultAjaxTransact (_) {
-		var 
-			opts = {
-				method : "POST",
-				headers : {
-					'Content-Type' : 'application/x-www-form-urlencoded'
-				},
-				mode : "cors",
-				cache : "no-store",
-				body : "template="+encodeURIComponent(_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(_.t)),
-			},
-			resp, text, t;
-
-		try {
-			resp = await fetch(_.ajaxReqUrl, opts);
-			text = await resp.text();
-			t    = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getFromJson(text);
-		} catch(e) {
-			console.error(e);
-			throw e;
-		}
-
-		return t;
-	}
-
-
-	async _indicate (pr) {
-		var res;
-		this.cBar.querySelector(".loadbar").dataset.status = "loading";
-		this.cBar.querySelector(".loadbar").title = "Status: Loading ... ";
-		await new Promise((ok) => setTimeout(ok));
-
-		try {
-			res = await pr;
-		} catch(e) {
-			this.cBar.querySelector(".loadbar").dataset.status = "err";
-			this.cBar.querySelector(".loadbar").title = "Status: "+e.toString();
-			console.error(e);
-			return e;
-		}
-
-		this.cBar.querySelector(".loadbar").dataset.status = "ok";
-		this.cBar.querySelector(".loadbar").title = "Status: OK";
-		return res;
-	}
-
-	async _display (inputEl) {
-		var _ = this._;
-		_.t = await this._indicate(_.transact(_));
-		(0,_render_tree_js__WEBPACK_IMPORTED_MODULE_2__.default)(inputEl, _.t, this.cBar);
-	}
-
-	async _getParam () {
-		var _ = this._;
-		return await this._indicate(_.transact(_));
-	}
-
-	_settingsToNode () {
-		var 
-			m    = this.cBar.m,
-			coll = this.cBar.querySelectorAll(".setting-switcher");
-
-		coll.forEach((el) => {
-			let k = el.dataset.settingName, v = Number(el.dataset.state);
-			if (v < 0) {
-				if (m.settings && k in m.settings)
-					delete m.settings[k];
-			} else {
-				m.settings = m.settings || {};
-				m.settings[k] = v;
-			}
-		});
-	}
-
-	_settingsFromNode () {
-		var 
-			m    = this.cBar.m,
-			coll = this.cBar.querySelectorAll(".setting-switcher");
-
-		coll.forEach((el) => {
-			let 
-				k = el.dataset.settingName, 
-				v = (m.settings && k in m.settings)? m.settings[k] : "-1";
-			el.dataset.state = v;
-		});
-	}
-
-	_showValue(value, m, highlight=false) {
-		var row = m.header.parentElement;
-		var cWindow = _util_js__WEBPACK_IMPORTED_MODULE_0__.default.eval(`
-			<div class="c-window dark-skin">
-				<div class="c-w-header">
-					<div class="btn-el scroll-btn"title="scroll">&nbsp;&nbsp;⭿&nbsp;&nbsp;</div>
-					<div class="btn-el copy-btn"  title="copy"  >&nbsp;&nbsp;⧉&nbsp;&nbsp;</div>
-					<div class="btn-el close-btn" title="close" >&nbsp;&nbsp;✖&nbsp;&nbsp;</div>
-				</div>
-				<div class="float-cleaner"></div>
-				<div class="c-w-content-wr">
-					<pre class="js-hl-c-w-content jsot-syntax-hl jsot-js-hl calm-clarified-theme"></pre>
-				</div>
-				<div class="c-w-footer">
-					<div class="btn-el scroll-btn"title="scroll">&nbsp;&nbsp;⭿&nbsp;&nbsp;</div>
-					<div class="btn-el copy-btn"  title="copy"  >&nbsp;&nbsp;⧉&nbsp;&nbsp;</div>
-					<div class="btn-el close-btn" title="close" >&nbsp;&nbsp;✖&nbsp;&nbsp;</div>
-				</div>
-				<div class="float-cleaner"></div>
-			</div>
-		`).children[0];
-
-		row.after(cWindow);
-		cWindow.querySelectorAll(".close-btn").forEach((v) => {
-			v.onclick = (e) => cWindow.parentElement.removeChild(cWindow);
-		})
-		cWindow.querySelectorAll(".scroll-btn").forEach((v) => {
-			v.onclick = (e) => {
-				const el = cWindow.querySelector(".js-hl-c-w-content");
-				el.dataset.maxHeigth = !el.dataset.maxHeigth || ""
-			};
-		})
-		cWindow.querySelectorAll(".copy-btn").forEach((v) => {
-			v.onclick = (e) => this.copyToClipboard(value);
-		})
-		var contentEl = cWindow.querySelector(".js-hl-c-w-content");
-		if (highlight)
-			(new _JsHter_JsHter_js__WEBPACK_IMPORTED_MODULE_3__.default()).highlight(contentEl, value);
-			// contentEl.innerHTML = jsot.getHighlightedCode(value);
-		else 
-			contentEl.textContent = value;
-	}
-
-	copyToClipboard(str) {
-		const tA = document.createElement("textarea");
-		tA.value = str;
-		document.body.appendChild(tA);
-		tA.select();
-		document.execCommand("copy");
-		document.body.removeChild(tA);
-	}
-	
-}
-
-
-/***/ }),
-/* 8 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ JsHlter)
-/* harmony export */ });
-/* harmony import */ var _set_style_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
-/* harmony import */ var _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
-
-
-
-const version = "1.1.3";
-
-const {
-	token,
-	nToken,
-	spToken,
-	rule,
-	domain,
-	seq,
-	alter,
-	q,
-	not,
-	spWrap,
-	error,
-	deb,
-} = _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.describeAPI;
-
-const
-	d = {
-		comment : domain("comment", function(pc) {
-			return alter(r.comment_line, r.comment_snippet)(pc);
-		}),
-		string  : domain("string" , function(pc) {
-			return r.string_single(pc) || r.string_dowble(pc) || r.string_slash(pc);
-		}),
-		re      : domain("re"     , function(pc) {
-			return token(/\/(\\\/|[^\/\n])+\/[migy]{0,4}/y)(pc);
-		}),
-		slashed : domain("slashed", function(pc) {
-			return token(/\\[\\ntbu'"`]/y)(pc);
-		}),
-		keyword : domain("keyword", function(pc) {
-			return token(/\bvar\b|\blet\b|\bconst\b|\bclass\b|\bextends\b|\btypeof\b|\binstanceof\b|\bnew\b|\breturn\b|\bif\b|\belse\b|\bfor\b|\bin\b|\bof\b|\bwhile\b|\bbreak\b|\bdo\b|\bcontinue\b|\bswitch\b|\bcase\b|\bthrow\b|\byield\b|\bimport\b|\bexport\b|\bdefault\b|\bfrom\b|\bas\b/y)(pc);
-		}),
-		string_tag      : domain("string_tag", function(pc) {
-			return seq(
-				token("${"),
-				r.main_inner.q("*"),
-				token("}"),
-			)(pc);
-		}),
-		word          : domain("word", function(pc) {
-			return token(/\b[a-zA-Z_$][0-9a-zA-Z_$]*\b/y)(pc);
-		}),
-		operator        : domain("operator", function(pc) {
-			return token(/\?\.|\?|=>|!|%|&&|&|\*|-|\+|=|\|\||\||<|>/y)(pc);
-		}),
-		punctuation     : domain("punctuation", function(pc) {
-			return token(/\.|,|:|;/y)(pc);
-		}),
-		number          : domain("number", function(pc) {
-			return token(/\b\d+\.|\.\d+\b|\b\d+\.?\d*\b/y)(pc);
-		}),
-		bool            : domain("bool", function(pc) {
-			return token(/\btrue\b|\bfalse\b/y)(pc);
-		}),
-		sp_const        : domain("sp_const", function(pc) {
-			return token(/\bundefined\b|\bnull\b|\bInfinity\b/y)(pc);
-		}),
-		paren           : domain("paren", function(pc) {
-			return seq(
-				token("("),
-				r.main_inner.q("*"),
-				token(")"),
-			)(pc);
-		}),
-		curly           : domain("curly", function(pc) {
-			return seq(
-				token("{"),
-				r.main_inner.q("*"),
-				token("}"),
-			)(pc);
-		}),
-		bracket         : domain("bracket", function(pc) {
-			return seq(
-				token("["),
-				r.main_inner.q("*"),
-				token("]"),
-			)(pc);
-		}),
-		f_sign          : domain("f_sign", function(pc) {
-			return seq(
-				spWrap(d.word.as("f_name")),
-				spWrap(d.paren),
-			)(pc);
-		}),
-		f_decl          : domain("f_decl", function(pc) {
-			return seq(
-				spWrap(token(/\basync\b/y).in("keyword").q("*")),
-				spWrap(token(/\bfunction\b/y).in("keyword")),
-				spWrap(token("*").in("keyword").q("*")),
-				spWrap(d.word.as("f_name")),
-				spWrap(d.paren),
-				spWrap(d.curly),
-			)(pc);
-		}),
-	},
-	r = {
-		main            : rule(function(pc) {
-			return q( 
-				alter(r.main_inner, r.simple), 
-			"*" )(pc);
-		}),
-		main_inner       : rule(function(pc) {
-			return alter(
-				r.space,
-				d.keyword,
-				d.operator,
-				d.f_decl,
-				d.f_sign,
-				d.bool,
-				d.sp_const,
-				d.word,
-				d.paren,
-				d.curly,
-				d.bracket,
-				d.number,
-				d.punctuation,
-				d.comment,
-				d.string,
-				d.re,
-			)(pc);
-		}),
-		space           : rule(function(pc) {
-			return token(/\s+/y)(pc);
-		}),
-		simple          : rule(function(pc) {
-			return token(/./y)(pc);
-		}),
-		comment_line    : rule(function(pc) {
-			return seq(
-				token("//"),
-				nToken("\n").q("*"),
-			)(pc);
-		}),
-		comment_snippet : rule(function(pc) {
-			return seq(
-				token("/*"),
-				nToken("*/").q("*"),
-				token("*/"),
-			)(pc);
-		}),
-		string_single   : rule(function(pc) {
-			return seq(
-				token("'"),
-				alter(d.slashed, nToken("'")).q("*"),
-				token("'"),
-			)(pc);
-		}),
-		string_dowble   : rule(function(pc) {
-			return seq(
-				token('"'),
-				alter(d.slashed, nToken('"')).q("*"),
-				token('"'),
-			)(pc);
-		}),
-		string_slash    : rule(function(pc) {
-			return seq(
-				token("`"),
-				alter(d.slashed, d.string_tag, nToken("`")).q("*"),
-				token("`"),
-			)(pc);
-		}),
-	};
-
-class JsHlter extends _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.Highlighter {
-	constructor (clPref="jsot-js-hl") {
-		super(r.main, clPref);
-		(0,_set_style_js__WEBPACK_IMPORTED_MODULE_0__.default)(clPref);
-	}
-
-	get version () { return version; }
-
-	getHighlighted (
-		templ, firstLineNum=1, cssClasses="calm-clarified-theme") {
-		return super.getHighlighted(templ, firstLineNum, cssClasses);
-	}
-}
-
-
-/***/ }),
-/* 9 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setStyle)
-/* harmony export */ });
-function setStyle(clPref) {
-
-	const cssCode = `
-		.jsot-js-hl.calm-clarified-theme .jsot-js-hl__line .jsot-js-hl__line-number {
-		  background-color: #444; }
-
-		.jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text {
-		  color: #eee; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_v {
-		    color: #ddc; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_n {
-		    color: #78a; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text ._null {
-		    color: #98f; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .error {
-		    color: #fff;
-		    background-color: #e48;
-		    box-shadow: inset 0 0 2px #fff; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .f_name {
-		    color: #eee;
-		    font-weight: bold; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .comment {
-		    color: #777; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string {
-		    color: #b98; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .re {
-		    color: #78a; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .slashed {
-		    color: #fb6; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .number {
-		    color: #fb6; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .bool {
-		    color: #fb6; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .sp_const {
-		    color: #fb6; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .keyword {
-		    color: #78a; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .operator {
-		    color: #78a; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .punctuation {
-		    color: #eee; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .paren {
-		    color: #ddc; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .curly {
-		    color: #ddc; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .bracket {
-		    color: #ddc; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .word {
-		    color: #ddc; }
-		  .jsot-js-hl.calm-clarified-theme .jsot-js-hl__line-text .string_tag {
-		    color: #ddc; }
-
-	`.replaceAll(/jsot-js-hl/g, clPref);
-
-	const styleClassName = `${clPref}__theme-style`;
-
-	const styleAlreadyExists = [].some.call(
-		document.querySelectorAll(`style.${styleClassName}`), 
-		(v) => v.textContent === cssCode
-	);
-
-	if (! styleAlreadyExists) {
-		const style = eHTML(`<style class="${styleClassName}"></style>`);
-		style.textContent = cssCode;
-		document.head.appendChild(style);
-	}
-}
-
-
-function eHTML(code, shell=null) {
-	const _shell = 
-		! shell                  ? document.createElement("div") :
-		typeof shell == "string" ? document.createElement(shell) :
-		typeof shell == "object" ? shell :
-			null;
-	_shell.innerHTML = code;
-	return _shell.children[0];
-}
-
-/***/ }),
-/* 10 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _describeAPI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
-/* harmony import */ var _Highlighter_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-	version: "5.2.3",
-	describeAPI: _describeAPI_js__WEBPACK_IMPORTED_MODULE_0__.default,
-	Highlighter: _Highlighter_js__WEBPACK_IMPORTED_MODULE_1__.default,
-});
-
-/***/ }),
-/* 11 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-	token,
-	nToken,
-	spToken,
-	rule,
-	domain,
-	seq,
-	alter,
-	q,
-	not,
-	spWrap,
-	error,
-	deb,
-});
-
-const Analyzer_proto = {
-	q : function (quanto, sepCallb=undefined) {
-		if (quanto == "*/" || quanto == "+/")
-			chekToAnalyzer("analyzer.q", 2, sepCallb);
-		return q(this, quanto, sepCallb);
-	},
-	in : function (name) {
-		return domain(name, this);
-	},
-	and : function (callb) {
-		chekToAnalyzer("analyzer.and", 1, callb);
-		return seq(this, callb);
-	},
-	or : function (callb) {
-		chekToAnalyzer("analyzer.or", 1, callb);
-		return alter(this, callb);
-	},
-	break : function (...args) {
-		for (let [k, callb] of args.entries())
-			chekToAnalyzer("analyzer.break", k + 1, callb);
-		let message = "";
-		const _break_ = (pc) => {
-			if(this(pc)) {
-				seq(...args).or(undefinedError(message))(pc);
-				return true;
-			} else {
-				return false;
-			}
-		}
-		Object.setPrototypeOf(_break_, Analyzer_proto);
-		_break_.msg = function(msg) {
-			message = msg;
-			return this;
-		}
-		return _break_;
-	},
-	catch : function (msg) {
-		const _catch_ = (pc) => {
-			return alter(
-				this,
-				error(msg)
-			)(pc);
-		}
-		Object.setPrototypeOf(_catch_, Analyzer_proto);
-		return _catch_;
-	},
-	deb : function (i0=0, i1=0) {
-		return deb(this, i0, i1);
-	},
-};
-
-Object.setPrototypeOf(Analyzer_proto, Function);
-
-function seq(...callbs) {
-	for (let [k, callb] of callbs.entries())
-		chekToAnalyzer("seq", k + 1, callb);
-	function _seq_(pc) {
-		const hpc = pc.createHypo();
-		for (let [k, callb] of callbs.entries()) {
-			const res = callb(hpc);
-			if (res || pc.errC.eFlag) 
-				continue;
-			else 
-				return false;
-		}
-		pc.acceptHypo(hpc);
-		return true;
-	}
-	Object.setPrototypeOf(_seq_, Analyzer_proto);
-	return _seq_;
-}
-
-function alter(...callbs) {
-	for (let [k, callb] of callbs.entries())
-		chekToAnalyzer("alter", k + 1, callb);
-	function _alter_(pc) {
-		let res;
-		for (let [k, callb] of callbs.entries()) {
-			const res = callb(pc);
-			if (res)
-				return true;
-		}
-		return false;
-	}
-	Object.setPrototypeOf(_alter_, Analyzer_proto);
-	return _alter_;
-}
-
-function q(callb, quanto, callb2=undefined) {
-	chekToAnalyzer("q", 1, callb);
-	let _q_;
-	if (quanto == "*") {
-		_q_ = function _q_zero_or_many_(pc) {
-			while (pc.text[pc.i]) {
-				let i0 = pc.i, status;
-				status = callb(pc);
-				if (status) {
-					if (i0 != pc.i) {
-						continue;
-					} else {
-						/**
-						 * Not strict variant. Mismatches allowed throw error message in console.
-						 */
-						console.error(`(!)`, `i0 == pc.i`, 
-							"\n\tpc.i :", pc.i, "\n\tpc.monitor :", pc.monitor); 
-						pc.i ++;
-						return true;
-
-						/**
-						 * Strict variant. Mismatches forbidden. Script will stoped.
-						 */
-						// console.error(`(!)`, `i0 == pc.i`, pc); debugger; throw new Error();
-					}
-				} else 
-					return true;
-			}
-			return true;
-		}
-	} else if (quanto == "+") {
-		_q_ = function _q_one_or_many_(pc) {
-			return callb(pc) && q(callb, "*")(pc);
-		}
-	} else if (quanto == "?") {
-		_q_ = function _q_zero_or_one_(pc) {
-			return callb(pc) || true;
-		}
-	} else if (quanto == "*/") {
-		chekToAnalyzer("q", 3, callb2);
-		_q_ = function _q_zero_or_many_sep_(pc) {
-			seq(
-				callb,
-				seq(callb2, callb).q("*")
-			)(pc);
-			return true;
-		}
-	} else if (quanto == "+/") {
-		chekToAnalyzer("q", 3, callb2);
-		_q_ = function _q_one_or_many_sep_(pc) {
-			return seq(
-					callb,
-					seq(callb2, callb).q("*")
-				)(pc);
-		}
-	} else {
-		console.error(`(!)`, `Invalid quantifier`, `'${quanto}'`); debugger; throw new Error();
-	}
-
-	Object.setPrototypeOf(_q_, Analyzer_proto);
-	return _q_;
-}
-
-function not(callb) {
-	chekToAnalyzer("not", 1, callb);
-	const _not_ = function _not_(pc) {
-		const hpc = pc.createHypo();
-		const res = callb(hpc);
-		if (! res) {
-			pc.match(pc.text[pc.i]);
-			return true;
-		} else 
-			return false;
-	}
-	Object.setPrototypeOf(_not_, Analyzer_proto);
-	return _not_;
-}
-
-function domain(name, callb, msg=null) {
-	const _domain_ = function _domain_(pc) {
-		const
-			chpc = pc.createChildHypo(name),
-			status = callb(chpc)
-		if (msg) 
-			chpc.msg = msg;
-		if (status || pc.errC.eFlag) 
-			pc.acceptChildHypo(chpc);
-		return !! status;
-	}
-	_domain_.msg = function (text) {
-		return domain(name, callb, text);
-	}
-	_domain_.as = function(otherName, msg=null) {
-		return domain(otherName, callb);
-	}
-	Object.setPrototypeOf(_domain_, Analyzer_proto);
-	return _domain_;
-}
-
-function rule(callb) {
-	const _rule_ = function _rule_(pc) {
-		const 
-			hpc    = pc.createHypo(),
-			status = callb(hpc);
-		if (status || pc.errC.eFlag) 
-			pc.acceptHypo(hpc);
-		return !! status;
-	}
-	Object.setPrototypeOf(_rule_, Analyzer_proto);
-	return _rule_;
-}
-
-function token(templ) {
-	const _token_ = function _token_(pc) {
-		return pc.match(templ);
-	}
-	Object.setPrototypeOf(_token_, Analyzer_proto);
-	return _token_;
-}
-
-function nToken(templ) {
-	const _notToken_ = function _notToken_(pc) {
-		return pc.notMatch(templ);
-	}
-	Object.setPrototypeOf(_notToken_, Analyzer_proto);
-	return _notToken_;
-}
-
-function spToken(templ) {
-	const _space_wrapped_token_ = function(pc) {
-		return seq(token(/\s+/y).q("*"), token(templ), token(/\s+/y).q("*"),)(pc);
-	}
-	Object.setPrototypeOf(_space_wrapped_token_, Analyzer_proto);
-	return _space_wrapped_token_;
-}
-
-function spWrap(callb) {
-	chekToAnalyzer("spWrap", 1, callb);
-	const _space_wrapped_ = function(pc) {
-		return seq(token(/\s+/y).q("*"), callb, token(/\s+/y).q("*"),)(pc);
-	}
-	Object.setPrototypeOf(_space_wrapped_, Analyzer_proto);
-	return _space_wrapped_;
-}
-
-function error(msg) {
-	const _error_ = function(pc) {
-		domain("error", token(/\s*.*/y), msg)(pc);
-		pc.errC.eFlag = true;
-		domain("after-error", token(/\s+|\S+/y), msg).q("*")(pc);
-		return true;
-	}
-	Object.setPrototypeOf(_error_, Analyzer_proto);
-	return _error_;
-}
-
-function undefinedError(msg) {
-	const _undefined_error_ = function(pc) {
-		return error("Undefined error. "+msg)(pc);
-	}
-	Object.setPrototypeOf(_undefined_error_, Analyzer_proto);
-	return _undefined_error_;
-}
-
-function deb(callb, a=0, b=0) {
-	chekToAnalyzer("deb", 1, callb);
-	function _deb_(pc) {
-		b = b || pc.text.length;
-		if (a <= pc.i && pc.i <= b) {
-			debugger;
-			const res = callb(pc);
-			console.log(`res`, res);
-			debugger;
-			return res;
-		}
-	}
-	Object.setPrototypeOf(_deb_, Analyzer_proto);
-	return _deb_;
-}
-
-function chekToAnalyzer(fName, argN, callb) {
-	if (! callb || callb instanceof Analyzer_proto) {
-		console.error(`Argument`, argN, `(from 1) of function '${fName}()' is not Analiser. There is: \n`, callb?.toString ? callb.toString() : callb);
-		throw new Error(`Invalid callback. \n\tArgument ${argN} of function '${fName}()' is not Analiser. \n`);
-	} else
-		return true;
-}
-
-/***/ }),
-/* 12 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ HighlightAPI)
 /* harmony export */ });
-/* harmony import */ var _ParseContext_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
+/* harmony import */ var _ParseContext_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ParseContext.js */ "./syntax-highlight-framework/ParseContext.js");
 
 
 class HighlightAPI {
@@ -3009,14 +2954,56 @@ function getFirstLineNum(el) {
 }
 
 /***/ }),
-/* 13 */
+
+/***/ "./syntax-highlight-framework/ModelNode.js":
+/*!*************************************************!*\
+  !*** ./syntax-highlight-framework/ModelNode.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ModelNode)
+/* harmony export */ });
+class ModelNode {
+	constructor (name, ch) {
+		Object.defineProperties(this,{
+			name: {value: name},
+			ch  : {value: ch},
+		});
+	}
+
+	get text () {
+		let res = "";
+		recur(this.ch);
+		return res;
+		function recur(sb) {
+			if (sb instanceof Array) {
+				sb.forEach(recur);
+			} else if (typeof sb == "object") {
+				recur(sb.ch);
+			} else {
+				res += sb;
+			}
+		}
+	}
+}
+
+/***/ }),
+
+/***/ "./syntax-highlight-framework/ParseContext.js":
+/*!****************************************************!*\
+  !*** ./syntax-highlight-framework/ParseContext.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ParseContext)
 /* harmony export */ });
-/* harmony import */ var _ModelNode_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var _ModelNode_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ModelNode.js */ "./syntax-highlight-framework/ModelNode.js");
 
 
 class ParseContext {
@@ -3150,193 +3137,19 @@ function pushOneLineText(arr, subj) {
 }
 
 /***/ }),
-/* 14 */
+
+/***/ "./syntax-highlight-framework/describeAPI.js":
+/*!***************************************************!*\
+  !*** ./syntax-highlight-framework/describeAPI.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ModelNode)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-class ModelNode {
-	constructor (name, ch) {
-		Object.defineProperties(this,{
-			name: {value: name},
-			ch  : {value: ch},
-		});
-	}
-
-	get text () {
-		let res = "";
-		recur(this.ch);
-		return res;
-		function recur(sb) {
-			if (sb instanceof Array) {
-				sb.forEach(recur);
-			} else if (typeof sb == "object") {
-				recur(sb.ch);
-			} else {
-				res += sb;
-			}
-		}
-	}
-}
-
-/***/ }),
-/* 15 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ServerAgent)
-/* harmony export */ });
-/* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-
-
-
-class ServerAgent {
-	constructor(_ = {}) {
-		_.name = _.name || "rootNode";
-		_.ob = _.ob || global;
-		_.t = _.t || {};
-		_.portHost = _.portHost || [];
-		_.portHost[0] = _.portHost[0] || 3333;
-		// _.portHost[1] = _.portHost[1] || "127.0.0.1";
-		_.portHost[1] = _.portHost[1] || "localhost";
-
-		Promise.all([
-			Promise.resolve(/* import() */).then(__webpack_require__.t.bind(__webpack_require__, 18, 19)),
-			Promise.resolve(/* import() */).then(__webpack_require__.t.bind(__webpack_require__, 19, 19)),
-			Promise.resolve(/* import() */).then(__webpack_require__.t.bind(__webpack_require__, 20, 19)),
-			Promise.resolve(/* import() */).then(__webpack_require__.t.bind(__webpack_require__, 21, 19)),
-		]).then(([http$, fs$, path$, url$]) => {
-			const __filename = url$.fileURLToPath("file:///D:/GitHub-my/JsOT/NodeJsServerAgent/NodeJsServerAgent.js"),
-				__dirname = path$.dirname(__filename),
-				serverRoot = path$.resolve(__dirname, "../");
-
-			console.log(`__dirname`, __dirname);
-			var server = new http$.Server(function (req, res) {
-				// console.log("\n↑ GO");
-
-				req.on("error", (err) => console.error(err));
-				res.on("error", (err) => console.error(err));
-
-				const [reqPath, reqQuery] = req.url.split("?"),
-					mimeType = getMIME(reqPath);
-
-				res.setHeader("Access-Control-Allow-Origin", "*");
-
-				if (req.url == "/parse") {
-					res.setHeader("Content-Type", 'text/plain; Charset="UTF-8"');
-					res.setHeader("Cash-Control", "no-store");
-
-					var reqBody = "";
-					req.on("data", (dataBuf) => (reqBody += dataBuf.toString()));
-
-					req.on("end", (e) => {
-						// console.log(`reqBody.length`, reqBody.length);
-						var dataArr = reqBody.split("&");
-						var dataDict = dataArr.reduce((acc, v) => {
-							if (!v) return acc;
-
-							var k_v = v.split("=");
-							acc[k_v[0]] = decodeURIComponent(k_v[1]);
-
-							return acc;
-						}, {});
-						var inJson = dataDict.template;
-						// console.log(`inJson.length`, inJson.length);
-						var t = inJson ? _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getFromJson(inJson) : {};
-						var getted = (0,_parse_tree_js__WEBPACK_IMPORTED_MODULE_1__.default)(_.ob, _.name, t);
-						res.end(_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(getted));
-
-						// console.log("↓ OK\n\n");
-					});
-				} else if (req.url == "/") {
-					res.setHeader("Content-Type", "text/html; Charset=UTF-8");
-					res.setHeader("Cash-Control", "no-store");
-					var theUrl = `http://${_.portHost[1]}:${_.portHost[0]}`;
-					res.end(
-						getTemplateFile(
-							path$.resolve(__dirname, "./agent-page.html"),
-							{
-								name: _.name,
-								theUrl,
-							},
-							fs$
-						)
-					);
-
-					// console.log("↓ OK\n\n");
-				} else {
-					const filePN = serverRoot + req.url;
-					// const filePN = path$.resolve(serverRoot, req.url);
-					// console.log(`filePN >>`, filePN);
-					if (fs$.existsSync(filePN)) {
-						res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
-						res.setHeader("Cash-Control", "no-store");
-						res.end(fs$.readFileSync(filePN));
-						// console.log("Download", req.url);
-						// console.log("↓ OK\n\n");
-					} else {
-						res.end("JsOT - 404.");
-
-						// console.log("↓ OK\n\n");
-					}
-				}
-			});
-			server.listen(..._.portHost);
-			// server.listen(3000, "127.0.0.1");
-			console.log(
-				"JsOT",
-				_.name,
-				":",
-				"http://" + _.portHost[1] + ":" + _.portHost[0],
-				"\n",
-				_.ob
-			);
-		});
-
-		// setInterval(() => {}, 60000);
-	}
-}
-
-function getTemplateFile(pathname, substituts, fs$) {
-	let text = fs$.readFileSync(pathname).toString();
-	return text.replace(/{{\s*([\w\d]+)\s*}}/g, (m, name) => substituts[name]);
-}
-
-const MIME = {
-	"text/html": ["html"],
-	"text/css": ["css", "scss", "css.map"],
-	"application/javascript": ["js", "ejs", "cjs"],
-};
-
-function getMIME(fileName) {
-	const parts = fileName.split(".");
-	let ext = parts.pop();
-	if (ext == "map") ext = parts.pop() + "." + ext;
-	for (let i in MIME) if (MIME[i].includes(ext)) return i;
-	return "text/plain";
-}
-
-
-/***/ }),
-/* 16 */
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ JsonErrHlter)
-/* harmony export */ });
-/* harmony import */ var _set_style_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
-/* harmony import */ var _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
-
-
-
-const version = "1.1.3";
-
-const {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
 	token,
 	nToken,
 	spToken,
@@ -3349,241 +3162,565 @@ const {
 	spWrap,
 	error,
 	deb,
-} = _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.describeAPI;
+});
 
-const
-	__main_ = rule(function(pc) {
-		return seq(
-			spWrap(r.subject.catch("Main. Expected subject.")),
-			error("Main. Unexpected symbol after end of code.").q("*")
-		)(pc);
-	}),
-	list = rule(function(pc) {
-		return token("[").in("list__open")
-			.break(
-				seq(
-					spWrap(r.subject.q("*/", spWrap(token(",").in("list__coma")))),
-					token("]").in("list__close")
-						.catch("List. Expected closing bracket ' ] '."),
-				)
-			).msg("List.")(pc);
-			
-	}),
-	dict = rule(function(pc) {
-		return spToken("{")
-			.break(
-				alter(
-					spToken("}"),
-					seq(
-						seq(
-							d.string_n.catch("Dict. Expected string name of field."),
-							spToken(":").catch("Dict. Expected colon ' : '."),
-							r.subject.catch("Dict. Expected subject - (null | boll | number | string | list | dict).")
-						).q("*/", spToken(",")),
-						spToken("}").catch("Dict. Expected closing curly ' } ' or coma ' , '."),
-					),
-				)
-			).msg("Dict.")(pc);
-	}),
-	d = {
-		string_v : domain("string_v" , function(pc) {
-			return r.string(pc);
-		}),
-		string_n : domain("string_n" , function(pc) {
-			return r.string(pc);
-		}),
-		slashed : domain("slashed", function(pc) {
-			return token(/\\[\\ntbu'"`]/y)(pc);
-		}),
-		number          : domain("number", function(pc) {
-			return token(/\b\d+\.|\.\d+\b|\b\d+\.?\d*\b/y)(pc);
-		}),
-		bool            : domain("bool", function(pc) {
-			return token(/\btrue\b|\bfalse\b/y)(pc);
-		}),
-		_null           : domain("_null", function(pc) {
-			return token(/\bnull\b/y)(pc);
-		}),
+const Analyzer_proto = {
+	q : function (quanto, sepCallb=undefined) {
+		if (quanto == "*/" || quanto == "+/")
+			chekToAnalyzer("analyzer.q", 2, sepCallb);
+		return q(this, quanto, sepCallb);
 	},
-	r = {
-		subject         : rule(function(pc) {
+	in : function (name) {
+		return domain(name, this);
+	},
+	and : function (callb) {
+		chekToAnalyzer("analyzer.and", 1, callb);
+		return seq(this, callb);
+	},
+	or : function (callb) {
+		chekToAnalyzer("analyzer.or", 1, callb);
+		return alter(this, callb);
+	},
+	break : function (...args) {
+		for (let [k, callb] of args.entries())
+			chekToAnalyzer("analyzer.break", k + 1, callb);
+		let message = "";
+		const _break_ = (pc) => {
+			if(this(pc)) {
+				seq(...args).or(undefinedError(message))(pc);
+				return true;
+			} else {
+				return false;
+			}
+		}
+		Object.setPrototypeOf(_break_, Analyzer_proto);
+		_break_.msg = function(msg) {
+			message = msg;
+			return this;
+		}
+		return _break_;
+	},
+	catch : function (msg) {
+		const _catch_ = (pc) => {
 			return alter(
-				d._null,
-				d.bool,
-				d.number,
-				d.string_v,
-				list,
-				dict
+				this,
+				error(msg)
 			)(pc);
-		}),
-		string        : rule(function(pc) {
-			return seq(
-				token('"'),
-				q(alter(d.slashed, nToken('"')), "*"),
-				token('"'),
-			)(pc);
-		}),
-		space           : rule(function(pc) {
-			return token(/\s+/y)(pc);
-		}),
-	};
+		}
+		Object.setPrototypeOf(_catch_, Analyzer_proto);
+		return _catch_;
+	},
+	deb : function (i0=0, i1=0) {
+		return deb(this, i0, i1);
+	},
+};
 
-class JsonErrHlter extends _syntax_highlight_framework_syntax_hl_fk_js__WEBPACK_IMPORTED_MODULE_1__.default.Highlighter {
-	constructor (clPref="json-err-hl") {
-		super(__main_, clPref);
-		(0,_set_style_js__WEBPACK_IMPORTED_MODULE_0__.default)(clPref);
+Object.setPrototypeOf(Analyzer_proto, Function);
+
+function seq(...callbs) {
+	for (let [k, callb] of callbs.entries())
+		chekToAnalyzer("seq", k + 1, callb);
+	function _seq_(pc) {
+		const hpc = pc.createHypo();
+		for (let [k, callb] of callbs.entries()) {
+			const res = callb(hpc);
+			if (res || pc.errC.eFlag) 
+				continue;
+			else 
+				return false;
+		}
+		pc.acceptHypo(hpc);
+		return true;
 	}
-
-	get version () { return version; }
-
-	getHighlighted (
-		templ, firstLineNum=1, cssClasses="calm-clarified-theme") {
-		return super.getHighlighted(templ, firstLineNum, cssClasses);
-	}
+	Object.setPrototypeOf(_seq_, Analyzer_proto);
+	return _seq_;
 }
 
+function alter(...callbs) {
+	for (let [k, callb] of callbs.entries())
+		chekToAnalyzer("alter", k + 1, callb);
+	function _alter_(pc) {
+		let res;
+		for (let [k, callb] of callbs.entries()) {
+			const res = callb(pc);
+			if (res)
+				return true;
+		}
+		return false;
+	}
+	Object.setPrototypeOf(_alter_, Analyzer_proto);
+	return _alter_;
+}
+
+function q(callb, quanto, callb2=undefined) {
+	chekToAnalyzer("q", 1, callb);
+	let _q_;
+	if (quanto == "*") {
+		_q_ = function _q_zero_or_many_(pc) {
+			while (pc.text[pc.i]) {
+				let i0 = pc.i, status;
+				status = callb(pc);
+				if (status) {
+					if (i0 != pc.i) {
+						continue;
+					} else {
+						/**
+						 * Not strict variant. Mismatches allowed throw error message in console.
+						 */
+						console.error(`(!)`, `i0 == pc.i`, 
+							"\n\tpc.i :", pc.i, "\n\tpc.monitor :", pc.monitor); 
+						pc.i ++;
+						return true;
+
+						/**
+						 * Strict variant. Mismatches forbidden. Script will stoped.
+						 */
+						// console.error(`(!)`, `i0 == pc.i`, pc); debugger; throw new Error();
+					}
+				} else 
+					return true;
+			}
+			return true;
+		}
+	} else if (quanto == "+") {
+		_q_ = function _q_one_or_many_(pc) {
+			return callb(pc) && q(callb, "*")(pc);
+		}
+	} else if (quanto == "?") {
+		_q_ = function _q_zero_or_one_(pc) {
+			return callb(pc) || true;
+		}
+	} else if (quanto == "*/") {
+		chekToAnalyzer("q", 3, callb2);
+		_q_ = function _q_zero_or_many_sep_(pc) {
+			seq(
+				callb,
+				seq(callb2, callb).q("*")
+			)(pc);
+			return true;
+		}
+	} else if (quanto == "+/") {
+		chekToAnalyzer("q", 3, callb2);
+		_q_ = function _q_one_or_many_sep_(pc) {
+			return seq(
+					callb,
+					seq(callb2, callb).q("*")
+				)(pc);
+		}
+	} else {
+		console.error(`(!)`, `Invalid quantifier`, `'${quanto}'`); debugger; throw new Error();
+	}
+
+	Object.setPrototypeOf(_q_, Analyzer_proto);
+	return _q_;
+}
+
+function not(callb) {
+	chekToAnalyzer("not", 1, callb);
+	const _not_ = function _not_(pc) {
+		const hpc = pc.createHypo();
+		const res = callb(hpc);
+		if (! res) {
+			pc.match(pc.text[pc.i]);
+			return true;
+		} else 
+			return false;
+	}
+	Object.setPrototypeOf(_not_, Analyzer_proto);
+	return _not_;
+}
+
+function domain(name, callb, msg=null) {
+	const _domain_ = function _domain_(pc) {
+		const
+			chpc = pc.createChildHypo(name),
+			status = callb(chpc)
+		if (msg) 
+			chpc.msg = msg;
+		if (status || pc.errC.eFlag) 
+			pc.acceptChildHypo(chpc);
+		return !! status;
+	}
+	_domain_.msg = function (text) {
+		return domain(name, callb, text);
+	}
+	_domain_.as = function(otherName, msg=null) {
+		return domain(otherName, callb);
+	}
+	Object.setPrototypeOf(_domain_, Analyzer_proto);
+	return _domain_;
+}
+
+function rule(callb) {
+	const _rule_ = function _rule_(pc) {
+		const 
+			hpc    = pc.createHypo(),
+			status = callb(hpc);
+		if (status || pc.errC.eFlag) 
+			pc.acceptHypo(hpc);
+		return !! status;
+	}
+	Object.setPrototypeOf(_rule_, Analyzer_proto);
+	return _rule_;
+}
+
+function token(templ) {
+	const _token_ = function _token_(pc) {
+		return pc.match(templ);
+	}
+	Object.setPrototypeOf(_token_, Analyzer_proto);
+	return _token_;
+}
+
+function nToken(templ) {
+	const _notToken_ = function _notToken_(pc) {
+		return pc.notMatch(templ);
+	}
+	Object.setPrototypeOf(_notToken_, Analyzer_proto);
+	return _notToken_;
+}
+
+function spToken(templ) {
+	const _space_wrapped_token_ = function(pc) {
+		return seq(token(/\s+/y).q("*"), token(templ), token(/\s+/y).q("*"),)(pc);
+	}
+	Object.setPrototypeOf(_space_wrapped_token_, Analyzer_proto);
+	return _space_wrapped_token_;
+}
+
+function spWrap(callb) {
+	chekToAnalyzer("spWrap", 1, callb);
+	const _space_wrapped_ = function(pc) {
+		return seq(token(/\s+/y).q("*"), callb, token(/\s+/y).q("*"),)(pc);
+	}
+	Object.setPrototypeOf(_space_wrapped_, Analyzer_proto);
+	return _space_wrapped_;
+}
+
+function error(msg) {
+	const _error_ = function(pc) {
+		domain("error", token(/\s*.*/y), msg)(pc);
+		pc.errC.eFlag = true;
+		domain("after-error", token(/\s+|\S+/y), msg).q("*")(pc);
+		return true;
+	}
+	Object.setPrototypeOf(_error_, Analyzer_proto);
+	return _error_;
+}
+
+function undefinedError(msg) {
+	const _undefined_error_ = function(pc) {
+		return error("Undefined error. "+msg)(pc);
+	}
+	Object.setPrototypeOf(_undefined_error_, Analyzer_proto);
+	return _undefined_error_;
+}
+
+function deb(callb, a=0, b=0) {
+	chekToAnalyzer("deb", 1, callb);
+	function _deb_(pc) {
+		b = b || pc.text.length;
+		if (a <= pc.i && pc.i <= b) {
+			debugger;
+			const res = callb(pc);
+			console.log(`res`, res);
+			debugger;
+			return res;
+		}
+	}
+	Object.setPrototypeOf(_deb_, Analyzer_proto);
+	return _deb_;
+}
+
+function chekToAnalyzer(fName, argN, callb) {
+	if (! callb || callb instanceof Analyzer_proto) {
+		console.error(`Argument`, argN, `(from 1) of function '${fName}()' is not Analiser. There is: \n`, callb?.toString ? callb.toString() : callb);
+		throw new Error(`Invalid callback. \n\tArgument ${argN} of function '${fName}()' is not Analiser. \n`);
+	} else
+		return true;
+}
 
 /***/ }),
-/* 17 */
+
+/***/ "./syntax-highlight-framework/syntax-hl-fk.js":
+/*!****************************************************!*\
+  !*** ./syntax-highlight-framework/syntax-hl-fk.js ***!
+  \****************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ setStyle)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function setStyle(clPref) {
+/* harmony import */ var _describeAPI_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./describeAPI.js */ "./syntax-highlight-framework/describeAPI.js");
+/* harmony import */ var _Highlighter_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Highlighter.js */ "./syntax-highlight-framework/Highlighter.js");
 
-	const cssCode = `
-	.json-err-hl.calm-theme {
-	  background-color: #222; }
-	  .json-err-hl.calm-theme .json-err-hl__line-text {
-	    color: #eee; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .string {
-	      color: #ddc; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .string_v {
-	      color: #ddc; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .string_n {
-	      color: #78a; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .slashed {
-	      color: #f90; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .number {
-	      color: #f90; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text .bool {
-	      color: #f90; }
-	    .json-err-hl.calm-theme .json-err-hl__line-text ._null {
-	      color: #98f; }
 
-	.json-err-hl.calm-clarified-theme .json-err-hl__line .json-err-hl__line-number {
-	  background-color: #444; }
 
-	.json-err-hl.calm-clarified-theme .json-err-hl__line-text {
-	  color: #eee; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string {
-	    color: #ddc; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string_v {
-	    color: #ddc; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .string_n {
-	    color: #78a; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .bool {
-	    color: #fb6; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .number {
-	    color: #fb6; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text .slashed {
-	    color: #fb6; }
-	  .json-err-hl.calm-clarified-theme .json-err-hl__line-text ._null {
-	    color: #98f; }
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+	version: "5.2.3",
+	describeAPI: _describeAPI_js__WEBPACK_IMPORTED_MODULE_0__.default,
+	Highlighter: _Highlighter_js__WEBPACK_IMPORTED_MODULE_1__.default,
+});
 
-	.json-err-hl.monokai-theme {
-	  background-color: #333; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .string_n {
-	    color: #3bd; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .string {
-	    color: #da5; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .string_v {
-	    color: #da5; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .slashed {
-	    color: #98f; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .number {
-	    color: #98f; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text .bool {
-	    color: #98f; }
-	  .json-err-hl.monokai-theme .json-err-hl__line-text ._null {
-	    color: #e48; }
+/***/ }),
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string_n {
-	  color: #3bd; }
+/***/ "./util.js":
+/*!*****************!*\
+  !*** ./util.js ***!
+  \*****************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string {
-	  color: #da5; }
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+	getSymId,
+	getSymById,
+	getSymbolToStr,
+	getSymbolToHtmlStr,
+	eval: evalHTML,
+	recurTravel,
+	flatTempl,
+	getJson,
+	getFromJson,
+	getToString,
+	toOneSting,
+	"@@" : [],
+	"symbolStatProps" : [
+		"asyncIterator",
+		"hasInstance",
+		"isConcatSpreadable",
+		"iterator",
+		"match",
+		"matchAll",
+		"replace",
+		"search",
+		"species",
+		"split",
+		"toPrimitive",
+		"toStringTag",
+		"unscopables",
+	],
+});
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .string_v {
-	  color: #da5; }
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .slashed {
-	  color: #98f; }
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .number {
-	  color: #98f; }
+function getSymId(sym) {
+	var id = {sym}, x;
+	
+	if (x = sym.description)
+		id.descr = x;
+	
+	if (x = Symbol.keyFor(sym))
+		id.globRegKey = x;
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text .bool {
-	  color: #98f; }
+	if (x = this["symbolStatProps"].find((v) => Symbol[v] && Symbol[v] == sym))
+		id.statProp = x;
 
-	.json-err-hl.monokai-clarified-theme .json-err-hl__line-text ._null {
-	  color: #e48; }
+	if ((x = this["@@"].indexOf(sym)) == -1) 
+		x = this["@@"].push(sym) - 1;
+	id["@@-number"] = x;
 
-	 `.replaceAll(/json-err-hl/g, clPref);
+	return id;
+}
 
-	const styleClassName = `${clPref}__theme-style`;
-
-	const styleAlreadyExists = [].some.call(
-		document.querySelectorAll(`style.${styleClassName}`), 
-		(v) => v.textContent === cssCode
-	);
-
-	if (! styleAlreadyExists) {
-		const style = eHTML(`<style class="${styleClassName}"></style>`);
-		style.textContent = cssCode;
-		document.head.appendChild(style);
+function getSymById(id) {
+	if (id.sym) {
+		return id.sym;
+	} else if (id.statProp) {
+		return Symbol[id.statProp];
+	} else if (id["@@-number"]) {
+		return this["@@"][id["@@-number"]] || 
+			Symbol("-pseudo@@-"+id["@@-number"]+"-"+id.descr);
+	} else {
+		return Symbol("-pseudo@@-"+id.descr);
 	}
 }
 
+function getSymbolToStr(subj) {
+	var id, str = "";
+	if (typeof subj == "symbol")
+		id = this.getSymId(subj);
+	else if (typeof subj == "object")
+		id = subj;
+	else 
+		console.error("(!)-USER'S ", 
+			"'subj' is not 'symbol' and not 'object'", 
+			"\nsubj:", subj);
+	str += `-@@-${id["@@-number"]}-`;
+	if (id.descr)
+		str += id.descr;
 
-function eHTML(code, shell=null) {
-	const _shell = 
-		! shell                  ? document.createElement("div") :
-		typeof shell == "string" ? document.createElement(shell) :
-		typeof shell == "object" ? shell :
-			null;
-	_shell.innerHTML = code;
-	return _shell.children[0];
+	return str;
 }
 
-/***/ }),
-/* 18 */
-/***/ ((module) => {
+function getSymbolToHtmlStr(subj) {
+	var id, str = "";
+	if (typeof subj == "symbol")
+		id = this.getSymId(subj);
+	else if (typeof subj == "object")
+		id = subj;
+	else 
+		console.error("(!)-USER'S ", 
+			"'subj' is not 'symbol' and not 'object'", 
+			"\nsubj:", subj);
+	str += `<span class="local-reg-num">${id["@@-number"]}</span>`;
+	if (id.descr)
+		str += `<span class="symbol-description">${id.descr}</span>`;
 
-module.exports = require("http");
+	return str;
+}
 
-/***/ }),
-/* 19 */
-/***/ ((module) => {
+function evalHTML(code, wrElName="div") {
+	var wr = document.createElement(wrElName);
+	wr.innerHTML = code;
+	return wr;
+}
 
-module.exports = require("fs");
+function recurTravel(t, callb) {
+	function recursive(m, callb) {
+		callb(m);
+		if (m.ch && m.ch.length)
+			for (var ch of m.ch) 
+				recursive(ch, callb);
+	}
+	recursive(t, callb);
+}
 
-/***/ }),
-/* 20 */
-/***/ ((module) => {
+function flatTempl(t) {
+	var flat = [];
+	this.recurTravel(t, (m) => flat.push(m));
+	return flat;
+}
 
-module.exports = require("path");
+function getJson(ob) {
+	if (!ob || typeof ob == "string") {
+		return JSON.stringify(ob);
+	} else {
+		ob["jsot-JSON-format-ver"] = "3.2.0";
+		this.flatTempl(ob).forEach((v) => {
+			// delete v.parent;
+			if (typeof v.nip == "symbol")
+				v.n_sym = this.getSymId(v.nip);
+				// v.sym_nip = this.getSymbolValueStr(v.nip)
+			
+			if (typeof v.v == "symbol")
+				v.v_sym = this.getSymId(v.v);
 
-/***/ }),
-/* 21 */
-/***/ ((module) => {
+			if (v.v === undefined) {
+				v.sp_v = "undefined";
+				// delete v.v;
+			}
+			if (v.v === NaN) {
+				v.sp_v = "NaN";
+				// delete v.v;
+			}
+			if (v.v === Infinity) {
+				v.sp_v = "Infinity";
+				// delete v.v;
+			}
 
-module.exports = require("url");
+
+			if (v.ch) { 
+				// Чтобы атрибут 'ch' был последним в списке атрибутов. 
+				// Это делает JSON-строку более человеко-понятной.
+				var ch = v.ch;
+				delete v.ch;
+				v.ch = ch;
+			}
+		});
+		var res = JSON.stringify(ob, (k,v) => {
+			if ([
+				"parent", 
+				"header",
+				"cBar",
+			].includes(k))
+				return undefined;
+
+			if ([
+				"rows",
+				"name",
+				"path",
+				"pathname",
+				"isBranchNode",
+			].includes(k))
+				return undefined;
+
+			return v;
+		}, "\t");
+
+		delete ob["jsot-JSON-format-ver"];
+
+		return res;
+	}
+}
+
+function getFromJson(json) {
+	if (json) {
+		var ob = JSON.parse(json);
+		this.flatTempl(ob).forEach((v) => {
+			/*if (v.sym_nip)
+				v.nip = Symbol[v.sym_nip];*/ // Обратная совместимость.
+
+			if (v.n_sym)
+				v.nip = this.getSymById(v.n_sym);
+
+			if (v.v_sym)
+				v.v = this.getSymById(v.v_sym);
+
+			if (v.sp_v == "undefined") {
+				v.v = undefined;
+				// delete sp_v;
+			}
+			if (v.sp_v == "NaN") {
+				v.v = NaN;
+				// delete sp_v;
+			}
+			if (v.sp_v == "Infinity") {
+				v.v = Infinity;
+				// delete sp_v;
+			}
+		});
+		return ob;
+	} else {
+		return "";
+	}
+}
+
+function getToString(v) {
+	if (v) {
+		if (v.toString) {
+			return v.toString();
+		} else {
+			return v+"";
+		}
+	} else {
+		return v+"";
+	}
+}
+
+function toOneSting(text, length=50) {
+	var 
+		ellipsis = " ... ",
+		slice;
+	if (length < text.length ) {
+		slice = text.slice(0, length - ellipsis.length)+ellipsis;
+	} else if (length < text.length - ellipsis.length && text.length <= length) {
+		slice = text.slice(0, length - ellipsis.length);
+	} else {
+		slice = text;
+	}
+	return slice.replace(/\n/g, "┓").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 
 /***/ })
-/******/ 	]);
+
+/******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -3597,13 +3734,16 @@ module.exports = require("url");
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
+/******/ 			id: moduleId,
+/******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -3668,39 +3808,27 @@ module.exports = require("url");
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/node module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 			module.paths = [];
+/******/ 			if (!module.children) module.children = [];
+/******/ 			return module;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "";
+/******/ 	})();
+/******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "version": () => (/* binding */ version),
-/* harmony export */   "Explorer": () => (/* binding */ Explorer),
-/* harmony export */   "NodeJsServerAgent": () => (/* binding */ NodeJsServerAgent),
-/* harmony export */   "ServerAgent": () => (/* binding */ ServerAgent),
-/* harmony export */   "renderTextContent": () => (/* binding */ renderTextContent),
-/* harmony export */   "renderJSON": () => (/* binding */ renderJSON),
-/* harmony export */   "renderObject": () => (/* binding */ renderObject),
-/* harmony export */   "special": () => (/* binding */ special)
-/* harmony export */ });
-/* harmony import */ var _JsOT_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-
-
- const {
-	version,
-	Explorer,
-	NodeJsServerAgent,
-	ServerAgent,
-	renderTextContent,
-	renderJSON,
-	renderObject,
-	special,
-} = _JsOT_js__WEBPACK_IMPORTED_MODULE_0__.default; 
-
- 
-})();
-
-JsOT = __webpack_exports__;
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	
 /******/ })()
 ;
 //# sourceMappingURL=main.js.map

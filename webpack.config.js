@@ -1,14 +1,21 @@
 import "./CSS/watch.js";
 
 export default {
-	// entry: "./JsOT.js",
-	entry: "./wp-entert-point.js",
 	output: {
-		library: "JsOT",
-		// library: "jsot",
 		clean: true,
 	},
-	mode: 'none', 
+	module: {
+		rules: [
+			{
+				test: /package\.json$/,
+				type: "asset/resource",
+				generator: {
+					filename: '[name][ext]',
+				}
+			},
+		],
+	},
+	mode: 'development', 
 	devtool: "source-map",
 	target: "node",
 	watch: true,

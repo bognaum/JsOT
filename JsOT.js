@@ -24,7 +24,7 @@ import JsHter            from "./JsHter/JsHter.js";
 
 const version = "2.0.0";
 
-export default {
+const API = {
 	version,
 	Explorer,                       // (inputEl, options)
 	NodeJsServerAgent,              // (options)
@@ -42,6 +42,16 @@ export default {
 		"symbolStatProps": util["symbolStatProps"],
 	}
 };
+
+export default API;
+
+try {
+	window.jsot = API;
+} catch(err) {} 
+
+try {
+	module.exports = API;
+} catch(err) {} 
 
 let jsonHter = null;
 
