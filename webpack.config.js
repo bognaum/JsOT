@@ -17,6 +17,6 @@ export default {
 	},
 	mode: 'development', 
 	devtool: "source-map",
-	target: "node",
+	target: "node", // To don't compile a native node modules.
 	watch: true,
 };
