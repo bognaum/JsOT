@@ -1736,105 +1736,115 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ServerAgent {
-	constructor(o = {}) {
-		o.name = o.name || "rootNode";
-		o.ob = o.ob || global;
-		o.t = o.t || {};
-		o.portHost = o.portHost || [];
-		o.portHost[0] = o.portHost[0] || 3333;
-		// o.portHost[1] = o.portHost[1] || "127.0.0.1";
-		o.portHost[1] = o.portHost[1] || "localhost";
-
-		Promise.all([
-			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! http */ "http", 19)),
-			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! fs */ "fs", 19)),
-			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! path */ "path", 19)),
-			Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! url */ "url", 19)),
-		]).then(([http$, fs$, path$, url$]) => {
-			const __filename = url$.fileURLToPath("file:///D:/GitHub-my/JsOT/NodeJsServerAgent/NodeJsServerAgent.js"),
-				__dirname = path$.dirname(__filename),
-				serverRoot = path$.resolve(__dirname, "../");
-
-			var server = new http$.Server(function (req, res) {
-				// console.log("\n↑ GO");
-
-				req.on("error", (err) => console.error(err));
-				res.on("error", (err) => console.error(err));
-
-				const [reqPath, reqQuery] = req.url.split("?"),
-					mimeType = getMIME(reqPath);
-
-				res.setHeader("Access-Control-Allow-Origin", "*");
-
-				if (req.url == "/parse") {
-					res.setHeader("Content-Type", 'text/plain; Charset="UTF-8"');
-					res.setHeader("Cash-Control", "no-store");
-
-					var reqBody = "";
-					req.on("data", (dataBuf) => (reqBody += dataBuf.toString()));
-
-					req.on("end", (e) => {
-						var dataArr = reqBody.split("&");
-						var dataDict = dataArr.reduce((acc, v) => {
-							if (!v) return acc;
-
-							var k_v = v.split("=");
-							acc[k_v[0]] = decodeURIComponent(k_v[1]);
-
-							return acc;
-						}, {});
-						var inJson = dataDict.template;
-						var t = inJson ? _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getFromJson(inJson) : {};
-						var getted = (0,_parse_tree_js__WEBPACK_IMPORTED_MODULE_1__.default)(o.ob, o.name, t);
-						res.end(_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(getted));
-
-						// console.log("↓ OK\n\n");
-					});
-				} else if (req.url == "/") {
-					res.setHeader("Content-Type", "text/html; Charset=UTF-8");
-					res.setHeader("Cash-Control", "no-store");
-					var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
-					res.end(
-						getTemplateFile(
-							path$.resolve(__dirname, "./agent-page.html"),
-							{
-								name: o.name,
-								theUrl,
-							},
-							fs$
-						)
-					);
-
-					// console.log("↓ OK\n\n");
-				} else {
-					const filePN = serverRoot + req.url;;
-					if (fs$.existsSync(filePN)) {
-						res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
-						res.setHeader("Cash-Control", "no-store");
-						res.end(fs$.readFileSync(filePN));
-						// console.log("↓ OK\n\n");
-					} else {
-						res.end("JsOT - 404.");
-
-						// console.log("↓ OK\n\n");
-					}
-				}
-			});
-			server.listen(...o.portHost);
-			// server.listen(3000, "127.0.0.1");
-			console.log(
-				"JsOT",
-				o.name,
-				":",
-				"http://" + o.portHost[1] + ":" + o.portHost[0],
-				"\n",
-				o.ob
-			);
-		});
-
-		// setInterval(() => {}, 60000);
+	constructor(options = {}) {
+		const o = Object.assign(
+			{
+				name: "rootNode",
+				ob  : global,
+				t   : {},
+			},
+			options,
+		);
+		o.portHost = Object.assign(
+			[3333, "127.0.0.1"],
+			o.portHost,
+		);
+		
+		startServer(o);
 	}
+
 }
+
+async function startServer (o) {
+	const 
+		http$ = await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! http */ "http", 19)),
+		fs$   = await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! fs */ "fs", 19)),
+		path$ = await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! path */ "path", 19)),
+		url$  = await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! url */ "url", 19));
+
+	const __filename = url$.fileURLToPath("file:///D:/GitHub-my/JsOT/NodeJsServerAgent/NodeJsServerAgent.js"),
+		__dirname = path$.dirname(__filename),
+		serverRoot = path$.resolve(__dirname, "../");
+
+	var server = new http$.Server(function (req, res) {
+		// console.log("\n↑ GO");
+
+		req.on("error", (err) => console.error(err));
+		res.on("error", (err) => console.error(err));
+
+		const [reqPath, reqQuery] = req.url.split("?"),
+			mimeType = getMIME(reqPath);
+
+		res.setHeader("Access-Control-Allow-Origin", "*");
+
+		if (req.url == "/parse") {
+			res.setHeader("Content-Type", 'text/plain; Charset="UTF-8"');
+			res.setHeader("Cash-Control", "no-store");
+
+			var reqBody = "";
+			req.on("data", (dataBuf) => (reqBody += dataBuf.toString()));
+
+			req.on("end", (e) => {
+				var dataArr = reqBody.split("&");
+				var dataDict = dataArr.reduce((acc, v) => {
+					if (!v) return acc;
+
+					var k_v = v.split("=");
+					acc[k_v[0]] = decodeURIComponent(k_v[1]);
+
+					return acc;
+				}, {});
+				var inJson = dataDict.template;
+				var t = inJson ? _util_js__WEBPACK_IMPORTED_MODULE_0__.default.getFromJson(inJson) : {};
+				var getted = (0,_parse_tree_js__WEBPACK_IMPORTED_MODULE_1__.default)(o.ob, o.name, t);
+				res.end(_util_js__WEBPACK_IMPORTED_MODULE_0__.default.getJson(getted));
+
+				// console.log("↓ OK\n\n");
+			});
+		} else if (req.url == "/") {
+			res.setHeader("Content-Type", "text/html; Charset=UTF-8");
+			res.setHeader("Cash-Control", "no-store");
+			var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
+			res.end(
+				getTemplateFile(
+					path$.resolve(__dirname, "./agent-page.html"),
+					{
+						name: o.name,
+						theUrl,
+					},
+					fs$
+				)
+			);
+
+			// console.log("↓ OK\n\n");
+		} else {
+			const filePN = serverRoot + req.url;;
+			if (fs$.existsSync(filePN)) {
+				res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
+				res.setHeader("Cash-Control", "no-store");
+				res.end(fs$.readFileSync(filePN));
+				// console.log("↓ OK\n\n");
+			} else {
+				res.end("JsOT - 404.");
+
+				// console.log("↓ OK\n\n");
+			}
+		}
+	});
+	server.listen(...o.portHost);
+	// server.listen(3000, "127.0.0.1");
+	console.log(
+		"JsOT",
+		o.name,
+		":",
+		"http://" + o.portHost[1] + ":" + o.portHost[0],
+		"\n",
+		o.ob
+	);
+
+	// setInterval(() => {}, 60000);
+}
+
 
 function getTemplateFile(pathname, substituts, fs$) {
 	let text = fs$.readFileSync(pathname).toString();
