@@ -33,7 +33,7 @@
 			<script type="text/javascript">
 				!async function() {
 					const parent = document.all[document.all.length - 1].parentElement;
-					const jsot = (await import("./../JsOT.js")).default;
+					const jsot = (await import("./../../JsOT.js")).default;
 					new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
 				}();
 			</script>
@@ -172,13 +172,13 @@
 			<script type="text/javascript">
 				!async function() {
 					const parent = document.all[document.all.length - 1].parentElement;
-					const jsot = (await import("./../JsOT.js")).default;
+					const jsot = (await import("./../../JsOT.js")).default;
 					new jsot.Explorer(parent, {ob : window, name : "window"});
 				}();
 			</script>
 		</pre>
 		<script type="module">
-			import jsot from "./../JsOT.js";
+			import jsot from "./../../JsOT.js";
 
 			console.log(import.meta);
 

@@ -12,9 +12,6 @@
 		}
 	</style>
 	<script src="./../../dist/main.js"></script>
-	<script>
-		// const jsot = JsOT;
-	</script>
 	<title>JsOT-tests</title>
 </head>
 <body>
@@ -35,9 +32,8 @@
 		<h2>Script in pre</h2>
 		<pre class="jsot">
 			<script type="text/javascript">
-				!async function() {
+				!function() {
 					const parent = document.all[document.all.length - 1].parentElement;
-					// const jsot = (await import("./../JsOT.js")).default;
 					new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
 				}();
 			</script>
@@ -174,17 +170,15 @@
 		</pre>
 		<pre class="jsot">
 			<script type="text/javascript">
-				!async function() {
+				!function() {
 					const parent = document.all[document.all.length - 1].parentElement;
-					// const jsot = (await import("./../JsOT.js")).default;
 					new jsot.Explorer(parent, {ob : window, name : "window"});
 				}();
 			</script>
 		</pre>
-		<script type="text/javascript">
-			// import jsot from "./../JsOT.js";
+		<script type="module">
 
-			// console.log(import.meta);
+			console.log(import.meta);
 
 			const testOb = {
 				1 : 1,
