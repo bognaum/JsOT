@@ -2,14 +2,14 @@ import util from "./../util.js";
 import parseTree from "./../parse-tree.js";
 
 export default class ServerAgent {
-	constructor(_ = {}) {
-		_.name = _.name || "rootNode";
-		_.ob = _.ob || global;
-		_.t = _.t || {};
-		_.portHost = _.portHost || [];
-		_.portHost[0] = _.portHost[0] || 3333;
-		// _.portHost[1] = _.portHost[1] || "127.0.0.1";
-		_.portHost[1] = _.portHost[1] || "localhost";
+	constructor(o = {}) {
+		o.name = o.name || "rootNode";
+		o.ob = o.ob || global;
+		o.t = o.t || {};
+		o.portHost = o.portHost || [];
+		o.portHost[0] = o.portHost[0] || 3333;
+		// o.portHost[1] = o.portHost[1] || "127.0.0.1";
+		o.portHost[1] = o.portHost[1] || "localhost";
 
 		Promise.all([
 			import("http"),
@@ -21,7 +21,6 @@ export default class ServerAgent {
 				__dirname = path$.dirname(__filename),
 				serverRoot = path$.resolve(__dirname, "../");
 
-			console.log(`__dirname`, __dirname);
 			var server = new http$.Server(function (req, res) {
 				// console.log("\n↑ GO");
 
@@ -41,7 +40,6 @@ export default class ServerAgent {
 					req.on("data", (dataBuf) => (reqBody += dataBuf.toString()));
 
 					req.on("end", (e) => {
-						// console.log(`reqBody.length`, reqBody.length);
 						var dataArr = reqBody.split("&");
 						var dataDict = dataArr.reduce((acc, v) => {
 							if (!v) return acc;
@@ -52,9 +50,8 @@ export default class ServerAgent {
 							return acc;
 						}, {});
 						var inJson = dataDict.template;
-						// console.log(`inJson.length`, inJson.length);
 						var t = inJson ? util.getFromJson(inJson) : {};
-						var getted = parseTree(_.ob, _.name, t);
+						var getted = parseTree(o.ob, o.name, t);
 						res.end(util.getJson(getted));
 
 						// console.log("↓ OK\n\n");
@@ -62,12 +59,12 @@ export default class ServerAgent {
 				} else if (req.url == "/") {
 					res.setHeader("Content-Type", "text/html; Charset=UTF-8");
 					res.setHeader("Cash-Control", "no-store");
-					var theUrl = `http://${_.portHost[1]}:${_.portHost[0]}`;
+					var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
 					res.end(
 						getTemplateFile(
 							path$.resolve(__dirname, "./agent-page.html"),
 							{
-								name: _.name,
+								name: o.name,
 								theUrl,
 							},
 							fs$
@@ -76,14 +73,11 @@ export default class ServerAgent {
 
 					// console.log("↓ OK\n\n");
 				} else {
-					const filePN = serverRoot + req.url;
-					// const filePN = path$.resolve(serverRoot, req.url);
-					// console.log(`filePN >>`, filePN);
+					const filePN = serverRoot + req.url;;
 					if (fs$.existsSync(filePN)) {
 						res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
 						res.setHeader("Cash-Control", "no-store");
 						res.end(fs$.readFileSync(filePN));
-						// console.log("Download", req.url);
 						// console.log("↓ OK\n\n");
 					} else {
 						res.end("JsOT - 404.");
@@ -92,15 +86,15 @@ export default class ServerAgent {
 					}
 				}
 			});
-			server.listen(..._.portHost);
+			server.listen(...o.portHost);
 			// server.listen(3000, "127.0.0.1");
 			console.log(
 				"JsOT",
-				_.name,
+				o.name,
 				":",
-				"http://" + _.portHost[1] + ":" + _.portHost[0],
+				"http://" + o.portHost[1] + ":" + o.portHost[0],
 				"\n",
-				_.ob
+				o.ob
 			);
 		});
 
