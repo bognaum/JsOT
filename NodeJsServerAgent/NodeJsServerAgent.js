@@ -28,7 +28,7 @@ async function startServer (o) {
 		path$ = await import("path"),
 		url$  = await import("url");
 
-	const __filename = url$.fileURLToPath(import.meta.url),
+	const __filename = url$.fileURLToPath(import.meta.url), // 'import.meta.url' is precompiled with WebPack
 		__dirname = path$.dirname(__filename),
 		serverRoot = path$.resolve(__dirname, "../");
 
@@ -71,6 +71,8 @@ async function startServer (o) {
 			res.setHeader("Content-Type", "text/html; Charset=UTF-8");
 			res.setHeader("Cash-Control", "no-store");
 			var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
+			console.log(`__dirname >>`, __dirname);
+			console.log(`path$.resolve(__dirname, "./agent-page.html") >>`, path$.resolve(__dirname, "./agent-page.html"));
 			res.end(
 				getTemplateFile(
 					path$.resolve(__dirname, "./agent-page.html"),

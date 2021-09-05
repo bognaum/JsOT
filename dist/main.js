@@ -1762,7 +1762,7 @@ async function startServer (o) {
 		path$ = await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! path */ "path", 19)),
 		url$  = await Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! url */ "url", 19));
 
-	const __filename = url$.fileURLToPath("file:///D:/GitHub-my/JsOT/NodeJsServerAgent/NodeJsServerAgent.js"),
+	const __filename = url$.fileURLToPath("file:///D:/GitHub-my/JsOT/NodeJsServerAgent/NodeJsServerAgent.js"), // 'import.meta.url' is precompiled with WebPack
 		__dirname = path$.dirname(__filename),
 		serverRoot = path$.resolve(__dirname, "../");
 
@@ -1805,6 +1805,8 @@ async function startServer (o) {
 			res.setHeader("Content-Type", "text/html; Charset=UTF-8");
 			res.setHeader("Cash-Control", "no-store");
 			var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
+			console.log(`__dirname >>`, __dirname);
+			console.log(`path$.resolve(__dirname, "./agent-page.html") >>`, path$.resolve(__dirname, "./agent-page.html"));
 			res.end(
 				getTemplateFile(
 					path$.resolve(__dirname, "./agent-page.html"),
