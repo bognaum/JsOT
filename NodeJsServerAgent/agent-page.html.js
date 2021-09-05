@@ -39,6 +39,10 @@ export default `<!DOCTYPE html>
 		<pre id="explorer" class="jsot"></pre>
 		<!-- <br><br><br><br><br><br><br><br><br><br> -->
 	</div>
+	<!-- <script type="text/javascript" src="/dist/main.js"></script>
+	<script type="text/javascript">
+		new jsot.Explorer(explorer, {ajaxReqUrl : "/parse"});
+	</script> -->
 	<script type="module">
 		import jsot from "/JsOT.js";
 		new jsot.Explorer(explorer, {ajaxReqUrl : "/parse"});

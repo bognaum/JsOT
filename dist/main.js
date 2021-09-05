@@ -1819,7 +1819,8 @@ async function startServer (o) {
 
 			// console.log("↓ OK\n\n");
 		} else {
-			const filePN = serverRoot + req.url;;
+			const filePN = serverRoot + req.url;
+			console.log(`filePN >>`, filePN);
 			if (fs$.existsSync(filePN)) {
 				res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
 				res.setHeader("Cash-Control", "no-store");
@@ -1920,6 +1921,10 @@ __webpack_require__.r(__webpack_exports__);
 		<pre id="explorer" class="jsot"></pre>
 		<!-- <br><br><br><br><br><br><br><br><br><br> -->
 	</div>
+	<!-- <script type="text/javascript" src="/dist/main.js"></script>
+	<script type="text/javascript">
+		new jsot.Explorer(explorer, {ajaxReqUrl : "/parse"});
+	</script> -->
 	<script type="module">
 		import jsot from "/JsOT.js";
 		new jsot.Explorer(explorer, {ajaxReqUrl : "/parse"});

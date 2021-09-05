@@ -84,7 +84,8 @@ async function startServer (o) {
 
 			// console.log("↓ OK\n\n");
 		} else {
-			const filePN = serverRoot + req.url;;
+			const filePN = serverRoot + req.url;
+			console.log(`filePN >>`, filePN);
 			if (fs$.existsSync(filePN)) {
 				res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
 				res.setHeader("Cash-Control", "no-store");
