@@ -1732,6 +1732,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../util.js */ "./util.js");
 /* harmony import */ var _parse_tree_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../parse-tree.js */ "./parse-tree.js");
+/* harmony import */ var _agent_page_html_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./agent-page.html.js */ "./NodeJsServerAgent/agent-page.html.js");
+
 
 
 
@@ -1805,16 +1807,13 @@ async function startServer (o) {
 			res.setHeader("Content-Type", "text/html; Charset=UTF-8");
 			res.setHeader("Cash-Control", "no-store");
 			var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
-			console.log(`__dirname >>`, __dirname);
-			console.log(`path$.resolve(__dirname, "./agent-page.html") >>`, path$.resolve(__dirname, "./agent-page.html"));
 			res.end(
-				getTemplateFile(
-					path$.resolve(__dirname, "./agent-page.html"),
+				substitute(
+					_agent_page_html_js__WEBPACK_IMPORTED_MODULE_2__.default,
 					{
 						name: o.name,
 						theUrl,
-					},
-					fs$
+					}
 				)
 			);
 
@@ -1848,9 +1847,8 @@ async function startServer (o) {
 }
 
 
-function getTemplateFile(pathname, substituts, fs$) {
-	let text = fs$.readFileSync(pathname).toString();
-	return text.replace(/{{\s*([\w\d]+)\s*}}/g, (m, name) => substituts[name]);
+function substitute(htmlTemplate, substituts) {
+	return htmlTemplate.replace(/{{\s*([\w\d]+)\s*}}/g, (m, name) => substituts[name]);
 }
 
 const MIME = {
@@ -1867,6 +1865,67 @@ function getMIME(fileName) {
 	return "text/plain";
 }
 
+
+/***/ }),
+
+/***/ "./NodeJsServerAgent/agent-page.html.js":
+/*!**********************************************!*\
+  !*** ./NodeJsServerAgent/agent-page.html.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (`<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <link rel="stylesheet" type="text/css"       href="/CSS/JsOT.css"> -->
+	<!-- <script                type="text/javascript" src="/JsOT.js" ></script> -->
+	<title>{{ name }} - JsOT</title>
+	<style>
+		body {
+			margin: 0;
+		}
+		body>a:nth-child(1) {
+			text-align: center;
+			display: block;
+			font-style: italic;
+			font-weight: bold;
+			background-color: #333;
+			color: #eee;
+			padding: 10px;
+		}
+		h1 {
+			text-align: center;
+		}
+		.pre-wr {
+			text-align: center;
+		}
+		pre {
+			margin: 20px;
+			display: inline-block;
+			margin-bottom: 200px;
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<a target="_blank" href="{{ theUrl }}">{{ theUrl }}</a>
+	<h1>{{ name }}</h1>
+	<div class="pre-wr">
+		<pre id="explorer" class="jsot"></pre>
+		<!-- <br><br><br><br><br><br><br><br><br><br> -->
+	</div>
+	<script type="module">
+		import jsot from "/JsOT.js";
+		new jsot.Explorer(explorer, {ajaxReqUrl : "/parse"});
+	</script>
+</body>
+</html>`);
 
 /***/ }),
 

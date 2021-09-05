@@ -1,5 +1,6 @@
 import util from "./../util.js";
 import parseTree from "./../parse-tree.js";
+import agentPage from "./agent-page.html.js";
 
 export default class ServerAgent {
 	constructor(options = {}) {
@@ -71,16 +72,13 @@ async function startServer (o) {
 			res.setHeader("Content-Type", "text/html; Charset=UTF-8");
 			res.setHeader("Cash-Control", "no-store");
 			var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
-			console.log(`__dirname >>`, __dirname);
-			console.log(`path$.resolve(__dirname, "./agent-page.html") >>`, path$.resolve(__dirname, "./agent-page.html"));
 			res.end(
-				getTemplateFile(
-					path$.resolve(__dirname, "./agent-page.html"),
+				substitute(
+					agentPage,
 					{
 						name: o.name,
 						theUrl,
-					},
-					fs$
+					}
 				)
 			);
 
@@ -114,9 +112,8 @@ async function startServer (o) {
 }
 
 
-function getTemplateFile(pathname, substituts, fs$) {
-	let text = fs$.readFileSync(pathname).toString();
-	return text.replace(/{{\s*([\w\d]+)\s*}}/g, (m, name) => substituts[name]);
+function substitute(htmlTemplate, substituts) {
+	return htmlTemplate.replace(/{{\s*([\w\d]+)\s*}}/g, (m, name) => substituts[name]);
 }
 
 const MIME = {

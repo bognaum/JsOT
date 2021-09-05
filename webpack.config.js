@@ -1,4 +1,5 @@
 import "./CSS/watch.js";
+import "./NodeJsServerAgent/watch.js";
 
 export default {
 	output: {
