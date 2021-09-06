@@ -1,4 +1,4 @@
-import JsOT from "../../esm-src/JsOT.js";
+import JsOT from "../../JsOT.js";
 
 const API = JsOT;
 
