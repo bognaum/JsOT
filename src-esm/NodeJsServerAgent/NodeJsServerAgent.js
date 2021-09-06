@@ -29,10 +29,6 @@ async function startServer (o) {
 		path$ = await import("path"),
 		url$  = await import("url");
 
-	const __filename = url$.fileURLToPath(import.meta.url), // 'import.meta.url' is precompiled with WebPack
-		__dirname = path$.dirname(__filename),
-		serverRoot = path$.resolve(__dirname, "../");
-
 	var server = new http$.Server(function (req, res) {
 		// console.log("\n↑ GO");
 
@@ -78,13 +74,15 @@ async function startServer (o) {
 					{
 						name: o.name,
 						theUrl,
+						__basename: path$.basename(__filename),
 					}
 				)
 			);
 
 			// console.log("↓ OK\n\n");
 		} else {
-			const filePN = serverRoot + req.url;
+			const filePN = __dirname + req.url;
+			// const filePN = serverRoot + req.url;
 			console.log(`filePN >>`, filePN);
 			if (fs$.existsSync(filePN)) {
 				res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
