@@ -1,5 +1,5 @@
-import "./esm-src/CSS/watch.js";
-import "./esm-src/NodeJsServerAgent/watch.js";
+import "./src-esm/CSS/watch.js";
+import "./src-esm/NodeJsServerAgent/watch.js";
 
 export default {
 	// entry: "./src/JsOT.js",
