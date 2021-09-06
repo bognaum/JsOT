@@ -11,12 +11,11 @@
 			font-family: verdana, sans-serif;
 		}
 	</style>
-	<script src="./../../dist/main.js"></script>
 	<title>JsOT-tests</title>
 </head>
 <body>
 	<div class="container">
-		<h1>JsOT</h1>
+		<h1>JsOT - ESM</h1>
 
 		<h2>testOb</h2>
 		<pre id="pre_01" class="jsot"></pre>
@@ -32,8 +31,9 @@
 		<h2>Script in pre</h2>
 		<pre class="jsot">
 			<script type="text/javascript">
-				!function() {
+				!async function() {
 					const parent = document.all[document.all.length - 1].parentElement;
+					const jsot = (await import("./../../JsOT.js")).default;
 					new jsot.Explorer(parent, {ob : Array, name : "Array", t : {ch : []}});
 				}();
 			</script>
@@ -170,13 +170,15 @@
 		</pre>
 		<pre class="jsot">
 			<script type="text/javascript">
-				!function() {
+				!async function() {
 					const parent = document.all[document.all.length - 1].parentElement;
+					const jsot = (await import("./../../JsOT.js")).default;
 					new jsot.Explorer(parent, {ob : window, name : "window"});
 				}();
 			</script>
 		</pre>
 		<script type="module">
+			import jsot from "./../../JsOT.js";
 
 			console.log(import.meta);
 
