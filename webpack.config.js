@@ -17,7 +17,10 @@ export default {
 		],
 	},
 	mode: 'development', 
-	devtool: "source-map",
+	// devtool: "eval",
+	devtool: "eval-source-map",
+	// devtool: "inline-source-map",
+	// devtool: "source-map",
 	target: "node", // To don't compile a native node modules.
 	watch: true,
 };
