@@ -38,7 +38,10 @@ async function startServer (o) {
 
 		res.setHeader("Access-Control-Allow-Origin", "*");
 
-		if (req.url == "/parse") {
+		if (req.url == "/port-test") {
+			// console.log("port-test");
+			res.end("ok");
+		} else if (req.url == "/parse") {
 			res.setHeader("Content-Type", 'text/plain; Charset="UTF-8"');
 			res.setHeader("Cash-Control", "no-store");
 
@@ -70,7 +73,7 @@ async function startServer (o) {
 					agentPage,
 					{
 						name: o.name,
-						theUrl: "xxx",
+						theUrl: o.addresData?.host,
 						__basename: path$.basename(__filename),
 					}
 				)
@@ -80,7 +83,7 @@ async function startServer (o) {
 		} else {
 			const filePN = __dirname + req.url;
 			// const filePN = serverRoot + req.url;
-			console.log(`filePN >>`, filePN);
+			// console.log(`filePN >>`, filePN);
 			if (fs$.existsSync(filePN)) {
 				res.setHeader("Content-Type", `${mimeType}; Charset="UTF-8"`);
 				res.setHeader("Cash-Control", "no-store");
@@ -94,9 +97,10 @@ async function startServer (o) {
 		}
 	});
 	// server.listen(...o.portHost);
-	const hostData = await takeEmptyPort(server, o.hostname, o.ports);
-	if (hostData) {
-		console.log("Connection with", `'${o.name}'`, ":", `http://${hostData.host}`);
+	const addresData = await takeEmptyPort(server, o.hostname, o.ports);
+	if (addresData) {
+		o.addresData = addresData;
+		console.log("Connection with", `'${o.name}'`, ":", `http://${addresData.host}`);
 	} else {
 		console.log(
 			"Can't use an address from range:", 
@@ -158,6 +162,7 @@ async function testingAPort(server, hostname, port) {
 	const opts = {
 		port, 
 		host: hostname,
+		path: "/port-test",
 	};
 	await new Promise((rsl, rj) => {
 		server.once("error", rj);
