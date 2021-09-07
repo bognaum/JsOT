@@ -9,12 +9,10 @@ export default class ServerAgent {
 				name: "rootNode",
 				ob  : global,
 				t   : {},
+				hostname: "localhost",
+				ports   : "3000-6000",
 			},
 			options,
-		);
-		o.portHost = Object.assign(
-			[3333, "127.0.0.1"],
-			o.portHost,
 		);
 		
 		startServer(o);
@@ -29,7 +27,7 @@ async function startServer (o) {
 		path$ = await import("path"),
 		url$  = await import("url");
 
-	var server = new http$.Server(function (req, res) {
+	const server = new http$.Server(function (req, res) {
 		// console.log("\n↑ GO");
 
 		req.on("error", (err) => console.error(err));
@@ -67,13 +65,12 @@ async function startServer (o) {
 		} else if (req.url == "/") {
 			res.setHeader("Content-Type", "text/html; Charset=UTF-8");
 			res.setHeader("Cash-Control", "no-store");
-			var theUrl = `http://${o.portHost[1]}:${o.portHost[0]}`;
 			res.end(
 				substitute(
 					agentPage,
 					{
 						name: o.name,
-						theUrl,
+						theUrl: "xxx",
 						__basename: path$.basename(__filename),
 					}
 				)
@@ -96,16 +93,18 @@ async function startServer (o) {
 			}
 		}
 	});
-	server.listen(...o.portHost);
-	// server.listen(3000, "127.0.0.1");
-	console.log(
-		"JsOT",
-		o.name,
-		":",
-		"http://" + o.portHost[1] + ":" + o.portHost[0],
-		"\n",
-		o.ob
-	);
+	// server.listen(...o.portHost);
+	const hostData = await takeEmptyPort(server, o.hostname, o.ports);
+	if (hostData) {
+		console.log("Connection with", `'${o.name}'`, ":", `http://${hostData.host}`);
+	} else {
+		console.log(
+			"Can't use an address from range:", 
+			"\n hostname:", o.hostname, 
+			"\n ports   :", o.ports,
+			"\n to input:", `'${o.name}'`
+		);
+	}
 
 	// setInterval(() => {}, 60000);
 }
@@ -127,4 +126,45 @@ function getMIME(fileName) {
 	if (ext == "map") ext = parts.pop() + "." + ext;
 	for (let i in MIME) if (MIME[i].includes(ext)) return i;
 	return "text/plain";
+}
+
+
+async function takeEmptyPort(server, hostname, portRanges) {
+	const rangedArr = portRanges.split(",");
+	for (let range of rangedArr) {
+		const res = await takeEmptyPortFromRange(server, hostname, range);
+		if (res) 
+			return res;
+	}
+}
+
+async function takeEmptyPortFromRange(server, hostname, portRange) {
+	const [firstPort, lastPort] = portRange.split("-").map((v) => parseInt(v));
+	for (let p = firstPort; p < lastPort; p ++) 
+		try {
+			await testingAPort(server, hostname, p);
+			return {
+				host: `${hostname}:${p}`, 
+				hostname,
+				port: p
+			};
+		} catch (err) {}
+		// } catch (err) {console.log(`err >>`, err);}
+	return false;
+}
+
+async function testingAPort(server, hostname, port) {
+	const http$ = await import("http");
+	const opts = {
+		port, 
+		host: hostname,
+	};
+	await new Promise((rsl, rj) => {
+		server.once("error", rj);
+		server.once("request", rsl);
+		server.listen(opts, () => {});
+		http$.get(opts, () => {})
+		// server.listen(opts, (... args) => {console.log(`server.listen args >>`, args);});
+		// http$.get(opts, (... args) => {console.log(`http$.get args >>`, args);})
+	});
 }
