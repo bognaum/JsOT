@@ -103,16 +103,18 @@ async function startServer (o) {
 		}
 	});
 
+	server.listenCallbackCalls = 0;
+
 	servers.push(server);
 
-	server.on("error", function(err) {
+	/*server.on("error", function(err) {
 		// console.log(`server.on error - err >>`, err);
 		// servers.log(server);
 		if (err.code === "EADDRINUSE") {
 			// console.log(`err.name === "EADDRINUSE"`);
 			listenPort(server, o.hostname, portGenerator, o);
 		}
-	});
+	});*/
 	// server.listen(...o.portHost);
 	const portGenerator = getPortGen(o.ports);
 	listenPort(server, o.hostname, portGenerator, o);
@@ -140,11 +142,30 @@ function getMIME(fileName) {
 }
 
 function listenPort(server, hostame, portGenerator, o) {
+	// console.log(`server.listenerCount("request") >>`, server.listenerCount("request"));
 	const port = portGenerator.next().value;
-	if (port)
+	if (port) {
+
+		server.once("error"  , onError);
+		server.once("request", onRequest);
 		server.listen(port, hostame, () => {
-			console.log("Connection with", `'${o.name}'`, ":", `http://${hostame}:${port}`);
+			const url = `http://${hostame}:${port}/port-test`;
+			import("http").then((http) => {http.request(url).end()});
 		});
+	}
+
+	onRequest.port = port;
+
+	function onError(err) {
+		if (err.code === "EADDRINUSE") {
+			server.removeListener("request", onRequest);
+			listenPort(server, hostame, portGenerator, o);
+		}
+	}
+	function onRequest() {
+		server.removeListener("error", onError);
+		console.log("Connection with", `'${o.name}'`, ":", `http://${hostame}:${port}`);
+	}
 }
 
 function * getPortGen(portRanges) {
