@@ -141,15 +141,15 @@ function getMIME(fileName) {
 	return "text/plain";
 }
 
-function listenPort(server, hostame, portGenerator, o) {
+function listenPort(server, hostname, portGenerator, o) {
 	// console.log(`server.listenerCount("request") >>`, server.listenerCount("request"));
 	const port = portGenerator.next().value;
 	if (port) {
 
 		server.once("error"  , onError);
 		server.once("request", onRequest);
-		server.listen(port, hostame, () => {
-			const url = `http://${hostame}:${port}/port-test`;
+		server.listen(port, hostname, () => {
+			const url = `http://${hostname}:${port}/port-test`;
 			import("http").then((http) => {
 				http.request(url).end();
 			});
@@ -161,12 +161,12 @@ function listenPort(server, hostame, portGenerator, o) {
 	function onError(err) {
 		if (err.code === "EADDRINUSE") {
 			removeListeners();
-			listenPort(server, hostame, portGenerator, o);
+			listenPort(server, hostname, portGenerator, o);
 		}
 	}
 	function onRequest() {
 		removeListeners();
-		console.log("Connection with", `'${o.name}'`, ":", `http://${hostame}:${port}`);
+		console.log("Connection with", `'${o.name}'`, ":", `http://${hostname}:${port}`);
 	}
 	function removeListeners() {
 		server.removeListener("request", onRequest);
