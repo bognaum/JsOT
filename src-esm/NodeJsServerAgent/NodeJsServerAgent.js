@@ -45,9 +45,7 @@ async function startServer (o) {
 
 		res.setHeader("Access-Control-Allow-Origin", "*");
 
-		if (req.url == "/port-test") {
-			res.end("Port test is OK.");
-		} else if (req.url == "/parse") {
+		if (req.url == "/parse") {
 			res.setHeader("Content-Type", 'text/plain; Charset="UTF-8"');
 			res.setHeader("Cash-Control", "no-store");
 
@@ -135,7 +133,6 @@ async function takeFreePort(server, hostname, portGenerator, o) {
 	const port = await recur(server, hostname, portGenerator, o);
 
 	if (port) {
-		
 		console.log("Connection with", `'${o.name}'`, ":", `http://${hostname}:${port}`);
 	} else {
 		console.log("Can't find a free port of", hostname, "with options", o.ports);
@@ -145,33 +142,21 @@ async function takeFreePort(server, hostname, portGenerator, o) {
 		const port = portGenerator.next().value;
 
 		if (port) {
-			const testUrl = `http://${hostname}:${port}/port-test`;
-			let portError = null;
-
 			const testResult = await Promise.race([
 				new Promise((rsl, rj) => {
 					server.once("error", (err) => {
 						if (err.code === "EADDRINUSE") {
-							portError = err;
 							rsl(false);
 						} else {
 							rj(err);
 						}
 					})
 				}),
-				(async function(){
-					await new Promise((rsl) => server.listen(port, rsl));
-					if (portError)
-						return console.log("stop-1");
-					const http = await import("http");
-					http.request(testUrl).end();
-					if (portError)
-						return console.log("stop-2");
-					/*if (portError)
-						return false;*/
-					await new Promise((rsl) => server.once("request", rsl));
-					return true;
-				})()
+				new Promise((rsl) => {
+					server.listen(port, () => {
+						rsl(true);
+					});
+				})
 			]);
 
 			if (testResult) {
