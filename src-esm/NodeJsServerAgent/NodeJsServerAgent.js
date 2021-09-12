@@ -106,18 +106,8 @@ async function startServer (o) {
 	server.listenCallbackCalls = 0;
 
 	servers.push(server);
-
-	/*server.on("error", function(err) {
-		// console.log(`server.on error - err >>`, err);
-		// servers.log(server);
-		if (err.code === "EADDRINUSE") {
-			// console.log(`err.name === "EADDRINUSE"`);
-			listenPort(server, o.hostname, portGenerator, o);
-		}
-	});*/
-	// server.listen(...o.portHost);
 	const portGenerator = getPortGen(o.ports);
-	listenPort(server, o.hostname, portGenerator, o);
+	takeFreePort(server, o.hostname, portGenerator, o);
 
 	// setInterval(() => {}, 60000);
 }
@@ -141,36 +131,57 @@ function getMIME(fileName) {
 	return "text/plain";
 }
 
-function listenPort(server, hostname, portGenerator, o) {
-	// console.log(`server.listenerCount("request") >>`, server.listenerCount("request"));
-	const port = portGenerator.next().value;
+async function takeFreePort(server, hostname, portGenerator, o) {
+	const port = await recur(server, hostname, portGenerator, o);
+
 	if (port) {
-
-		server.once("error"  , onError);
-		server.once("request", onRequest);
-		server.listen(port, hostname, () => {
-			const url = `http://${hostname}:${port}/port-test`;
-			import("http").then((http) => {
-				http.request(url).end();
-			});
-		});
-	}
-
-	onRequest.port = port;
-
-	function onError(err) {
-		if (err.code === "EADDRINUSE") {
-			removeListeners();
-			listenPort(server, hostname, portGenerator, o);
-		}
-	}
-	function onRequest() {
-		removeListeners();
+		
 		console.log("Connection with", `'${o.name}'`, ":", `http://${hostname}:${port}`);
+	} else {
+		console.log("Can't find a free port of", hostname, "with options", o.ports);
 	}
-	function removeListeners() {
-		server.removeListener("request", onRequest);
-		server.removeListener("error", onError);
+
+	async function recur(server, hostname, portGenerator, o) {
+		const port = portGenerator.next().value;
+
+		if (port) {
+			const testUrl = `http://${hostname}:${port}/port-test`;
+			let portError = null;
+
+			const testResult = await Promise.race([
+				new Promise((rsl, rj) => {
+					server.once("error", (err) => {
+						if (err.code === "EADDRINUSE") {
+							portError = err;
+							rsl(false);
+						} else {
+							rj(err);
+						}
+					})
+				}),
+				(async function(){
+					await new Promise((rsl) => server.listen(port, rsl));
+					if (portError)
+						return console.log("stop-1");
+					const http = await import("http");
+					http.request(testUrl).end();
+					if (portError)
+						return console.log("stop-2");
+					/*if (portError)
+						return false;*/
+					await new Promise((rsl) => server.once("request", rsl));
+					return true;
+				})()
+			]);
+
+			if (testResult) {
+				return port;
+			} else {
+				return await recur(server, hostname, portGenerator, o);
+			}
+		} else {
+			return false;
+		}
 	}
 }
 
