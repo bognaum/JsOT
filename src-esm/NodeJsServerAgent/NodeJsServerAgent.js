@@ -4,16 +4,15 @@ import agentPage from "./agent-page.html.js";
 
 export default class ServerAgent {
 	constructor(options = {}) {
-		const o = Object.assign(
-			{
-				name: "rootNode",
-				ob  : global,
-				t   : {},
-				hostname: "localhost",
-				ports   : "3000-6000",
-			},
-			options,
-		);
+		const o = {
+			name: "rootNode",
+			ob  : global,
+			t   : {},
+			hostname: "localhost",
+			ports   : "3000-6000",
+
+			... options,
+		}
 		
 		startServer(o);
 	}
