@@ -28,7 +28,6 @@ export default {
 	version,
 	Explorer,                       // (inputEl, options)
 	NodeJsServerAgent,              // (options)
-	ServerAgent: NodeJsServerAgent, // (options)
 	renderTextContent,              // (inputEl)
 	renderJSON,                     // (inputEl, json)
 	renderObject,                   // (inputEl, templ)
@@ -43,8 +42,6 @@ export default {
 	}
 };
 
-let jsonHter = null; 
-
 function renderTextContent(inputEl) {
 	const json = inputEl.textContent;
 	return renderJSON(inputEl, json)
@@ -57,7 +54,7 @@ function renderJSON(inputEl, json) {
 	else {
 		inputEl.innerHTML = "";
 		inputEl.prepend(codeField);
-		jsonHter.scrollToFirstError(codeField)
+		hter.scrollToFirstError(codeField)
 		console.error(`(!) `, jsonError);
 	}
 }
@@ -70,10 +67,11 @@ function _evalJson(json) {
 	try {
 		return {templ: JSON.parse(json)};
 	} catch (jsonError) {
-		jsonHter = new JsonErrHter();
+		const jsonHter = new JsonErrHter();
 		return {
 			jsonError,
 			codeField: jsonHter.getHighlighted(json),
+			hter: jsonHter,
 		};
 	}
 }
