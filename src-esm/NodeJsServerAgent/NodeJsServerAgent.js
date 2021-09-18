@@ -170,11 +170,24 @@ async function takeFreePort(server, hostname, portGenerator, objectName, ports) 
 }
 
 function * getPortGen(portRanges) {
-	const portRangesList = portRanges.split(",");
-	for (const portRange of portRangesList) {
-		const [firstPort, lastPort] = portRange.split("-").map((v) => parseInt(v));
-		for (let port = firstPort; port < lastPort; port ++) {
-			yield port;
+	if (typeof portRanges == "number") {
+		const port = portRanges;
+		yield (port);
+	} else if (typeof portRanges == "string") {
+		const portRangesList = portRanges.split(",");
+		for (const portRange of portRangesList) {
+			const [firstPort, lastPort] = portRange.split("-").map((v) => parseInt(v));
+
+			if (! lastPort) {
+				yield parseInt(firstPort);
+			} else {
+				const increment = Math.sign(lastPort - firstPort);
+				for (let port = firstPort; port != lastPort; port += increment) {
+					yield port;
+				}
+			}
 		}
+	} else {
+		throw new Error("(!) invalid 'portRanges'. 'portRanges' =", portRanges);
 	}
 }

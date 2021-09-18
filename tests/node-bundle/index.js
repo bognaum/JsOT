@@ -2,6 +2,12 @@
 	const jsot = (await import("./../../dist/main.js")).default;
 
 	// console.log(`jsot`, jsot);
+	
+	new jsot.NodeJsServerAgent({
+		name:     "Math",
+		ob:       Math,
+		ports: "3333",
+	});
 
 	new jsot.NodeJsServerAgent({
 		name:     "global",
@@ -42,6 +48,15 @@
 			ports: "4000-6000",
 		});
 		console.log(`nsa >>`, nsa);
+	}
+
+	for (let i = 0; i < 5; i ++) {
+		const nsa = await new jsot.NodeJsServerAgent({
+			name:     "Math",
+			ob:       Math,
+			ports: "7000-6000",
+		});
+		// console.log(`nsa >>`, nsa);
 	}
 	// setInterval(() => {}, 1000 * 60);
 })()
