@@ -19,8 +19,8 @@ import parseTree         from "./parse-tree.js";
 import renderTree        from "./render-tree.js";
 import Explorer          from "./Explorer.js";
 import NodeJsServerAgent from "./NodeJsServerAgent/NodeJsServerAgent.js";
-import JsonErrHter       from "./JsonErrHter-old/JsonErrHter.js";
-import JsHter            from "./JsHter-old/JsHter.js";
+import JsonErrHter       from "./json-err-hl/json-err-hl.js";
+import JsHter            from "./js-hl/js-hl.js";
 
 const version = "2.0.0";
 
