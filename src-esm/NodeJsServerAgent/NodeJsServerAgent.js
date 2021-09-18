@@ -14,16 +14,9 @@ export default class ServerAgent {
 			... options,
 		}
 		
-		startServer(o);
+		return startServer(o);
 	}
 
-}
-
-const servers = [];
-servers.log = function(theServer) {
-	// console.log("servers length:", this.length);
-	for (const [i, serv] of this.entries()) 
-		console.log(i, serv, serv.address()?.port, theServer === serv? "<": "");
 }
 
 async function startServer (o) {
@@ -100,14 +93,16 @@ async function startServer (o) {
 		}
 	});
 
-	server.listenCallbackCalls = 0;
-
-	servers.push(server);
 	const 
 		portGenerator = getPortGen(o.ports),
-		theUrl = await takeFreePort(server, o.hostname, portGenerator, o.name, o.ports);
+		{theUrl, thePort} = await takeFreePort(server, o.hostname, portGenerator, o.name, o.ports);
 
 	// setInterval(() => {}, 60000);
+	return {
+		options: o,
+		url: theUrl,
+		port: thePort,
+	};
 }
 
 
@@ -131,16 +126,16 @@ function getMIME(fileName) {
 
 async function takeFreePort(server, hostname, portGenerator, objectName, ports) {
 	const 
-		port = await recur(server, hostname, portGenerator, objectName),
-		theUrl = `http://${hostname}:${port}`;
+		thePort = await recur(server, hostname, portGenerator, objectName),
+		theUrl = `http://${hostname}:${thePort}`;
 
-	if (port) {
+	if (thePort) {
 		console.log("Connection with", `'${objectName}'`, ":", theUrl);
 	} else {
 		console.log("Can't find a free port of", hostname, "with options", ports);
 	}
 
-	return theUrl;
+	return {theUrl, thePort};
 
 	async function recur(server, hostname, portGenerator) {
 		const port = portGenerator.next().value;

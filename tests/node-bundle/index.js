@@ -36,11 +36,12 @@
 	});
 
 	for (let i = 0; i < 10; i ++) {
-		new jsot.NodeJsServerAgent({
+		const nsa = await new jsot.NodeJsServerAgent({
 			name:     "Math",
 			ob:       Math,
 			ports: "4000-6000",
 		});
+		console.log(`nsa >>`, nsa);
 	}
 	// setInterval(() => {}, 1000 * 60);
 })()
