@@ -76,7 +76,7 @@ async function startServer (o) {
 					agentPage,
 					{
 						name: o.name,
-						theUrl: o.netOpts?.host,
+						theUrl,
 						__basename: path$.basename(__filename),
 					}
 				)
@@ -103,8 +103,9 @@ async function startServer (o) {
 	server.listenCallbackCalls = 0;
 
 	servers.push(server);
-	const portGenerator = getPortGen(o.ports);
-	takeFreePort(server, o.hostname, portGenerator, o);
+	const 
+		portGenerator = getPortGen(o.ports),
+		theUrl = await takeFreePort(server, o.hostname, portGenerator, o.name, o.ports);
 
 	// setInterval(() => {}, 60000);
 }
@@ -128,16 +129,20 @@ function getMIME(fileName) {
 	return "text/plain";
 }
 
-async function takeFreePort(server, hostname, portGenerator, o) {
-	const port = await recur(server, hostname, portGenerator, o);
+async function takeFreePort(server, hostname, portGenerator, objectName, ports) {
+	const 
+		port = await recur(server, hostname, portGenerator, objectName),
+		theUrl = `http://${hostname}:${port}`;
 
 	if (port) {
-		console.log("Connection with", `'${o.name}'`, ":", `http://${hostname}:${port}`);
+		console.log("Connection with", `'${objectName}'`, ":", theUrl);
 	} else {
-		console.log("Can't find a free port of", hostname, "with options", o.ports);
+		console.log("Can't find a free port of", hostname, "with options", ports);
 	}
 
-	async function recur(server, hostname, portGenerator, o) {
+	return theUrl;
+
+	async function recur(server, hostname, portGenerator) {
 		const port = portGenerator.next().value;
 
 		if (port) {
@@ -161,7 +166,7 @@ async function takeFreePort(server, hostname, portGenerator, o) {
 			if (testResult) {
 				return port;
 			} else {
-				return await recur(server, hostname, portGenerator, o);
+				return await recur(server, hostname, portGenerator);
 			}
 		} else {
 			return false;
