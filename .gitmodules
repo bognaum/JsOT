@@ -4,3 +4,6 @@
 [submodule "src-esm/js-hl"]
 	path = src-esm/js-hl
 	url = https://github.com/bognaum/js-hl.git
+[submodule "src-esm/json-err-hl"]
+	path = src-esm/json-err-hl
+	url = https://github.com/bognaum/json-err-hl.git
