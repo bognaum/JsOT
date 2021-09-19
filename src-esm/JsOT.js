@@ -22,7 +22,7 @@ import NodeJsServerAgent from "./NodeJsServerAgent/NodeJsServerAgent.js";
 import JsonErrHter       from "./json-err-hl/json-err-hl.js";
 import JsHter            from "./js-hl/js-hl.js";
 
-const version = "2.0.0";
+const version = "3.0.0-alpha";
 
 export default {
 	version,
