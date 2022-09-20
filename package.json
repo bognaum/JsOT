@@ -2,7 +2,7 @@
   "name": "jsot",
   "version": "2.0.0",
   "description": "Explore JS objects.",
-  "main": "JsOT.js",
+  "main": "src-esm/JsOT.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
