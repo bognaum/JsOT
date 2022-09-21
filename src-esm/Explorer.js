@@ -79,7 +79,7 @@ export default class Explorer {
 				<div class="loadbar-wrapper">
 					<div class="loadbar"><div class="inner"></div></div>
 				</div>
-				<div class="sort-by">
+				<div class="setting-group">
 					Sort By: 
 					<span 
 						class="setting-switcher" 
@@ -91,6 +91,14 @@ export default class Explorer {
 						data-setting-name="by_type"
 						data-state="-1" 
 						data-states='[-1,1,0]'>Type - </span>
+				</div>
+				<div class="setting-group">
+				&nbsp;&nbsp;&nbsp;Show: 
+					<span 
+						class="setting-switcher" 
+						data-setting-name="show_iterated"
+						data-state="-1" 
+						data-states='[-1,1,0]'>Iterated - </span>
 				</div>
 			</div>
 		`).children[0];

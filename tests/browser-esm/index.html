@@ -38,6 +38,16 @@
 				}();
 			</script>
 		</pre>
+		<pre class="jsot">
+			<script type="text/javascript">
+				!async function() {
+					const parent = document.all[document.all.length - 1].parentElement;
+					const jsot = (await import("./../../src-esm/JsOT.js")).default;
+					const array = ["a", "b", "c", "d", "f"];
+					new jsot.Explorer(parent, {ob : array, name : "array", t : {ch : []}});
+				}();
+			</script>
+		</pre>
 		<pre class="jsot hl-tc">
 			{
 				"nip": "JSON",

@@ -217,11 +217,11 @@
 						}
 					}
 				}
-				.sort-by {
+				.setting-group {
 					margin: 3px 0;
 					>.setting-switcher {
 						display: inline-block;
-						min-width: 100px;
+						min-width: 120px;
 						background-color: #fff;
 						border: 1px solid #ccc;
 						padding: 0 5px;
@@ -237,6 +237,11 @@
 							&[data-state="1" ]:after {content: "Yes";}
 						}
 						&[data-setting-name="by_type"] {
+							&[data-state="-1"]:after {content: "Inherit";}
+							&[data-state="0" ]:after {content: "No";}
+							&[data-state="1" ]:after {content: "Yes";}
+						}
+						&[data-setting-name="show_iterated"] {
 							&[data-state="-1"]:after {content: "Inherit";}
 							&[data-state="0" ]:after {content: "No";}
 							&[data-state="1" ]:after {content: "Yes";}

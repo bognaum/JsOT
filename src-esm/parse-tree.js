@@ -63,7 +63,7 @@ export default function parseTree(ob, name, oT={}, deep=0) {
 		// if (!isSimpleType(nT.ob) && (oT.ch || 0 < deep)) {
 		if (!isNoneValue(nT.ob) && (oT.ch || 0 < deep)) {
 			chList = [].concat(
-				getIteratedChildren(nT.ob),
+				cps["show_iterated"]? getIteratedChildren(nT.ob) : [],
 				(nT.nip != "__proto__")? getProtoGettedSettedChildren(nT.ob) : [],
 				getEnumeratedChildren(nT.ob, nT.nip),
 			);
